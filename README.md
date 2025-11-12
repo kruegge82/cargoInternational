@@ -46,13 +46,10 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-
-
 // Configure API key authorization: sanctum
 $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()
 ->setApiKeyPrefix('Authorization', 'Bearer')
 ->setApiKey('Authorization', 'YOUR_API_KEY');
-
 
 $apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
