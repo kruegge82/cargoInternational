@@ -2,11 +2,11 @@
 
 
 
-All URIs are relative to https://app.spedition.de/api, except if the operation defines another base path.
+All URIs are relative to https://app.spedition.de, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createOrder()**](OrdersApi.md#createOrder) | **POST** /orders/create | Store new record |
+| [**createOrder()**](OrdersApi.md#createOrder) | **POST** /api/orders/create | Store new record |
 | [**deleteOrder()**](OrdersApi.md#deleteOrder) | **DELETE** /api/orders/delete/{id} |  |
 | [**destroyOrder()**](OrdersApi.md#destroyOrder) | **DELETE** /api/orders/destroy/{id} |  |
 | [**getOrder()**](OrdersApi.md#getOrder) | **GET** /api/orders/details/{id} |  |

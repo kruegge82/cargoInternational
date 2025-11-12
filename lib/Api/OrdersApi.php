@@ -362,7 +362,7 @@ class OrdersApi
         }
 
 
-        $resourcePath = '/orders/create';
+        $resourcePath = '/api/orders/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

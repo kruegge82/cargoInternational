@@ -2,7 +2,7 @@
 
 
 
-All URIs are relative to https://app.spedition.de/api, except if the operation defines another base path.
+All URIs are relative to https://app.spedition.de, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

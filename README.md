@@ -82,7 +82,7 @@ try {
 
 ## API Endpoints
 
-All URIs are relative to *https://app.spedition.de/api*
+All URIs are relative to *https://app.spedition.de*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -95,7 +95,7 @@ Class | Method | HTTP request | Description
 *AddressBookApi* | [**restoreAddressbook**](docs/Api/AddressBookApi.md#restoreaddressbook) | **POST** /api/addressbook/restore/{id} | 
 *AddressBookApi* | [**updateAddressbook**](docs/Api/AddressBookApi.md#updateaddressbook) | **PATCH** /api/addressbook/update/{id} | 
 *CarrierTemplatesApi* | [**listCarrierTemplates**](docs/Api/CarrierTemplatesApi.md#listcarriertemplates) | **GET** /api/templates/carrier/index | List records with pagination
-*OrdersApi* | [**createOrder**](docs/Api/OrdersApi.md#createorder) | **POST** /orders/create | Store new record
+*OrdersApi* | [**createOrder**](docs/Api/OrdersApi.md#createorder) | **POST** /api/orders/create | Store new record
 *OrdersApi* | [**deleteOrder**](docs/Api/OrdersApi.md#deleteorder) | **DELETE** /api/orders/delete/{id} | 
 *OrdersApi* | [**destroyOrder**](docs/Api/OrdersApi.md#destroyorder) | **DELETE** /api/orders/destroy/{id} | 
 *OrdersApi* | [**getOrder**](docs/Api/OrdersApi.md#getorder) | **GET** /api/orders/details/{id} | 
