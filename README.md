@@ -82,7 +82,7 @@ try {
 
 ## API Endpoints
 
-All URIs are relative to *https://app.spedition.de*
+All URIs are relative to *https://app.spedition.de/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
