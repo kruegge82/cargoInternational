@@ -399,8 +399,8 @@ class AddressBookApi
                 'Missing the required parameter $firstname when calling createAddressbook'
             );
         }
-        if (strlen($firstname) > 2) {
-            throw new \InvalidArgumentException('invalid length for "$firstname" when calling AddressBookApi.createAddressbook, must be smaller than or equal to 2.');
+        if (strlen($firstname) < 2) {
+            throw new \InvalidArgumentException('invalid length for "$firstname" when calling AddressBookApi.createAddressbook, must be bigger than or equal to 2.');
         }
         
         // verify the required parameter 'lastname' is set

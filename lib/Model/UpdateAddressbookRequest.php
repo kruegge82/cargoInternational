@@ -281,12 +281,12 @@ class UpdateAddressbookRequest implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['firstname']) && (mb_strlen($this->container['firstname']) > 4)) {
-            $invalidProperties[] = "invalid value for 'firstname', the character length must be smaller than or equal to 4.";
+        if (!is_null($this->container['firstname']) && (mb_strlen($this->container['firstname']) < 2)) {
+            $invalidProperties[] = "invalid value for 'firstname', the character length must be bigger than or equal to 2.";
         }
 
-        if (!is_null($this->container['lastname']) && (mb_strlen($this->container['lastname']) > 4)) {
-            $invalidProperties[] = "invalid value for 'lastname', the character length must be smaller than or equal to 4.";
+        if (!is_null($this->container['lastname']) && (mb_strlen($this->container['lastname']) < 2)) {
+            $invalidProperties[] = "invalid value for 'lastname', the character length must be bigger than or equal to 2.";
         }
 
         return $invalidProperties;
@@ -326,8 +326,9 @@ class UpdateAddressbookRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if (is_null($firstname)) {
             throw new \InvalidArgumentException('non-nullable firstname cannot be null');
         }
-        if ((mb_strlen($firstname) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $firstname when calling UpdateAddressbookRequest., must be smaller than or equal to 4.');
+
+        if ((mb_strlen($firstname) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $firstname when calling UpdateAddressbookRequest., must be bigger than or equal to 2.');
         }
 
         $this->container['firstname'] = $firstname;
@@ -357,8 +358,9 @@ class UpdateAddressbookRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if (is_null($lastname)) {
             throw new \InvalidArgumentException('non-nullable lastname cannot be null');
         }
-        if ((mb_strlen($lastname) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $lastname when calling UpdateAddressbookRequest., must be smaller than or equal to 4.');
+
+        if ((mb_strlen($lastname) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $lastname when calling UpdateAddressbookRequest., must be bigger than or equal to 2.');
         }
 
         $this->container['lastname'] = $lastname;
