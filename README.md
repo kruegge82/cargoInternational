@@ -73,7 +73,7 @@ try {
 
 ## API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://app.spedition.de*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
