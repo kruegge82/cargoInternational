@@ -57,16 +57,13 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'kind' => 'string',
-        'quantity' => 'int',
-        'description' => 'string',
+        'colli' => 'int',
+        'contents' => 'string',
         'weight_kg' => 'float',
         'length_cm' => 'float',
         'width_cm' => 'float',
         'height_cm' => 'float',
-        'value_eur' => 'float',
-        'stackable' => 'bool',
-        'hazardous' => 'bool'
+        'package' => 'string'
     ];
 
     /**
@@ -77,16 +74,13 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'kind' => null,
-        'quantity' => 'int32',
-        'description' => null,
+        'colli' => 'int32',
+        'contents' => null,
         'weight_kg' => 'float',
         'length_cm' => 'float',
         'width_cm' => 'float',
         'height_cm' => 'float',
-        'value_eur' => 'float',
-        'stackable' => null,
-        'hazardous' => null
+        'package' => null
     ];
 
     /**
@@ -95,16 +89,13 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'kind' => false,
-        'quantity' => false,
-        'description' => false,
+        'colli' => false,
+        'contents' => false,
         'weight_kg' => false,
         'length_cm' => false,
         'width_cm' => false,
         'height_cm' => false,
-        'value_eur' => false,
-        'stackable' => false,
-        'hazardous' => false
+        'package' => false
     ];
 
     /**
@@ -193,16 +184,13 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'kind' => 'kind',
-        'quantity' => 'quantity',
-        'description' => 'description',
+        'colli' => 'colli',
+        'contents' => 'contents',
         'weight_kg' => 'weight_kg',
         'length_cm' => 'length_cm',
         'width_cm' => 'width_cm',
         'height_cm' => 'height_cm',
-        'value_eur' => 'value_eur',
-        'stackable' => 'stackable',
-        'hazardous' => 'hazardous'
+        'package' => 'package'
     ];
 
     /**
@@ -211,16 +199,13 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'kind' => 'setKind',
-        'quantity' => 'setQuantity',
-        'description' => 'setDescription',
+        'colli' => 'setColli',
+        'contents' => 'setContents',
         'weight_kg' => 'setWeightKg',
         'length_cm' => 'setLengthCm',
         'width_cm' => 'setWidthCm',
         'height_cm' => 'setHeightCm',
-        'value_eur' => 'setValueEur',
-        'stackable' => 'setStackable',
-        'hazardous' => 'setHazardous'
+        'package' => 'setPackage'
     ];
 
     /**
@@ -229,16 +214,13 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'kind' => 'getKind',
-        'quantity' => 'getQuantity',
-        'description' => 'getDescription',
+        'colli' => 'getColli',
+        'contents' => 'getContents',
         'weight_kg' => 'getWeightKg',
         'length_cm' => 'getLengthCm',
         'width_cm' => 'getWidthCm',
         'height_cm' => 'getHeightCm',
-        'value_eur' => 'getValueEur',
-        'stackable' => 'getStackable',
-        'hazardous' => 'getHazardous'
+        'package' => 'getPackage'
     ];
 
     /**
@@ -282,17 +264,27 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const KIND_PARCEL = 'parcel';
+    public const PACKAGE_PAKET = 'Paket';
+    public const PACKAGE_EUROPALETTE = 'Europalette';
+    public const PACKAGE_EINWEGPALETTE = 'Einwegpalette';
+    public const PACKAGE_HALBPALETTE = 'Halbpalette';
+    public const PACKAGE_SPERRGUTPAKET = 'Sperrgutpaket';
+    public const PACKAGE_GITTERBOX = 'Gitterbox';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getKindAllowableValues()
+    public function getPackageAllowableValues()
     {
         return [
-            self::KIND_PARCEL,
+            self::PACKAGE_PAKET,
+            self::PACKAGE_EUROPALETTE,
+            self::PACKAGE_EINWEGPALETTE,
+            self::PACKAGE_HALBPALETTE,
+            self::PACKAGE_SPERRGUTPAKET,
+            self::PACKAGE_GITTERBOX,
         ];
     }
 
@@ -311,16 +303,13 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('kind', $data ?? [], null);
-        $this->setIfExists('quantity', $data ?? [], 1);
-        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('colli', $data ?? [], 1);
+        $this->setIfExists('contents', $data ?? [], null);
         $this->setIfExists('weight_kg', $data ?? [], null);
         $this->setIfExists('length_cm', $data ?? [], null);
         $this->setIfExists('width_cm', $data ?? [], null);
         $this->setIfExists('height_cm', $data ?? [], null);
-        $this->setIfExists('value_eur', $data ?? [], null);
-        $this->setIfExists('stackable', $data ?? [], null);
-        $this->setIfExists('hazardous', $data ?? [], null);
+        $this->setIfExists('package', $data ?? [], null);
     }
 
     /**
@@ -350,25 +339,16 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['kind'] === null) {
-            $invalidProperties[] = "'kind' can't be null";
+        if ($this->container['colli'] === null) {
+            $invalidProperties[] = "'colli' can't be null";
         }
-        $allowedValues = $this->getKindAllowableValues();
-        if (!is_null($this->container['kind']) && !in_array($this->container['kind'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'kind', must be one of '%s'",
-                $this->container['kind'],
-                implode("', '", $allowedValues)
-            );
+        if (($this->container['colli'] < 1)) {
+            $invalidProperties[] = "invalid value for 'colli', must be bigger than or equal to 1.";
         }
 
-        if ($this->container['quantity'] === null) {
-            $invalidProperties[] = "'quantity' can't be null";
+        if ($this->container['contents'] === null) {
+            $invalidProperties[] = "'contents' can't be null";
         }
-        if (($this->container['quantity'] < 1)) {
-            $invalidProperties[] = "invalid value for 'quantity', must be bigger than or equal to 1.";
-        }
-
         if ($this->container['weight_kg'] === null) {
             $invalidProperties[] = "'weight_kg' can't be null";
         }
@@ -397,6 +377,18 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'height_cm', must be bigger than or equal to 0.0.";
         }
 
+        if ($this->container['package'] === null) {
+            $invalidProperties[] = "'package' can't be null";
+        }
+        $allowedValues = $this->getPackageAllowableValues();
+        if (!is_null($this->container['package']) && !in_array($this->container['package'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'package', must be one of '%s'",
+                $this->container['package'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -413,97 +405,60 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets kind
-     *
-     * @return string
-     */
-    public function getKind()
-    {
-        return $this->container['kind'];
-    }
-
-    /**
-     * Sets kind
-     *
-     * @param string $kind kind
-     *
-     * @return self
-     */
-    public function setKind($kind)
-    {
-        if (is_null($kind)) {
-            throw new \InvalidArgumentException('non-nullable kind cannot be null');
-        }
-        $allowedValues = $this->getKindAllowableValues();
-        if (!in_array($kind, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'kind', must be one of '%s'",
-                    $kind,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['kind'] = $kind;
-
-        return $this;
-    }
-
-    /**
-     * Gets quantity
+     * Gets colli
      *
      * @return int
      */
-    public function getQuantity()
+    public function getColli()
     {
-        return $this->container['quantity'];
+        return $this->container['colli'];
     }
 
     /**
-     * Sets quantity
+     * Sets colli
      *
-     * @param int $quantity Number of identical parcels of this type
+     * @param int $colli Number of identical pallets of this type
      *
      * @return self
      */
-    public function setQuantity($quantity)
+    public function setColli($colli)
     {
-        if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+        if (is_null($colli)) {
+            throw new \InvalidArgumentException('non-nullable colli cannot be null');
         }
 
-        if (($quantity < 1)) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling Parcel., must be bigger than or equal to 1.');
+        if (($colli < 1)) {
+            throw new \InvalidArgumentException('invalid value for $colli when calling Parcel., must be bigger than or equal to 1.');
         }
 
-        $this->container['quantity'] = $quantity;
+        $this->container['colli'] = $colli;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets contents
      *
-     * @return string|null
+     * @return string
      */
-    public function getDescription()
+    public function getContents()
     {
-        return $this->container['description'];
+        return $this->container['contents'];
     }
 
     /**
-     * Sets description
+     * Sets contents
      *
-     * @param string|null $description Goods description / contents
+     * @param string $contents Goods description / contents
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setContents($contents)
     {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        if (is_null($contents)) {
+            throw new \InvalidArgumentException('non-nullable contents cannot be null');
         }
-        $this->container['description'] = $description;
+        $this->container['contents'] = $contents;
 
         return $this;
     }
@@ -521,7 +476,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight_kg
      *
-     * @param float $weight_kg Weight per item in kilograms
+     * @param float $weight_kg Weight per pallet in kilograms
      *
      * @return self
      */
@@ -637,82 +592,38 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets value_eur
+     * Gets package
      *
-     * @return float|null
+     * @return string
      */
-    public function getValueEur()
+    public function getPackage()
     {
-        return $this->container['value_eur'];
+        return $this->container['package'];
     }
 
     /**
-     * Sets value_eur
+     * Sets package
      *
-     * @param float|null $value_eur Declared value per item in EUR
+     * @param string $package Type of pallet
      *
      * @return self
      */
-    public function setValueEur($value_eur)
+    public function setPackage($package)
     {
-        if (is_null($value_eur)) {
-            throw new \InvalidArgumentException('non-nullable value_eur cannot be null');
+        if (is_null($package)) {
+            throw new \InvalidArgumentException('non-nullable package cannot be null');
         }
-        $this->container['value_eur'] = $value_eur;
-
-        return $this;
-    }
-
-    /**
-     * Gets stackable
-     *
-     * @return bool|null
-     */
-    public function getStackable()
-    {
-        return $this->container['stackable'];
-    }
-
-    /**
-     * Sets stackable
-     *
-     * @param bool|null $stackable Whether items can be stacked
-     *
-     * @return self
-     */
-    public function setStackable($stackable)
-    {
-        if (is_null($stackable)) {
-            throw new \InvalidArgumentException('non-nullable stackable cannot be null');
+        $allowedValues = $this->getPackageAllowableValues();
+        if (!in_array($package, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'package', must be one of '%s'",
+                    $package,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['stackable'] = $stackable;
-
-        return $this;
-    }
-
-    /**
-     * Gets hazardous
-     *
-     * @return bool|null
-     */
-    public function getHazardous()
-    {
-        return $this->container['hazardous'];
-    }
-
-    /**
-     * Sets hazardous
-     *
-     * @param bool|null $hazardous DG indicator if applicable
-     *
-     * @return self
-     */
-    public function setHazardous($hazardous)
-    {
-        if (is_null($hazardous)) {
-            throw new \InvalidArgumentException('non-nullable hazardous cannot be null');
-        }
-        $this->container['hazardous'] = $hazardous;
+        $this->container['package'] = $package;
 
         return $this;
     }

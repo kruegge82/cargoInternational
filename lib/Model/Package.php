@@ -58,20 +58,13 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'kind' => 'string',
-        'quantity' => 'int',
-        'description' => 'string',
+        'colli' => 'int',
+        'contents' => 'string',
         'weight_kg' => 'float',
         'length_cm' => 'float',
         'width_cm' => 'float',
         'height_cm' => 'float',
-        'value_eur' => 'float',
-        'stackable' => 'bool',
-        'hazardous' => 'bool',
-        'pallet_type' => 'string',
-        'exchangeable' => 'bool',
-        'loading_meters' => 'float',
-        'volume_cbm' => 'float'
+        'package' => 'string'
     ];
 
     /**
@@ -82,20 +75,13 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'kind' => null,
-        'quantity' => 'int32',
-        'description' => null,
+        'colli' => 'int32',
+        'contents' => null,
         'weight_kg' => 'float',
         'length_cm' => 'float',
         'width_cm' => 'float',
         'height_cm' => 'float',
-        'value_eur' => 'float',
-        'stackable' => null,
-        'hazardous' => null,
-        'pallet_type' => null,
-        'exchangeable' => null,
-        'loading_meters' => 'float',
-        'volume_cbm' => 'float'
+        'package' => null
     ];
 
     /**
@@ -104,20 +90,13 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'kind' => false,
-        'quantity' => false,
-        'description' => false,
+        'colli' => false,
+        'contents' => false,
         'weight_kg' => false,
         'length_cm' => false,
         'width_cm' => false,
         'height_cm' => false,
-        'value_eur' => false,
-        'stackable' => false,
-        'hazardous' => false,
-        'pallet_type' => false,
-        'exchangeable' => false,
-        'loading_meters' => false,
-        'volume_cbm' => false
+        'package' => false
     ];
 
     /**
@@ -206,20 +185,13 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'kind' => 'kind',
-        'quantity' => 'quantity',
-        'description' => 'description',
+        'colli' => 'colli',
+        'contents' => 'contents',
         'weight_kg' => 'weight_kg',
         'length_cm' => 'length_cm',
         'width_cm' => 'width_cm',
         'height_cm' => 'height_cm',
-        'value_eur' => 'value_eur',
-        'stackable' => 'stackable',
-        'hazardous' => 'hazardous',
-        'pallet_type' => 'pallet_type',
-        'exchangeable' => 'exchangeable',
-        'loading_meters' => 'loading_meters',
-        'volume_cbm' => 'volume_cbm'
+        'package' => 'package'
     ];
 
     /**
@@ -228,20 +200,13 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'kind' => 'setKind',
-        'quantity' => 'setQuantity',
-        'description' => 'setDescription',
+        'colli' => 'setColli',
+        'contents' => 'setContents',
         'weight_kg' => 'setWeightKg',
         'length_cm' => 'setLengthCm',
         'width_cm' => 'setWidthCm',
         'height_cm' => 'setHeightCm',
-        'value_eur' => 'setValueEur',
-        'stackable' => 'setStackable',
-        'hazardous' => 'setHazardous',
-        'pallet_type' => 'setPalletType',
-        'exchangeable' => 'setExchangeable',
-        'loading_meters' => 'setLoadingMeters',
-        'volume_cbm' => 'setVolumeCbm'
+        'package' => 'setPackage'
     ];
 
     /**
@@ -250,20 +215,13 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'kind' => 'getKind',
-        'quantity' => 'getQuantity',
-        'description' => 'getDescription',
+        'colli' => 'getColli',
+        'contents' => 'getContents',
         'weight_kg' => 'getWeightKg',
         'length_cm' => 'getLengthCm',
         'width_cm' => 'getWidthCm',
         'height_cm' => 'getHeightCm',
-        'value_eur' => 'getValueEur',
-        'stackable' => 'getStackable',
-        'hazardous' => 'getHazardous',
-        'pallet_type' => 'getPalletType',
-        'exchangeable' => 'getExchangeable',
-        'loading_meters' => 'getLoadingMeters',
-        'volume_cbm' => 'getVolumeCbm'
+        'package' => 'getPackage'
     ];
 
     /**
@@ -307,40 +265,27 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const KIND_PALLET = 'pallet';
-    public const PALLET_TYPE_PAKET = 'Paket';
-    public const PALLET_TYPE_EUROPALETTE = 'Europalette';
-    public const PALLET_TYPE_EINWEGPALETTE = 'Einwegpalette';
-    public const PALLET_TYPE_HALBPALETTE = 'Halbpalette';
-    public const PALLET_TYPE_SPERRGUTPAKET = 'Sperrgutpaket';
-    public const PALLET_TYPE_GITTERBOX = 'Gitterbox';
+    public const PACKAGE_PAKET = 'Paket';
+    public const PACKAGE_EUROPALETTE = 'Europalette';
+    public const PACKAGE_EINWEGPALETTE = 'Einwegpalette';
+    public const PACKAGE_HALBPALETTE = 'Halbpalette';
+    public const PACKAGE_SPERRGUTPAKET = 'Sperrgutpaket';
+    public const PACKAGE_GITTERBOX = 'Gitterbox';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getKindAllowableValues()
+    public function getPackageAllowableValues()
     {
         return [
-            self::KIND_PALLET,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPalletTypeAllowableValues()
-    {
-        return [
-            self::PALLET_TYPE_PAKET,
-            self::PALLET_TYPE_EUROPALETTE,
-            self::PALLET_TYPE_EINWEGPALETTE,
-            self::PALLET_TYPE_HALBPALETTE,
-            self::PALLET_TYPE_SPERRGUTPAKET,
-            self::PALLET_TYPE_GITTERBOX,
+            self::PACKAGE_PAKET,
+            self::PACKAGE_EUROPALETTE,
+            self::PACKAGE_EINWEGPALETTE,
+            self::PACKAGE_HALBPALETTE,
+            self::PACKAGE_SPERRGUTPAKET,
+            self::PACKAGE_GITTERBOX,
         ];
     }
 
@@ -359,20 +304,13 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('kind', $data ?? [], null);
-        $this->setIfExists('quantity', $data ?? [], 1);
-        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('colli', $data ?? [], 1);
+        $this->setIfExists('contents', $data ?? [], null);
         $this->setIfExists('weight_kg', $data ?? [], null);
         $this->setIfExists('length_cm', $data ?? [], null);
         $this->setIfExists('width_cm', $data ?? [], null);
         $this->setIfExists('height_cm', $data ?? [], null);
-        $this->setIfExists('value_eur', $data ?? [], null);
-        $this->setIfExists('stackable', $data ?? [], null);
-        $this->setIfExists('hazardous', $data ?? [], null);
-        $this->setIfExists('pallet_type', $data ?? [], null);
-        $this->setIfExists('exchangeable', $data ?? [], null);
-        $this->setIfExists('loading_meters', $data ?? [], null);
-        $this->setIfExists('volume_cbm', $data ?? [], null);
+        $this->setIfExists('package', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['kind'] = static::$openAPIModelName;
@@ -405,25 +343,16 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['kind'] === null) {
-            $invalidProperties[] = "'kind' can't be null";
+        if ($this->container['colli'] === null) {
+            $invalidProperties[] = "'colli' can't be null";
         }
-        $allowedValues = $this->getKindAllowableValues();
-        if (!is_null($this->container['kind']) && !in_array($this->container['kind'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'kind', must be one of '%s'",
-                $this->container['kind'],
-                implode("', '", $allowedValues)
-            );
+        if (($this->container['colli'] < 1)) {
+            $invalidProperties[] = "invalid value for 'colli', must be bigger than or equal to 1.";
         }
 
-        if ($this->container['quantity'] === null) {
-            $invalidProperties[] = "'quantity' can't be null";
+        if ($this->container['contents'] === null) {
+            $invalidProperties[] = "'contents' can't be null";
         }
-        if (($this->container['quantity'] < 1)) {
-            $invalidProperties[] = "invalid value for 'quantity', must be bigger than or equal to 1.";
-        }
-
         if ($this->container['weight_kg'] === null) {
             $invalidProperties[] = "'weight_kg' can't be null";
         }
@@ -452,24 +381,16 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'height_cm', must be bigger than or equal to 0.0.";
         }
 
-        if ($this->container['pallet_type'] === null) {
-            $invalidProperties[] = "'pallet_type' can't be null";
+        if ($this->container['package'] === null) {
+            $invalidProperties[] = "'package' can't be null";
         }
-        $allowedValues = $this->getPalletTypeAllowableValues();
-        if (!is_null($this->container['pallet_type']) && !in_array($this->container['pallet_type'], $allowedValues, true)) {
+        $allowedValues = $this->getPackageAllowableValues();
+        if (!is_null($this->container['package']) && !in_array($this->container['package'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'pallet_type', must be one of '%s'",
-                $this->container['pallet_type'],
+                "invalid value '%s' for 'package', must be one of '%s'",
+                $this->container['package'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if (!is_null($this->container['loading_meters']) && ($this->container['loading_meters'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'loading_meters', must be bigger than or equal to 0.0.";
-        }
-
-        if (!is_null($this->container['volume_cbm']) && ($this->container['volume_cbm'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'volume_cbm', must be bigger than or equal to 0.0.";
         }
 
         return $invalidProperties;
@@ -488,97 +409,60 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets kind
-     *
-     * @return string
-     */
-    public function getKind()
-    {
-        return $this->container['kind'];
-    }
-
-    /**
-     * Sets kind
-     *
-     * @param string $kind kind
-     *
-     * @return self
-     */
-    public function setKind($kind)
-    {
-        if (is_null($kind)) {
-            throw new \InvalidArgumentException('non-nullable kind cannot be null');
-        }
-        $allowedValues = $this->getKindAllowableValues();
-        if (!in_array($kind, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'kind', must be one of '%s'",
-                    $kind,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['kind'] = $kind;
-
-        return $this;
-    }
-
-    /**
-     * Gets quantity
+     * Gets colli
      *
      * @return int
      */
-    public function getQuantity()
+    public function getColli()
     {
-        return $this->container['quantity'];
+        return $this->container['colli'];
     }
 
     /**
-     * Sets quantity
+     * Sets colli
      *
-     * @param int $quantity Number of identical pallets of this type
+     * @param int $colli Number of identical pallets of this type
      *
      * @return self
      */
-    public function setQuantity($quantity)
+    public function setColli($colli)
     {
-        if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+        if (is_null($colli)) {
+            throw new \InvalidArgumentException('non-nullable colli cannot be null');
         }
 
-        if (($quantity < 1)) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling Package., must be bigger than or equal to 1.');
+        if (($colli < 1)) {
+            throw new \InvalidArgumentException('invalid value for $colli when calling Package., must be bigger than or equal to 1.');
         }
 
-        $this->container['quantity'] = $quantity;
+        $this->container['colli'] = $colli;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets contents
      *
-     * @return string|null
+     * @return string
      */
-    public function getDescription()
+    public function getContents()
     {
-        return $this->container['description'];
+        return $this->container['contents'];
     }
 
     /**
-     * Sets description
+     * Sets contents
      *
-     * @param string|null $description Goods description / contents
+     * @param string $contents Goods description / contents
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setContents($contents)
     {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        if (is_null($contents)) {
+            throw new \InvalidArgumentException('non-nullable contents cannot be null');
         }
-        $this->container['description'] = $description;
+        $this->container['contents'] = $contents;
 
         return $this;
     }
@@ -712,210 +596,38 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets value_eur
-     *
-     * @return float|null
-     */
-    public function getValueEur()
-    {
-        return $this->container['value_eur'];
-    }
-
-    /**
-     * Sets value_eur
-     *
-     * @param float|null $value_eur Declared value per item in EUR
-     *
-     * @return self
-     */
-    public function setValueEur($value_eur)
-    {
-        if (is_null($value_eur)) {
-            throw new \InvalidArgumentException('non-nullable value_eur cannot be null');
-        }
-        $this->container['value_eur'] = $value_eur;
-
-        return $this;
-    }
-
-    /**
-     * Gets stackable
-     *
-     * @return bool|null
-     */
-    public function getStackable()
-    {
-        return $this->container['stackable'];
-    }
-
-    /**
-     * Sets stackable
-     *
-     * @param bool|null $stackable Whether pallets are stackable
-     *
-     * @return self
-     */
-    public function setStackable($stackable)
-    {
-        if (is_null($stackable)) {
-            throw new \InvalidArgumentException('non-nullable stackable cannot be null');
-        }
-        $this->container['stackable'] = $stackable;
-
-        return $this;
-    }
-
-    /**
-     * Gets hazardous
-     *
-     * @return bool|null
-     */
-    public function getHazardous()
-    {
-        return $this->container['hazardous'];
-    }
-
-    /**
-     * Sets hazardous
-     *
-     * @param bool|null $hazardous DG indicator if applicable
-     *
-     * @return self
-     */
-    public function setHazardous($hazardous)
-    {
-        if (is_null($hazardous)) {
-            throw new \InvalidArgumentException('non-nullable hazardous cannot be null');
-        }
-        $this->container['hazardous'] = $hazardous;
-
-        return $this;
-    }
-
-    /**
-     * Gets pallet_type
+     * Gets package
      *
      * @return string
      */
-    public function getPalletType()
+    public function getPackage()
     {
-        return $this->container['pallet_type'];
+        return $this->container['package'];
     }
 
     /**
-     * Sets pallet_type
+     * Sets package
      *
-     * @param string $pallet_type Type of pallet
+     * @param string $package Type of pallet
      *
      * @return self
      */
-    public function setPalletType($pallet_type)
+    public function setPackage($package)
     {
-        if (is_null($pallet_type)) {
-            throw new \InvalidArgumentException('non-nullable pallet_type cannot be null');
+        if (is_null($package)) {
+            throw new \InvalidArgumentException('non-nullable package cannot be null');
         }
-        $allowedValues = $this->getPalletTypeAllowableValues();
-        if (!in_array($pallet_type, $allowedValues, true)) {
+        $allowedValues = $this->getPackageAllowableValues();
+        if (!in_array($package, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'pallet_type', must be one of '%s'",
-                    $pallet_type,
+                    "Invalid value '%s' for 'package', must be one of '%s'",
+                    $package,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['pallet_type'] = $pallet_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets exchangeable
-     *
-     * @return bool|null
-     */
-    public function getExchangeable()
-    {
-        return $this->container['exchangeable'];
-    }
-
-    /**
-     * Sets exchangeable
-     *
-     * @param bool|null $exchangeable Whether pallets are exchangeable (tauschfähig)
-     *
-     * @return self
-     */
-    public function setExchangeable($exchangeable)
-    {
-        if (is_null($exchangeable)) {
-            throw new \InvalidArgumentException('non-nullable exchangeable cannot be null');
-        }
-        $this->container['exchangeable'] = $exchangeable;
-
-        return $this;
-    }
-
-    /**
-     * Gets loading_meters
-     *
-     * @return float|null
-     */
-    public function getLoadingMeters()
-    {
-        return $this->container['loading_meters'];
-    }
-
-    /**
-     * Sets loading_meters
-     *
-     * @param float|null $loading_meters Lademeter for this pallet set
-     *
-     * @return self
-     */
-    public function setLoadingMeters($loading_meters)
-    {
-        if (is_null($loading_meters)) {
-            throw new \InvalidArgumentException('non-nullable loading_meters cannot be null');
-        }
-
-        if (($loading_meters < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $loading_meters when calling Package., must be bigger than or equal to 0.0.');
-        }
-
-        $this->container['loading_meters'] = $loading_meters;
-
-        return $this;
-    }
-
-    /**
-     * Gets volume_cbm
-     *
-     * @return float|null
-     */
-    public function getVolumeCbm()
-    {
-        return $this->container['volume_cbm'];
-    }
-
-    /**
-     * Sets volume_cbm
-     *
-     * @param float|null $volume_cbm Volume in cubic meters per pallet
-     *
-     * @return self
-     */
-    public function setVolumeCbm($volume_cbm)
-    {
-        if (is_null($volume_cbm)) {
-            throw new \InvalidArgumentException('non-nullable volume_cbm cannot be null');
-        }
-
-        if (($volume_cbm < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $volume_cbm when calling Package., must be bigger than or equal to 0.0.');
-        }
-
-        $this->container['volume_cbm'] = $volume_cbm;
+        $this->container['package'] = $package;
 
         return $this;
     }
