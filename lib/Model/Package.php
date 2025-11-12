@@ -64,11 +64,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         'length' => 'float',
         'width' => 'float',
         'height' => 'float',
-        'package' => 'string',
-        'weight_kg' => 'float',
-        'length_cm' => 'float',
-        'width_cm' => 'float',
-        'height_cm' => 'float'
+        'package' => 'string'
     ];
 
     /**
@@ -85,11 +81,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         'length' => 'float',
         'width' => 'float',
         'height' => 'float',
-        'package' => null,
-        'weight_kg' => 'float',
-        'length_cm' => 'float',
-        'width_cm' => 'float',
-        'height_cm' => 'float'
+        'package' => null
     ];
 
     /**
@@ -104,11 +96,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         'length' => false,
         'width' => false,
         'height' => false,
-        'package' => false,
-        'weight_kg' => false,
-        'length_cm' => false,
-        'width_cm' => false,
-        'height_cm' => false
+        'package' => false
     ];
 
     /**
@@ -203,11 +191,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         'length' => 'length',
         'width' => 'width',
         'height' => 'height',
-        'package' => 'package',
-        'weight_kg' => 'weight_kg',
-        'length_cm' => 'length_cm',
-        'width_cm' => 'width_cm',
-        'height_cm' => 'height_cm'
+        'package' => 'package'
     ];
 
     /**
@@ -222,11 +206,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         'length' => 'setLength',
         'width' => 'setWidth',
         'height' => 'setHeight',
-        'package' => 'setPackage',
-        'weight_kg' => 'setWeightKg',
-        'length_cm' => 'setLengthCm',
-        'width_cm' => 'setWidthCm',
-        'height_cm' => 'setHeightCm'
+        'package' => 'setPackage'
     ];
 
     /**
@@ -241,11 +221,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         'length' => 'getLength',
         'width' => 'getWidth',
         'height' => 'getHeight',
-        'package' => 'getPackage',
-        'weight_kg' => 'getWeightKg',
-        'length_cm' => 'getLengthCm',
-        'width_cm' => 'getWidthCm',
-        'height_cm' => 'getHeightCm'
+        'package' => 'getPackage'
     ];
 
     /**
@@ -335,10 +311,6 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('width', $data ?? [], null);
         $this->setIfExists('height', $data ?? [], null);
         $this->setIfExists('package', $data ?? [], null);
-        $this->setIfExists('weight_kg', $data ?? [], null);
-        $this->setIfExists('length_cm', $data ?? [], null);
-        $this->setIfExists('width_cm', $data ?? [], null);
-        $this->setIfExists('height_cm', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['kind'] = static::$openAPIModelName;
@@ -407,34 +379,6 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['package'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if ($this->container['weight_kg'] === null) {
-            $invalidProperties[] = "'weight_kg' can't be null";
-        }
-        if (($this->container['weight_kg'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'weight_kg', must be bigger than or equal to 0.0.";
-        }
-
-        if ($this->container['length_cm'] === null) {
-            $invalidProperties[] = "'length_cm' can't be null";
-        }
-        if (($this->container['length_cm'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'length_cm', must be bigger than or equal to 0.0.";
-        }
-
-        if ($this->container['width_cm'] === null) {
-            $invalidProperties[] = "'width_cm' can't be null";
-        }
-        if (($this->container['width_cm'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'width_cm', must be bigger than or equal to 0.0.";
-        }
-
-        if ($this->container['height_cm'] === null) {
-            $invalidProperties[] = "'height_cm' can't be null";
-        }
-        if (($this->container['height_cm'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'height_cm', must be bigger than or equal to 0.0.";
         }
 
         return $invalidProperties;
@@ -672,134 +616,6 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['package'] = $package;
-
-        return $this;
-    }
-
-    /**
-     * Gets weight_kg
-     *
-     * @return float
-     */
-    public function getWeightKg()
-    {
-        return $this->container['weight_kg'];
-    }
-
-    /**
-     * Sets weight_kg
-     *
-     * @param float $weight_kg Weight per pallet in kilograms
-     *
-     * @return self
-     */
-    public function setWeightKg($weight_kg)
-    {
-        if (is_null($weight_kg)) {
-            throw new \InvalidArgumentException('non-nullable weight_kg cannot be null');
-        }
-
-        if (($weight_kg < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $weight_kg when calling Package., must be bigger than or equal to 0.0.');
-        }
-
-        $this->container['weight_kg'] = $weight_kg;
-
-        return $this;
-    }
-
-    /**
-     * Gets length_cm
-     *
-     * @return float
-     */
-    public function getLengthCm()
-    {
-        return $this->container['length_cm'];
-    }
-
-    /**
-     * Sets length_cm
-     *
-     * @param float $length_cm length_cm
-     *
-     * @return self
-     */
-    public function setLengthCm($length_cm)
-    {
-        if (is_null($length_cm)) {
-            throw new \InvalidArgumentException('non-nullable length_cm cannot be null');
-        }
-
-        if (($length_cm < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $length_cm when calling Package., must be bigger than or equal to 0.0.');
-        }
-
-        $this->container['length_cm'] = $length_cm;
-
-        return $this;
-    }
-
-    /**
-     * Gets width_cm
-     *
-     * @return float
-     */
-    public function getWidthCm()
-    {
-        return $this->container['width_cm'];
-    }
-
-    /**
-     * Sets width_cm
-     *
-     * @param float $width_cm width_cm
-     *
-     * @return self
-     */
-    public function setWidthCm($width_cm)
-    {
-        if (is_null($width_cm)) {
-            throw new \InvalidArgumentException('non-nullable width_cm cannot be null');
-        }
-
-        if (($width_cm < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $width_cm when calling Package., must be bigger than or equal to 0.0.');
-        }
-
-        $this->container['width_cm'] = $width_cm;
-
-        return $this;
-    }
-
-    /**
-     * Gets height_cm
-     *
-     * @return float
-     */
-    public function getHeightCm()
-    {
-        return $this->container['height_cm'];
-    }
-
-    /**
-     * Sets height_cm
-     *
-     * @param float $height_cm height_cm
-     *
-     * @return self
-     */
-    public function setHeightCm($height_cm)
-    {
-        if (is_null($height_cm)) {
-            throw new \InvalidArgumentException('non-nullable height_cm cannot be null');
-        }
-
-        if (($height_cm < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $height_cm when calling Package., must be bigger than or equal to 0.0.');
-        }
-
-        $this->container['height_cm'] = $height_cm;
 
         return $this;
     }

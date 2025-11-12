@@ -11,9 +11,5 @@ Name | Type | Description | Notes
 **width** | **float** | Width in cm | [optional]
 **height** | **float** | Height in cm | [optional]
 **package** | **string** | Type of pallet |
-**weight_kg** | **float** | Weight per pallet in kilograms |
-**length_cm** | **float** |  |
-**width_cm** | **float** |  |
-**height_cm** | **float** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

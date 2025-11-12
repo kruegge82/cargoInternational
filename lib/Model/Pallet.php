@@ -59,10 +59,10 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'colli' => 'int',
         'contents' => 'string',
-        'weight_kg' => 'float',
-        'length_cm' => 'float',
-        'width_cm' => 'float',
-        'height_cm' => 'float',
+        'weight' => 'float',
+        'length' => 'float',
+        'width' => 'float',
+        'height' => 'float',
         'package' => 'string'
     ];
 
@@ -76,10 +76,10 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'colli' => 'int32',
         'contents' => null,
-        'weight_kg' => 'float',
-        'length_cm' => 'float',
-        'width_cm' => 'float',
-        'height_cm' => 'float',
+        'weight' => 'float',
+        'length' => 'float',
+        'width' => 'float',
+        'height' => 'float',
         'package' => null
     ];
 
@@ -91,10 +91,10 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'colli' => false,
         'contents' => false,
-        'weight_kg' => false,
-        'length_cm' => false,
-        'width_cm' => false,
-        'height_cm' => false,
+        'weight' => false,
+        'length' => false,
+        'width' => false,
+        'height' => false,
         'package' => false
     ];
 
@@ -186,10 +186,10 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'colli' => 'colli',
         'contents' => 'contents',
-        'weight_kg' => 'weight_kg',
-        'length_cm' => 'length_cm',
-        'width_cm' => 'width_cm',
-        'height_cm' => 'height_cm',
+        'weight' => 'weight',
+        'length' => 'length',
+        'width' => 'width',
+        'height' => 'height',
         'package' => 'package'
     ];
 
@@ -201,10 +201,10 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'colli' => 'setColli',
         'contents' => 'setContents',
-        'weight_kg' => 'setWeightKg',
-        'length_cm' => 'setLengthCm',
-        'width_cm' => 'setWidthCm',
-        'height_cm' => 'setHeightCm',
+        'weight' => 'setWeight',
+        'length' => 'setLength',
+        'width' => 'setWidth',
+        'height' => 'setHeight',
         'package' => 'setPackage'
     ];
 
@@ -216,10 +216,10 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'colli' => 'getColli',
         'contents' => 'getContents',
-        'weight_kg' => 'getWeightKg',
-        'length_cm' => 'getLengthCm',
-        'width_cm' => 'getWidthCm',
-        'height_cm' => 'getHeightCm',
+        'weight' => 'getWeight',
+        'length' => 'getLength',
+        'width' => 'getWidth',
+        'height' => 'getHeight',
         'package' => 'getPackage'
     ];
 
@@ -305,10 +305,10 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('colli', $data ?? [], 1);
         $this->setIfExists('contents', $data ?? [], null);
-        $this->setIfExists('weight_kg', $data ?? [], null);
-        $this->setIfExists('length_cm', $data ?? [], null);
-        $this->setIfExists('width_cm', $data ?? [], null);
-        $this->setIfExists('height_cm', $data ?? [], null);
+        $this->setIfExists('weight', $data ?? [], null);
+        $this->setIfExists('length', $data ?? [], null);
+        $this->setIfExists('width', $data ?? [], null);
+        $this->setIfExists('height', $data ?? [], null);
         $this->setIfExists('package', $data ?? [], null);
     }
 
@@ -349,32 +349,20 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['contents'] === null) {
             $invalidProperties[] = "'contents' can't be null";
         }
-        if ($this->container['weight_kg'] === null) {
-            $invalidProperties[] = "'weight_kg' can't be null";
-        }
-        if (($this->container['weight_kg'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'weight_kg', must be bigger than or equal to 0.0.";
+        if (!is_null($this->container['weight']) && ($this->container['weight'] < 0.0)) {
+            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 0.0.";
         }
 
-        if ($this->container['length_cm'] === null) {
-            $invalidProperties[] = "'length_cm' can't be null";
-        }
-        if (($this->container['length_cm'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'length_cm', must be bigger than or equal to 0.0.";
+        if (!is_null($this->container['length']) && ($this->container['length'] < 0.0)) {
+            $invalidProperties[] = "invalid value for 'length', must be bigger than or equal to 0.0.";
         }
 
-        if ($this->container['width_cm'] === null) {
-            $invalidProperties[] = "'width_cm' can't be null";
-        }
-        if (($this->container['width_cm'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'width_cm', must be bigger than or equal to 0.0.";
+        if (!is_null($this->container['width']) && ($this->container['width'] < 0.0)) {
+            $invalidProperties[] = "invalid value for 'width', must be bigger than or equal to 0.0.";
         }
 
-        if ($this->container['height_cm'] === null) {
-            $invalidProperties[] = "'height_cm' can't be null";
-        }
-        if (($this->container['height_cm'] < 0.0)) {
-            $invalidProperties[] = "invalid value for 'height_cm', must be bigger than or equal to 0.0.";
+        if (!is_null($this->container['height']) && ($this->container['height'] < 0.0)) {
+            $invalidProperties[] = "invalid value for 'height', must be bigger than or equal to 0.0.";
         }
 
         if ($this->container['package'] === null) {
@@ -464,129 +452,129 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets weight_kg
+     * Gets weight
      *
-     * @return float
+     * @return float|null
      */
-    public function getWeightKg()
+    public function getWeight()
     {
-        return $this->container['weight_kg'];
+        return $this->container['weight'];
     }
 
     /**
-     * Sets weight_kg
+     * Sets weight
      *
-     * @param float $weight_kg Weight per pallet in kilograms
+     * @param float|null $weight Weight per pallet in kilograms
      *
      * @return self
      */
-    public function setWeightKg($weight_kg)
+    public function setWeight($weight)
     {
-        if (is_null($weight_kg)) {
-            throw new \InvalidArgumentException('non-nullable weight_kg cannot be null');
+        if (is_null($weight)) {
+            throw new \InvalidArgumentException('non-nullable weight cannot be null');
         }
 
-        if (($weight_kg < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $weight_kg when calling Pallet., must be bigger than or equal to 0.0.');
+        if (($weight < 0.0)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling Pallet., must be bigger than or equal to 0.0.');
         }
 
-        $this->container['weight_kg'] = $weight_kg;
+        $this->container['weight'] = $weight;
 
         return $this;
     }
 
     /**
-     * Gets length_cm
+     * Gets length
      *
-     * @return float
+     * @return float|null
      */
-    public function getLengthCm()
+    public function getLength()
     {
-        return $this->container['length_cm'];
+        return $this->container['length'];
     }
 
     /**
-     * Sets length_cm
+     * Sets length
      *
-     * @param float $length_cm length_cm
+     * @param float|null $length Length in cm
      *
      * @return self
      */
-    public function setLengthCm($length_cm)
+    public function setLength($length)
     {
-        if (is_null($length_cm)) {
-            throw new \InvalidArgumentException('non-nullable length_cm cannot be null');
+        if (is_null($length)) {
+            throw new \InvalidArgumentException('non-nullable length cannot be null');
         }
 
-        if (($length_cm < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $length_cm when calling Pallet., must be bigger than or equal to 0.0.');
+        if (($length < 0.0)) {
+            throw new \InvalidArgumentException('invalid value for $length when calling Pallet., must be bigger than or equal to 0.0.');
         }
 
-        $this->container['length_cm'] = $length_cm;
+        $this->container['length'] = $length;
 
         return $this;
     }
 
     /**
-     * Gets width_cm
+     * Gets width
      *
-     * @return float
+     * @return float|null
      */
-    public function getWidthCm()
+    public function getWidth()
     {
-        return $this->container['width_cm'];
+        return $this->container['width'];
     }
 
     /**
-     * Sets width_cm
+     * Sets width
      *
-     * @param float $width_cm width_cm
+     * @param float|null $width Width in cm
      *
      * @return self
      */
-    public function setWidthCm($width_cm)
+    public function setWidth($width)
     {
-        if (is_null($width_cm)) {
-            throw new \InvalidArgumentException('non-nullable width_cm cannot be null');
+        if (is_null($width)) {
+            throw new \InvalidArgumentException('non-nullable width cannot be null');
         }
 
-        if (($width_cm < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $width_cm when calling Pallet., must be bigger than or equal to 0.0.');
+        if (($width < 0.0)) {
+            throw new \InvalidArgumentException('invalid value for $width when calling Pallet., must be bigger than or equal to 0.0.');
         }
 
-        $this->container['width_cm'] = $width_cm;
+        $this->container['width'] = $width;
 
         return $this;
     }
 
     /**
-     * Gets height_cm
+     * Gets height
      *
-     * @return float
+     * @return float|null
      */
-    public function getHeightCm()
+    public function getHeight()
     {
-        return $this->container['height_cm'];
+        return $this->container['height'];
     }
 
     /**
-     * Sets height_cm
+     * Sets height
      *
-     * @param float $height_cm height_cm
+     * @param float|null $height Height in cm
      *
      * @return self
      */
-    public function setHeightCm($height_cm)
+    public function setHeight($height)
     {
-        if (is_null($height_cm)) {
-            throw new \InvalidArgumentException('non-nullable height_cm cannot be null');
+        if (is_null($height)) {
+            throw new \InvalidArgumentException('non-nullable height cannot be null');
         }
 
-        if (($height_cm < 0.0)) {
-            throw new \InvalidArgumentException('invalid value for $height_cm when calling Pallet., must be bigger than or equal to 0.0.');
+        if (($height < 0.0)) {
+            throw new \InvalidArgumentException('invalid value for $height when calling Pallet., must be bigger than or equal to 0.0.');
         }
 
-        $this->container['height_cm'] = $height_cm;
+        $this->container['height'] = $height;
 
         return $this;
     }
