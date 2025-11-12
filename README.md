@@ -72,7 +72,8 @@ $company = 'company_example'; // string | Company name
 $department = 'department_example'; // string | Department name
 
 try {
-    $apiInstance->createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department);
+    $result = $apiInstance->createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AddressBookApi->createAddressbook: ', $e->getMessage(), PHP_EOL;
 }
@@ -107,8 +108,10 @@ Class | Method | HTTP request | Description
 
 ## Models
 
+- [ApiError](docs/Model/ApiError.md)
 - [CreateOrderRequest](docs/Model/CreateOrderRequest.md)
 - [Package](docs/Model/Package.md)
+- [PaginatedResponse](docs/Model/PaginatedResponse.md)
 - [Pallet](docs/Model/Pallet.md)
 - [Parcel](docs/Model/Parcel.md)
 - [UpdateAddressbookRequest](docs/Model/UpdateAddressbookRequest.md)

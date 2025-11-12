@@ -12,7 +12,7 @@ All URIs are relative to https://app.spedition.de, except if the operation defin
 ## `listCarrierTemplates()`
 
 ```php
-listCarrierTemplates($per_page, $page)
+listCarrierTemplates($per_page, $page): \kruegge82\cargoInternational\Model\PaginatedResponse
 ```
 
 List records with pagination
@@ -42,7 +42,8 @@ $per_page = 56; // int | Number of records per page
 $page = 56; // int | The starting page for pagination
 
 try {
-    $apiInstance->listCarrierTemplates($per_page, $page);
+    $result = $apiInstance->listCarrierTemplates($per_page, $page);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CarrierTemplatesApi->listCarrierTemplates: ', $e->getMessage(), PHP_EOL;
 }
@@ -57,7 +58,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\kruegge82\cargoInternational\Model\PaginatedResponse**](../Model/PaginatedResponse.md)
 
 ### Authorization
 
@@ -66,7 +67,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

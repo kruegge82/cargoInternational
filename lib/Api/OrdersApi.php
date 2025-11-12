@@ -162,11 +162,12 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError
      */
     public function createOrder($create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
-        $this->createOrderWithHttpInfo($create_order_request, $contentType);
+        list($response) = $this->createOrderWithHttpInfo($create_order_request, $contentType);
+        return $response;
     }
 
     /**
@@ -179,7 +180,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOrderWithHttpInfo($create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
@@ -208,9 +209,59 @@ class OrdersApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'array<string,mixed>',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'array<string,mixed>',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'array<string,mixed>',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -252,14 +303,27 @@ class OrdersApi
      */
     public function createOrderAsyncWithHttpInfo($create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
-        $returnType = '';
+        $returnType = 'array<string,mixed>';
         $request = $this->createOrderRequest($create_order_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -310,7 +374,7 @@ class OrdersApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -940,11 +1004,12 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return array<string,mixed>|object
      */
     public function getOrder($id, string $contentType = self::contentTypes['getOrder'][0])
     {
-        $this->getOrderWithHttpInfo($id, $contentType);
+        list($response) = $this->getOrderWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -955,7 +1020,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderWithHttpInfo($id, string $contentType = self::contentTypes['getOrder'][0])
     {
@@ -984,9 +1049,51 @@ class OrdersApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'array<string,mixed>',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'array<string,mixed>',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'array<string,mixed>',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1032,14 +1139,27 @@ class OrdersApi
      */
     public function getOrderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getOrder'][0])
     {
-        $returnType = '';
+        $returnType = 'array<string,mixed>';
         $request = $this->getOrderRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1166,11 +1286,12 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError
      */
     public function listOrders($per_page, $offset = null, string $contentType = self::contentTypes['listOrders'][0])
     {
-        $this->listOrdersWithHttpInfo($per_page, $offset, $contentType);
+        list($response) = $this->listOrdersWithHttpInfo($per_page, $offset, $contentType);
+        return $response;
     }
 
     /**
@@ -1184,7 +1305,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listOrdersWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['listOrders'][0])
     {
@@ -1213,9 +1334,73 @@ class OrdersApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1259,14 +1444,27 @@ class OrdersApi
      */
     public function listOrdersAsyncWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['listOrders'][0])
     {
-        $returnType = '';
+        $returnType = '\kruegge82\cargoInternational\Model\PaginatedResponse';
         $request = $this->listOrdersRequest($per_page, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1337,7 +1535,7 @@ class OrdersApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1405,11 +1603,12 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError
      */
     public function listTrashedOrders($per_page, $offset = null, string $contentType = self::contentTypes['listTrashedOrders'][0])
     {
-        $this->listTrashedOrdersWithHttpInfo($per_page, $offset, $contentType);
+        list($response) = $this->listTrashedOrdersWithHttpInfo($per_page, $offset, $contentType);
+        return $response;
     }
 
     /**
@@ -1423,7 +1622,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTrashedOrdersWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['listTrashedOrders'][0])
     {
@@ -1452,9 +1651,73 @@ class OrdersApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1498,14 +1761,27 @@ class OrdersApi
      */
     public function listTrashedOrdersAsyncWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['listTrashedOrders'][0])
     {
-        $returnType = '';
+        $returnType = '\kruegge82\cargoInternational\Model\PaginatedResponse';
         $request = $this->listTrashedOrdersRequest($per_page, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1576,7 +1852,7 @@ class OrdersApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1641,11 +1917,12 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError
      */
     public function rateOrder($id, string $contentType = self::contentTypes['rateOrder'][0])
     {
-        $this->rateOrderWithHttpInfo($id, $contentType);
+        list($response) = $this->rateOrderWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -1656,7 +1933,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function rateOrderWithHttpInfo($id, string $contentType = self::contentTypes['rateOrder'][0])
     {
@@ -1685,13 +1962,83 @@ class OrdersApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'array<string,mixed>',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'array<string,mixed>',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'array<string,mixed>',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1733,14 +2080,27 @@ class OrdersApi
      */
     public function rateOrderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['rateOrder'][0])
     {
-        $returnType = '';
+        $returnType = 'array<string,mixed>';
         $request = $this->rateOrderRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2143,11 +2503,12 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError
      */
     public function submitOrder($id, string $contentType = self::contentTypes['submitOrder'][0])
     {
-        $this->submitOrderWithHttpInfo($id, $contentType);
+        list($response) = $this->submitOrderWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -2158,7 +2519,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitOrderWithHttpInfo($id, string $contentType = self::contentTypes['submitOrder'][0])
     {
@@ -2187,13 +2548,69 @@ class OrdersApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'array<string,mixed>',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'array<string,mixed>',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'array<string,mixed>',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2235,14 +2652,27 @@ class OrdersApi
      */
     public function submitOrderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['submitOrder'][0])
     {
-        $returnType = '';
+        $returnType = 'array<string,mixed>';
         $request = $this->submitOrderRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

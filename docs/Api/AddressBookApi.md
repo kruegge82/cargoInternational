@@ -19,7 +19,7 @@ All URIs are relative to https://app.spedition.de, except if the operation defin
 ## `createAddressbook()`
 
 ```php
-createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department)
+createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department): array<string,mixed>
 ```
 
 Store new record
@@ -57,7 +57,8 @@ $company = 'company_example'; // string | Company name
 $department = 'department_example'; // string | Department name
 
 try {
-    $apiInstance->createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department);
+    $result = $apiInstance->createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AddressBookApi->createAddressbook: ', $e->getMessage(), PHP_EOL;
 }
@@ -80,7 +81,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**array<string,mixed>**
 
 ### Authorization
 
@@ -89,7 +90,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -222,7 +223,7 @@ try {
 ## `getAddressbook()`
 
 ```php
-getAddressbook($id)
+getAddressbook($id): array<string,mixed>
 ```
 
 
@@ -251,7 +252,8 @@ $apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
 $id = 56; // int | Display specific record id
 
 try {
-    $apiInstance->getAddressbook($id);
+    $result = $apiInstance->getAddressbook($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AddressBookApi->getAddressbook: ', $e->getMessage(), PHP_EOL;
 }
@@ -265,7 +267,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**array<string,mixed>**
 
 ### Authorization
 
@@ -283,7 +285,7 @@ void (empty response body)
 ## `listAddressbook()`
 
 ```php
-listAddressbook($per_page, $page)
+listAddressbook($per_page, $page): \kruegge82\cargoInternational\Model\PaginatedResponse
 ```
 
 List records with pagination
@@ -313,7 +315,8 @@ $per_page = 56; // int | Number of records per page
 $page = 56; // int | The starting page for pagination
 
 try {
-    $apiInstance->listAddressbook($per_page, $page);
+    $result = $apiInstance->listAddressbook($per_page, $page);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AddressBookApi->listAddressbook: ', $e->getMessage(), PHP_EOL;
 }
@@ -328,7 +331,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\kruegge82\cargoInternational\Model\PaginatedResponse**](../Model/PaginatedResponse.md)
 
 ### Authorization
 
@@ -337,7 +340,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -346,7 +349,7 @@ void (empty response body)
 ## `listTrashedAddressbook()`
 
 ```php
-listTrashedAddressbook($per_page, $page)
+listTrashedAddressbook($per_page, $page): \kruegge82\cargoInternational\Model\PaginatedResponse
 ```
 
 List records with pagination
@@ -376,7 +379,8 @@ $per_page = 56; // int | Number of records per page
 $page = 56; // int | The starting page for pagination
 
 try {
-    $apiInstance->listTrashedAddressbook($per_page, $page);
+    $result = $apiInstance->listTrashedAddressbook($per_page, $page);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AddressBookApi->listTrashedAddressbook: ', $e->getMessage(), PHP_EOL;
 }
@@ -391,7 +395,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\kruegge82\cargoInternational\Model\PaginatedResponse**](../Model/PaginatedResponse.md)
 
 ### Authorization
 
@@ -400,7 +404,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

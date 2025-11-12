@@ -165,11 +165,12 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError
      */
     public function createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['createAddressbook'][0])
     {
-        $this->createAddressbookWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType);
+        list($response) = $this->createAddressbookWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType);
+        return $response;
     }
 
     /**
@@ -191,7 +192,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAddressbookWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['createAddressbook'][0])
     {
@@ -220,9 +221,59 @@ class AddressBookApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'array<string,mixed>',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'array<string,mixed>',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'array<string,mixed>',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -282,14 +333,27 @@ class AddressBookApi
      */
     public function createAddressbookAsyncWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['createAddressbook'][0])
     {
-        $returnType = '';
+        $returnType = 'array<string,mixed>';
         $request = $this->createAddressbookRequest($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -421,7 +485,7 @@ class AddressBookApi
         $multipart = $formDataProcessor->has_file;
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1044,11 +1108,12 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return array<string,mixed>|object
      */
     public function getAddressbook($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
-        $this->getAddressbookWithHttpInfo($id, $contentType);
+        list($response) = $this->getAddressbookWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -1059,7 +1124,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAddressbookWithHttpInfo($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
@@ -1088,9 +1153,51 @@ class AddressBookApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'array<string,mixed>',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'array<string,mixed>',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'array<string,mixed>',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1136,14 +1243,27 @@ class AddressBookApi
      */
     public function getAddressbookAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
-        $returnType = '';
+        $returnType = 'array<string,mixed>';
         $request = $this->getAddressbookRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1270,11 +1390,12 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError
      */
     public function listAddressbook($per_page = null, $page = null, string $contentType = self::contentTypes['listAddressbook'][0])
     {
-        $this->listAddressbookWithHttpInfo($per_page, $page, $contentType);
+        list($response) = $this->listAddressbookWithHttpInfo($per_page, $page, $contentType);
+        return $response;
     }
 
     /**
@@ -1288,7 +1409,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAddressbookWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listAddressbook'][0])
     {
@@ -1317,9 +1438,73 @@ class AddressBookApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1363,14 +1548,27 @@ class AddressBookApi
      */
     public function listAddressbookAsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listAddressbook'][0])
     {
-        $returnType = '';
+        $returnType = '\kruegge82\cargoInternational\Model\PaginatedResponse';
         $request = $this->listAddressbookRequest($per_page, $page, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1435,7 +1633,7 @@ class AddressBookApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1503,11 +1701,12 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError
      */
     public function listTrashedAddressbook($per_page = null, $page = null, string $contentType = self::contentTypes['listTrashedAddressbook'][0])
     {
-        $this->listTrashedAddressbookWithHttpInfo($per_page, $page, $contentType);
+        list($response) = $this->listTrashedAddressbookWithHttpInfo($per_page, $page, $contentType);
+        return $response;
     }
 
     /**
@@ -1521,7 +1720,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTrashedAddressbookWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listTrashedAddressbook'][0])
     {
@@ -1550,9 +1749,73 @@ class AddressBookApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1596,14 +1859,27 @@ class AddressBookApi
      */
     public function listTrashedAddressbookAsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listTrashedAddressbook'][0])
     {
-        $returnType = '';
+        $returnType = '\kruegge82\cargoInternational\Model\PaginatedResponse';
         $request = $this->listTrashedAddressbookRequest($per_page, $page, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1668,7 +1944,7 @@ class AddressBookApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );

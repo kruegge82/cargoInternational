@@ -136,11 +136,12 @@ class CarrierTemplatesApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError
      */
     public function listCarrierTemplates($per_page = null, $page = null, string $contentType = self::contentTypes['listCarrierTemplates'][0])
     {
-        $this->listCarrierTemplatesWithHttpInfo($per_page, $page, $contentType);
+        list($response) = $this->listCarrierTemplatesWithHttpInfo($per_page, $page, $contentType);
+        return $response;
     }
 
     /**
@@ -154,7 +155,7 @@ class CarrierTemplatesApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \kruegge82\cargoInternational\Model\PaginatedResponse|\kruegge82\cargoInternational\Model\ApiError|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCarrierTemplatesWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listCarrierTemplates'][0])
     {
@@ -183,9 +184,73 @@ class CarrierTemplatesApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\PaginatedResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\kruegge82\cargoInternational\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -229,14 +294,27 @@ class CarrierTemplatesApi
      */
     public function listCarrierTemplatesAsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listCarrierTemplates'][0])
     {
-        $returnType = '';
+        $returnType = '\kruegge82\cargoInternational\Model\PaginatedResponse';
         $request = $this->listCarrierTemplatesRequest($per_page, $page, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -301,7 +379,7 @@ class CarrierTemplatesApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );

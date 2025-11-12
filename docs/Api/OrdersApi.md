@@ -21,7 +21,7 @@ All URIs are relative to https://app.spedition.de, except if the operation defin
 ## `createOrder()`
 
 ```php
-createOrder($create_order_request)
+createOrder($create_order_request): array<string,mixed>
 ```
 
 Store new record
@@ -50,7 +50,8 @@ $apiInstance = new kruegge82\cargoInternational\Api\OrdersApi(
 $create_order_request = new \kruegge82\cargoInternational\Model\CreateOrderRequest(); // \kruegge82\cargoInternational\Model\CreateOrderRequest | Data to store
 
 try {
-    $apiInstance->createOrder($create_order_request);
+    $result = $apiInstance->createOrder($create_order_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->createOrder: ', $e->getMessage(), PHP_EOL;
 }
@@ -64,7 +65,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**array<string,mixed>**
 
 ### Authorization
 
@@ -73,7 +74,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -206,7 +207,7 @@ try {
 ## `getOrder()`
 
 ```php
-getOrder($id)
+getOrder($id): array<string,mixed>
 ```
 
 
@@ -235,7 +236,8 @@ $apiInstance = new kruegge82\cargoInternational\Api\OrdersApi(
 $id = 56; // int | Display specific record id
 
 try {
-    $apiInstance->getOrder($id);
+    $result = $apiInstance->getOrder($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->getOrder: ', $e->getMessage(), PHP_EOL;
 }
@@ -249,7 +251,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**array<string,mixed>**
 
 ### Authorization
 
@@ -267,7 +269,7 @@ void (empty response body)
 ## `listOrders()`
 
 ```php
-listOrders($per_page, $offset)
+listOrders($per_page, $offset): \kruegge82\cargoInternational\Model\PaginatedResponse
 ```
 
 List orders with pagination
@@ -297,7 +299,8 @@ $per_page = 56; // int | Number of records per page
 $offset = 56; // int | The starting index for pagination
 
 try {
-    $apiInstance->listOrders($per_page, $offset);
+    $result = $apiInstance->listOrders($per_page, $offset);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->listOrders: ', $e->getMessage(), PHP_EOL;
 }
@@ -312,7 +315,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\kruegge82\cargoInternational\Model\PaginatedResponse**](../Model/PaginatedResponse.md)
 
 ### Authorization
 
@@ -321,7 +324,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -330,7 +333,7 @@ void (empty response body)
 ## `listTrashedOrders()`
 
 ```php
-listTrashedOrders($per_page, $offset)
+listTrashedOrders($per_page, $offset): \kruegge82\cargoInternational\Model\PaginatedResponse
 ```
 
 List orders with pagination, including deleted
@@ -360,7 +363,8 @@ $per_page = 56; // int | Number of records per page
 $offset = 56; // int | The starting index for pagination
 
 try {
-    $apiInstance->listTrashedOrders($per_page, $offset);
+    $result = $apiInstance->listTrashedOrders($per_page, $offset);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->listTrashedOrders: ', $e->getMessage(), PHP_EOL;
 }
@@ -375,7 +379,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\kruegge82\cargoInternational\Model\PaginatedResponse**](../Model/PaginatedResponse.md)
 
 ### Authorization
 
@@ -384,7 +388,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -393,7 +397,7 @@ void (empty response body)
 ## `rateOrder()`
 
 ```php
-rateOrder($id)
+rateOrder($id): array<string,mixed>
 ```
 
 
@@ -422,7 +426,8 @@ $apiInstance = new kruegge82\cargoInternational\Api\OrdersApi(
 $id = 56; // int | Submit specific record id
 
 try {
-    $apiInstance->rateOrder($id);
+    $result = $apiInstance->rateOrder($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->rateOrder: ', $e->getMessage(), PHP_EOL;
 }
@@ -436,7 +441,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**array<string,mixed>**
 
 ### Authorization
 
@@ -516,7 +521,7 @@ try {
 ## `submitOrder()`
 
 ```php
-submitOrder($id)
+submitOrder($id): array<string,mixed>
 ```
 
 
@@ -545,7 +550,8 @@ $apiInstance = new kruegge82\cargoInternational\Api\OrdersApi(
 $id = 56; // int | Submit specific record id
 
 try {
-    $apiInstance->submitOrder($id);
+    $result = $apiInstance->submitOrder($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->submitOrder: ', $e->getMessage(), PHP_EOL;
 }
@@ -559,7 +565,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**array<string,mixed>**
 
 ### Authorization
 
