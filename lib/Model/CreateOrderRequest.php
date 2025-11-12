@@ -1,6 +1,6 @@
 <?php
 /**
- * F649037b62fc19acd6bee704ff87a751Request
+ * CreateOrderRequest
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \kruegge82\cargoInternational\ObjectSerializer;
 
 /**
- * F649037b62fc19acd6bee704ff87a751Request Class Doc Comment
+ * CreateOrderRequest Class Doc Comment
  *
  * @category Class
  * @package  kruegge82\cargoInternational
@@ -40,7 +40,7 @@ use \kruegge82\cargoInternational\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class F649037b62fc19acd6bee704ff87a751Request implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class F649037b62fc19acd6bee704ff87a751Request implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'f649037b62fc19acd6bee704ff87a751_request';
+    protected static $openAPIModelName = 'createOrder_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

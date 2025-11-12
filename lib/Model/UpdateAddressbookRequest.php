@@ -1,6 +1,6 @@
 <?php
 /**
- * 842e08c6da93ef68a4ec92a2de372624Request
+ * UpdateAddressbookRequest
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \kruegge82\cargoInternational\ObjectSerializer;
 
 /**
- * 842e08c6da93ef68a4ec92a2de372624Request Class Doc Comment
+ * UpdateAddressbookRequest Class Doc Comment
  *
  * @category Class
  * @package  kruegge82\cargoInternational
@@ -40,7 +40,7 @@ use \kruegge82\cargoInternational\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class 842e08c6da93ef68a4ec92a2de372624Request implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateAddressbookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class 842e08c6da93ef68a4ec92a2de372624Request implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = '_842e08c6da93ef68a4ec92a2de372624_request';
+    protected static $openAPIModelName = 'updateAddressbook_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -327,7 +327,7 @@ class 842e08c6da93ef68a4ec92a2de372624Request implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable firstname cannot be null');
         }
         if ((mb_strlen($firstname) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $firstname when calling 842e08c6da93ef68a4ec92a2de372624Request., must be smaller than or equal to 4.');
+            throw new \InvalidArgumentException('invalid length for $firstname when calling UpdateAddressbookRequest., must be smaller than or equal to 4.');
         }
 
         $this->container['firstname'] = $firstname;
@@ -358,7 +358,7 @@ class 842e08c6da93ef68a4ec92a2de372624Request implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable lastname cannot be null');
         }
         if ((mb_strlen($lastname) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $lastname when calling 842e08c6da93ef68a4ec92a2de372624Request., must be smaller than or equal to 4.');
+            throw new \InvalidArgumentException('invalid length for $lastname when calling UpdateAddressbookRequest., must be smaller than or equal to 4.');
         }
 
         $this->container['lastname'] = $lastname;
