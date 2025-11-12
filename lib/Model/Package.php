@@ -35,7 +35,6 @@ use \kruegge82\cargoInternational\ObjectSerializer;
  * Package Class Doc Comment
  *
  * @category Class
- * @description A single handling unit. Use kind&#x3D;parcel for parcel shipments or kind&#x3D;pallet for palletized freight.
  * @package  kruegge82\cargoInternational
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,14 +42,14 @@ use \kruegge82\cargoInternational\ObjectSerializer;
  */
 class Package implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = 'kind';
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Package';
+    protected static $openAPIModelName = 'package';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -311,9 +310,6 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('width', $data ?? [], null);
         $this->setIfExists('height', $data ?? [], null);
         $this->setIfExists('package', $data ?? [], null);
-
-        // Initialize discriminator property with the model name.
-        $this->container['kind'] = static::$openAPIModelName;
     }
 
     /**
