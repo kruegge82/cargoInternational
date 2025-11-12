@@ -77,7 +77,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_phone' => 'string',
         'delivery_email' => 'string',
         'template_id' => 'string',
-        'order_time' => 'string',
+        'booking_time' => 'string',
         'pickup_date' => 'string',
         'packages' => '\kruegge82\cargoInternational\Model\Package[]'
     ];
@@ -110,7 +110,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_phone' => null,
         'delivery_email' => null,
         'template_id' => null,
-        'order_time' => null,
+        'booking_time' => null,
         'pickup_date' => null,
         'packages' => null
     ];
@@ -141,7 +141,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_phone' => false,
         'delivery_email' => false,
         'template_id' => false,
-        'order_time' => false,
+        'booking_time' => false,
         'pickup_date' => false,
         'packages' => false
     ];
@@ -252,7 +252,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_phone' => 'delivery_phone',
         'delivery_email' => 'delivery_email',
         'template_id' => 'template_id',
-        'order_time' => 'order_time',
+        'booking_time' => 'booking_time',
         'pickup_date' => 'pickup_date',
         'packages' => 'packages'
     ];
@@ -283,7 +283,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_phone' => 'setDeliveryPhone',
         'delivery_email' => 'setDeliveryEmail',
         'template_id' => 'setTemplateId',
-        'order_time' => 'setOrderTime',
+        'booking_time' => 'setBookingTime',
         'pickup_date' => 'setPickupDate',
         'packages' => 'setPackages'
     ];
@@ -314,7 +314,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_phone' => 'getDeliveryPhone',
         'delivery_email' => 'getDeliveryEmail',
         'template_id' => 'getTemplateId',
-        'order_time' => 'getOrderTime',
+        'booking_time' => 'getBookingTime',
         'pickup_date' => 'getPickupDate',
         'packages' => 'getPackages'
     ];
@@ -396,7 +396,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('delivery_phone', $data ?? [], null);
         $this->setIfExists('delivery_email', $data ?? [], null);
         $this->setIfExists('template_id', $data ?? [], null);
-        $this->setIfExists('order_time', $data ?? [], null);
+        $this->setIfExists('booking_time', $data ?? [], null);
         $this->setIfExists('pickup_date', $data ?? [], null);
         $this->setIfExists('packages', $data ?? [], null);
     }
@@ -428,8 +428,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['order_time']) && !preg_match("/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/", $this->container['order_time'])) {
-            $invalidProperties[] = "invalid value for 'order_time', must be conform to the pattern /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/.";
+        if (!is_null($this->container['booking_time']) && !preg_match("/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/", $this->container['booking_time'])) {
+            $invalidProperties[] = "invalid value for 'booking_time', must be conform to the pattern /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/.";
         }
 
         if (!is_null($this->container['packages']) && (count($this->container['packages']) < 1)) {
@@ -992,33 +992,33 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets order_time
+     * Gets booking_time
      *
      * @return string|null
      */
-    public function getOrderTime()
+    public function getBookingTime()
     {
-        return $this->container['order_time'];
+        return $this->container['booking_time'];
     }
 
     /**
-     * Sets order_time
+     * Sets booking_time
      *
-     * @param string|null $order_time Bestellzeitpunkt
+     * @param string|null $booking_time Bestellzeitpunkt
      *
      * @return self
      */
-    public function setOrderTime($order_time)
+    public function setBookingTime($booking_time)
     {
-        if (is_null($order_time)) {
-            throw new \InvalidArgumentException('non-nullable order_time cannot be null');
+        if (is_null($booking_time)) {
+            throw new \InvalidArgumentException('non-nullable booking_time cannot be null');
         }
 
-        if ((!preg_match("/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/", ObjectSerializer::toString($order_time)))) {
-            throw new \InvalidArgumentException("invalid value for \$order_time when calling CreateOrderRequest., must conform to the pattern /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/.");
+        if ((!preg_match("/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/", ObjectSerializer::toString($booking_time)))) {
+            throw new \InvalidArgumentException("invalid value for \$booking_time when calling CreateOrderRequest., must conform to the pattern /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/.");
         }
 
-        $this->container['order_time'] = $order_time;
+        $this->container['booking_time'] = $booking_time;
 
         return $this;
     }
