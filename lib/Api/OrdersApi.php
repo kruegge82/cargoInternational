@@ -446,7 +446,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|object
+     * @return object|\kruegge82\cargoInternational\Model\ApiError
      */
     public function deleteOrder($id, string $contentType = self::contentTypes['deleteOrder'][0])
     {
@@ -462,7 +462,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteOrderWithHttpInfo($id, string $contentType = self::contentTypes['deleteOrder'][0])
     {
@@ -500,7 +500,7 @@ class OrdersApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -539,7 +539,7 @@ class OrdersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -725,7 +725,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|object
+     * @return object|\kruegge82\cargoInternational\Model\ApiError
      */
     public function destroyOrder($id, string $contentType = self::contentTypes['destroyOrder'][0])
     {
@@ -741,7 +741,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function destroyOrderWithHttpInfo($id, string $contentType = self::contentTypes['destroyOrder'][0])
     {
@@ -779,7 +779,7 @@ class OrdersApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -818,7 +818,7 @@ class OrdersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1004,7 +1004,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,mixed>|object
+     * @return array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError
      */
     public function getOrder($id, string $contentType = self::contentTypes['getOrder'][0])
     {
@@ -1020,7 +1020,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,mixed>|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderWithHttpInfo($id, string $contentType = self::contentTypes['getOrder'][0])
     {
@@ -1058,7 +1058,7 @@ class OrdersApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -1097,7 +1097,7 @@ class OrdersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2224,7 +2224,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|object
+     * @return object|\kruegge82\cargoInternational\Model\ApiError
      */
     public function restoreOrder($id, string $contentType = self::contentTypes['restoreOrder'][0])
     {
@@ -2240,7 +2240,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function restoreOrderWithHttpInfo($id, string $contentType = self::contentTypes['restoreOrder'][0])
     {
@@ -2278,7 +2278,7 @@ class OrdersApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -2317,7 +2317,7 @@ class OrdersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2797,7 +2797,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|object
+     * @return object|\kruegge82\cargoInternational\Model\ApiError
      */
     public function updateOrder($id, $update_order_request, string $contentType = self::contentTypes['updateOrder'][0])
     {
@@ -2814,7 +2814,7 @@ class OrdersApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateOrderWithHttpInfo($id, $update_order_request, string $contentType = self::contentTypes['updateOrder'][0])
     {
@@ -2852,7 +2852,7 @@ class OrdersApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -2891,7 +2891,7 @@ class OrdersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

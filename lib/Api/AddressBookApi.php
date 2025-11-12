@@ -550,7 +550,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|object
+     * @return object|\kruegge82\cargoInternational\Model\ApiError
      */
     public function deleteAddressbook($id, string $contentType = self::contentTypes['deleteAddressbook'][0])
     {
@@ -566,7 +566,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAddressbookWithHttpInfo($id, string $contentType = self::contentTypes['deleteAddressbook'][0])
     {
@@ -604,7 +604,7 @@ class AddressBookApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -643,7 +643,7 @@ class AddressBookApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -829,7 +829,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|object
+     * @return object|\kruegge82\cargoInternational\Model\ApiError
      */
     public function destroyAddressbook($id, string $contentType = self::contentTypes['destroyAddressbook'][0])
     {
@@ -845,7 +845,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function destroyAddressbookWithHttpInfo($id, string $contentType = self::contentTypes['destroyAddressbook'][0])
     {
@@ -883,7 +883,7 @@ class AddressBookApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -922,7 +922,7 @@ class AddressBookApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1108,7 +1108,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,mixed>|object
+     * @return array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError
      */
     public function getAddressbook($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
@@ -1124,7 +1124,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,mixed>|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAddressbookWithHttpInfo($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
@@ -1162,7 +1162,7 @@ class AddressBookApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -1201,7 +1201,7 @@ class AddressBookApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2009,7 +2009,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|object
+     * @return object|\kruegge82\cargoInternational\Model\ApiError
      */
     public function restoreAddressbook($id, string $contentType = self::contentTypes['restoreAddressbook'][0])
     {
@@ -2025,7 +2025,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function restoreAddressbookWithHttpInfo($id, string $contentType = self::contentTypes['restoreAddressbook'][0])
     {
@@ -2063,7 +2063,7 @@ class AddressBookApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -2102,7 +2102,7 @@ class AddressBookApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2289,7 +2289,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|object
+     * @return object|\kruegge82\cargoInternational\Model\ApiError
      */
     public function updateAddressbook($id, $update_addressbook_request, string $contentType = self::contentTypes['updateAddressbook'][0])
     {
@@ -2306,7 +2306,7 @@ class AddressBookApi
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\kruegge82\cargoInternational\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAddressbookWithHttpInfo($id, $update_addressbook_request, string $contentType = self::contentTypes['updateAddressbook'][0])
     {
@@ -2344,7 +2344,7 @@ class AddressBookApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $request,
                         $response,
                     );
@@ -2383,7 +2383,7 @@ class AddressBookApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\kruegge82\cargoInternational\Model\ApiError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

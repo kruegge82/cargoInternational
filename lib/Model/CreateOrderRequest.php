@@ -61,6 +61,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'pickup_company' => 'string',
         'pickup_firstname' => 'string',
         'pickup_lastname' => 'string',
+        'pickup_department' => 'string',
         'pickup_street' => 'string',
         'pickup_country' => 'string',
         'pickup_zip' => 'string',
@@ -70,6 +71,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_company' => 'string',
         'delivery_firstname' => 'string',
         'delivery_lastname' => 'string',
+        'delivery_department' => 'string',
         'delivery_street' => 'string',
         'delivery_country' => 'string',
         'delivery_zip' => 'string',
@@ -93,6 +95,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'pickup_company' => null,
         'pickup_firstname' => null,
         'pickup_lastname' => null,
+        'pickup_department' => null,
         'pickup_street' => null,
         'pickup_country' => null,
         'pickup_zip' => null,
@@ -102,6 +105,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_company' => null,
         'delivery_firstname' => null,
         'delivery_lastname' => null,
+        'delivery_department' => null,
         'delivery_street' => null,
         'delivery_country' => null,
         'delivery_zip' => null,
@@ -123,6 +127,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'pickup_company' => false,
         'pickup_firstname' => false,
         'pickup_lastname' => false,
+        'pickup_department' => false,
         'pickup_street' => false,
         'pickup_country' => false,
         'pickup_zip' => false,
@@ -132,6 +137,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_company' => false,
         'delivery_firstname' => false,
         'delivery_lastname' => false,
+        'delivery_department' => false,
         'delivery_street' => false,
         'delivery_country' => false,
         'delivery_zip' => false,
@@ -233,6 +239,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'pickup_company' => 'pickup_company',
         'pickup_firstname' => 'pickup_firstname',
         'pickup_lastname' => 'pickup_lastname',
+        'pickup_department' => 'pickup_department',
         'pickup_street' => 'pickup_street',
         'pickup_country' => 'pickup_country',
         'pickup_zip' => 'pickup_zip',
@@ -242,6 +249,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_company' => 'delivery_company',
         'delivery_firstname' => 'delivery_firstname',
         'delivery_lastname' => 'delivery_lastname',
+        'delivery_department' => 'delivery_department',
         'delivery_street' => 'delivery_street',
         'delivery_country' => 'delivery_country',
         'delivery_zip' => 'delivery_zip',
@@ -263,6 +271,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'pickup_company' => 'setPickupCompany',
         'pickup_firstname' => 'setPickupFirstname',
         'pickup_lastname' => 'setPickupLastname',
+        'pickup_department' => 'setPickupDepartment',
         'pickup_street' => 'setPickupStreet',
         'pickup_country' => 'setPickupCountry',
         'pickup_zip' => 'setPickupZip',
@@ -272,6 +281,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_company' => 'setDeliveryCompany',
         'delivery_firstname' => 'setDeliveryFirstname',
         'delivery_lastname' => 'setDeliveryLastname',
+        'delivery_department' => 'setDeliveryDepartment',
         'delivery_street' => 'setDeliveryStreet',
         'delivery_country' => 'setDeliveryCountry',
         'delivery_zip' => 'setDeliveryZip',
@@ -293,6 +303,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'pickup_company' => 'getPickupCompany',
         'pickup_firstname' => 'getPickupFirstname',
         'pickup_lastname' => 'getPickupLastname',
+        'pickup_department' => 'getPickupDepartment',
         'pickup_street' => 'getPickupStreet',
         'pickup_country' => 'getPickupCountry',
         'pickup_zip' => 'getPickupZip',
@@ -302,6 +313,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_company' => 'getDeliveryCompany',
         'delivery_firstname' => 'getDeliveryFirstname',
         'delivery_lastname' => 'getDeliveryLastname',
+        'delivery_department' => 'getDeliveryDepartment',
         'delivery_street' => 'getDeliveryStreet',
         'delivery_country' => 'getDeliveryCountry',
         'delivery_zip' => 'getDeliveryZip',
@@ -374,6 +386,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('pickup_company', $data ?? [], null);
         $this->setIfExists('pickup_firstname', $data ?? [], null);
         $this->setIfExists('pickup_lastname', $data ?? [], null);
+        $this->setIfExists('pickup_department', $data ?? [], null);
         $this->setIfExists('pickup_street', $data ?? [], null);
         $this->setIfExists('pickup_country', $data ?? [], null);
         $this->setIfExists('pickup_zip', $data ?? [], null);
@@ -383,6 +396,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('delivery_company', $data ?? [], null);
         $this->setIfExists('delivery_firstname', $data ?? [], null);
         $this->setIfExists('delivery_lastname', $data ?? [], null);
+        $this->setIfExists('delivery_department', $data ?? [], null);
         $this->setIfExists('delivery_street', $data ?? [], null);
         $this->setIfExists('delivery_country', $data ?? [], null);
         $this->setIfExists('delivery_zip', $data ?? [], null);
@@ -544,6 +558,33 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable pickup_lastname cannot be null');
         }
         $this->container['pickup_lastname'] = $pickup_lastname;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_department
+     *
+     * @return string|null
+     */
+    public function getPickupDepartment()
+    {
+        return $this->container['pickup_department'];
+    }
+
+    /**
+     * Sets pickup_department
+     *
+     * @param string|null $pickup_department Consignee Department
+     *
+     * @return self
+     */
+    public function setPickupDepartment($pickup_department)
+    {
+        if (is_null($pickup_department)) {
+            throw new \InvalidArgumentException('non-nullable pickup_department cannot be null');
+        }
+        $this->container['pickup_department'] = $pickup_department;
 
         return $this;
     }
@@ -787,6 +828,33 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable delivery_lastname cannot be null');
         }
         $this->container['delivery_lastname'] = $delivery_lastname;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_department
+     *
+     * @return string|null
+     */
+    public function getDeliveryDepartment()
+    {
+        return $this->container['delivery_department'];
+    }
+
+    /**
+     * Sets delivery_department
+     *
+     * @param string|null $delivery_department Recipient Department
+     *
+     * @return self
+     */
+    public function setDeliveryDepartment($delivery_department)
+    {
+        if (is_null($delivery_department)) {
+            throw new \InvalidArgumentException('non-nullable delivery_department cannot be null');
+        }
+        $this->container['delivery_department'] = $delivery_department;
 
         return $this;
     }

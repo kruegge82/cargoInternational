@@ -35,6 +35,7 @@ use \kruegge82\cargoInternational\ObjectSerializer;
  * Package Class Doc Comment
  *
  * @category Class
+ * @description Packaging/handling unit for shipment
  * @package  kruegge82\cargoInternational
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -49,7 +50,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'package';
+    protected static $openAPIModelName = 'Package';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -349,19 +350,31 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['contents'] === null) {
             $invalidProperties[] = "'contents' can't be null";
         }
-        if (!is_null($this->container['weight']) && ($this->container['weight'] < 0.0)) {
+        if ($this->container['weight'] === null) {
+            $invalidProperties[] = "'weight' can't be null";
+        }
+        if (($this->container['weight'] < 0.0)) {
             $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 0.0.";
         }
 
-        if (!is_null($this->container['length']) && ($this->container['length'] < 0.0)) {
+        if ($this->container['length'] === null) {
+            $invalidProperties[] = "'length' can't be null";
+        }
+        if (($this->container['length'] < 0.0)) {
             $invalidProperties[] = "invalid value for 'length', must be bigger than or equal to 0.0.";
         }
 
-        if (!is_null($this->container['width']) && ($this->container['width'] < 0.0)) {
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
+        }
+        if (($this->container['width'] < 0.0)) {
             $invalidProperties[] = "invalid value for 'width', must be bigger than or equal to 0.0.";
         }
 
-        if (!is_null($this->container['height']) && ($this->container['height'] < 0.0)) {
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
+        }
+        if (($this->container['height'] < 0.0)) {
             $invalidProperties[] = "invalid value for 'height', must be bigger than or equal to 0.0.";
         }
 
@@ -405,7 +418,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets colli
      *
-     * @param int $colli Number of identical pallets of this type
+     * @param int $colli Number of identical handling units
      *
      * @return self
      */
@@ -454,7 +467,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return float|null
+     * @return float
      */
     public function getWeight()
     {
@@ -464,7 +477,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param float|null $weight Weight per pallet in kilograms
+     * @param float $weight Weight per unit in kilograms
      *
      * @return self
      */
@@ -486,7 +499,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets length
      *
-     * @return float|null
+     * @return float
      */
     public function getLength()
     {
@@ -496,7 +509,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets length
      *
-     * @param float|null $length Length in cm
+     * @param float $length Length in cm
      *
      * @return self
      */
@@ -518,7 +531,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets width
      *
-     * @return float|null
+     * @return float
      */
     public function getWidth()
     {
@@ -528,7 +541,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets width
      *
-     * @param float|null $width Width in cm
+     * @param float $width Width in cm
      *
      * @return self
      */
@@ -550,7 +563,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets height
      *
-     * @return float|null
+     * @return float
      */
     public function getHeight()
     {
@@ -560,7 +573,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets height
      *
-     * @param float|null $height Height in cm
+     * @param float $height Height in cm
      *
      * @return self
      */
@@ -592,7 +605,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets package
      *
-     * @param string $package Type of pallet
+     * @param string $package Packaging type
      *
      * @return self
      */
