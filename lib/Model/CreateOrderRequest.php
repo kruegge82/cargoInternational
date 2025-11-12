@@ -76,6 +76,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_city' => 'string',
         'delivery_phone' => 'string',
         'delivery_email' => 'string',
+        'template_id' => 'string',
+        'order_time' => 'string',
         'packages' => '\kruegge82\cargoInternational\Model\Package[]'
     ];
 
@@ -106,6 +108,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_city' => null,
         'delivery_phone' => null,
         'delivery_email' => null,
+        'template_id' => null,
+        'order_time' => null,
         'packages' => null
     ];
 
@@ -134,6 +138,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_city' => false,
         'delivery_phone' => false,
         'delivery_email' => false,
+        'template_id' => false,
+        'order_time' => false,
         'packages' => false
     ];
 
@@ -242,6 +248,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_city' => 'delivery_city',
         'delivery_phone' => 'delivery_phone',
         'delivery_email' => 'delivery_email',
+        'template_id' => 'template_id',
+        'order_time' => 'order_time',
         'packages' => 'packages'
     ];
 
@@ -270,6 +278,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_city' => 'setDeliveryCity',
         'delivery_phone' => 'setDeliveryPhone',
         'delivery_email' => 'setDeliveryEmail',
+        'template_id' => 'setTemplateId',
+        'order_time' => 'setOrderTime',
         'packages' => 'setPackages'
     ];
 
@@ -298,6 +308,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_city' => 'getDeliveryCity',
         'delivery_phone' => 'getDeliveryPhone',
         'delivery_email' => 'getDeliveryEmail',
+        'template_id' => 'getTemplateId',
+        'order_time' => 'getOrderTime',
         'packages' => 'getPackages'
     ];
 
@@ -377,6 +389,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('delivery_city', $data ?? [], null);
         $this->setIfExists('delivery_phone', $data ?? [], null);
         $this->setIfExists('delivery_email', $data ?? [], null);
+        $this->setIfExists('template_id', $data ?? [], null);
+        $this->setIfExists('order_time', $data ?? [], null);
         $this->setIfExists('packages', $data ?? [], null);
     }
 
@@ -406,6 +420,10 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['order_time']) && !preg_match("/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/", $this->container['order_time'])) {
+            $invalidProperties[] = "invalid value for 'order_time', must be conform to the pattern /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/.";
+        }
 
         if (!is_null($this->container['packages']) && (count($this->container['packages']) < 1)) {
             $invalidProperties[] = "invalid value for 'packages', number of items must be greater than or equal to 1.";
@@ -935,6 +953,65 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable delivery_email cannot be null');
         }
         $this->container['delivery_email'] = $delivery_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_id
+     *
+     * @return string|null
+     */
+    public function getTemplateId()
+    {
+        return $this->container['template_id'];
+    }
+
+    /**
+     * Sets template_id
+     *
+     * @param string|null $template_id Template ID für die Versandart
+     *
+     * @return self
+     */
+    public function setTemplateId($template_id)
+    {
+        if (is_null($template_id)) {
+            throw new \InvalidArgumentException('non-nullable template_id cannot be null');
+        }
+        $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_time
+     *
+     * @return string|null
+     */
+    public function getOrderTime()
+    {
+        return $this->container['order_time'];
+    }
+
+    /**
+     * Sets order_time
+     *
+     * @param string|null $order_time Bestellzeitpunkt
+     *
+     * @return self
+     */
+    public function setOrderTime($order_time)
+    {
+        if (is_null($order_time)) {
+            throw new \InvalidArgumentException('non-nullable order_time cannot be null');
+        }
+
+        if ((!preg_match("/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/", ObjectSerializer::toString($order_time)))) {
+            throw new \InvalidArgumentException("invalid value for \$order_time when calling CreateOrderRequest., must conform to the pattern /^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) (?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$/.");
+        }
+
+        $this->container['order_time'] = $order_time;
 
         return $this;
     }
