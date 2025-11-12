@@ -74,7 +74,7 @@ class CarrierTemplatesApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'e7854f0669221b6f6a471112b9405f9a' => [
+        'listCarrierTemplates' => [
             'application/json',
         ],
     ];
@@ -126,39 +126,39 @@ class CarrierTemplatesApi
     }
 
     /**
-     * Operation e7854f0669221b6f6a471112b9405f9a
+     * Operation listCarrierTemplates
      *
      * List records with pagination
      *
      * @param  int|null $per_page Number of records per page (optional)
      * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e7854f0669221b6f6a471112b9405f9a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCarrierTemplates'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function e7854f0669221b6f6a471112b9405f9a($per_page = null, $page = null, string $contentType = self::contentTypes['e7854f0669221b6f6a471112b9405f9a'][0])
+    public function listCarrierTemplates($per_page = null, $page = null, string $contentType = self::contentTypes['listCarrierTemplates'][0])
     {
-        $this->e7854f0669221b6f6a471112b9405f9aWithHttpInfo($per_page, $page, $contentType);
+        $this->listCarrierTemplatesWithHttpInfo($per_page, $page, $contentType);
     }
 
     /**
-     * Operation e7854f0669221b6f6a471112b9405f9aWithHttpInfo
+     * Operation listCarrierTemplatesWithHttpInfo
      *
      * List records with pagination
      *
      * @param  int|null $per_page Number of records per page (optional)
      * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e7854f0669221b6f6a471112b9405f9a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCarrierTemplates'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function e7854f0669221b6f6a471112b9405f9aWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['e7854f0669221b6f6a471112b9405f9a'][0])
+    public function listCarrierTemplatesWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listCarrierTemplates'][0])
     {
-        $request = $this->e7854f0669221b6f6a471112b9405f9aRequest($per_page, $page, $contentType);
+        $request = $this->listCarrierTemplatesRequest($per_page, $page, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -194,20 +194,20 @@ class CarrierTemplatesApi
     }
 
     /**
-     * Operation e7854f0669221b6f6a471112b9405f9aAsync
+     * Operation listCarrierTemplatesAsync
      *
      * List records with pagination
      *
      * @param  int|null $per_page Number of records per page (optional)
      * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e7854f0669221b6f6a471112b9405f9a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCarrierTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function e7854f0669221b6f6a471112b9405f9aAsync($per_page = null, $page = null, string $contentType = self::contentTypes['e7854f0669221b6f6a471112b9405f9a'][0])
+    public function listCarrierTemplatesAsync($per_page = null, $page = null, string $contentType = self::contentTypes['listCarrierTemplates'][0])
     {
-        return $this->e7854f0669221b6f6a471112b9405f9aAsyncWithHttpInfo($per_page, $page, $contentType)
+        return $this->listCarrierTemplatesAsyncWithHttpInfo($per_page, $page, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -216,21 +216,21 @@ class CarrierTemplatesApi
     }
 
     /**
-     * Operation e7854f0669221b6f6a471112b9405f9aAsyncWithHttpInfo
+     * Operation listCarrierTemplatesAsyncWithHttpInfo
      *
      * List records with pagination
      *
      * @param  int|null $per_page Number of records per page (optional)
      * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e7854f0669221b6f6a471112b9405f9a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCarrierTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function e7854f0669221b6f6a471112b9405f9aAsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['e7854f0669221b6f6a471112b9405f9a'][0])
+    public function listCarrierTemplatesAsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listCarrierTemplates'][0])
     {
         $returnType = '';
-        $request = $this->e7854f0669221b6f6a471112b9405f9aRequest($per_page, $page, $contentType);
+        $request = $this->listCarrierTemplatesRequest($per_page, $page, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -256,16 +256,16 @@ class CarrierTemplatesApi
     }
 
     /**
-     * Create request for operation 'e7854f0669221b6f6a471112b9405f9a'
+     * Create request for operation 'listCarrierTemplates'
      *
      * @param  int|null $per_page Number of records per page (optional)
      * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e7854f0669221b6f6a471112b9405f9a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCarrierTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function e7854f0669221b6f6a471112b9405f9aRequest($per_page = null, $page = null, string $contentType = self::contentTypes['e7854f0669221b6f6a471112b9405f9a'][0])
+    public function listCarrierTemplatesRequest($per_page = null, $page = null, string $contentType = self::contentTypes['listCarrierTemplates'][0])
     {
 
 

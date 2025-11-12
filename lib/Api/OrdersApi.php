@@ -74,34 +74,34 @@ class OrdersApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'a4dace2796ea4b9bbc26cf93c73ac5bf' => [
+        'createOrder' => [
             'application/json',
         ],
-        'call0513395cd8422375c1a6e97d8f875e8e' => [
+        'deleteOrder' => [
             'application/json',
         ],
-        'call220692e5d32cd33591b288158ed08e81' => [
+        'destroyOrder' => [
             'application/json',
         ],
-        'call26cb12e838cf1a4cf4af65d0eaf4ceb0' => [
+        'getOrder' => [
             'application/json',
         ],
-        'call29aaa3d442908d3a5a9a77902fa2285f' => [
+        'listOrders' => [
             'application/json',
         ],
-        'call44093a5bd88f25dec2ab549f2efad341' => [
+        'listTrashedOrders' => [
             'application/json',
         ],
-        'call46849ce10119b18c6bb6888307a7a59a' => [
+        'rateOrder' => [
             'application/json',
         ],
-        'call5d9463644f222f80d3a4e3564dc25243' => [
+        'restoreOrder' => [
             'application/json',
         ],
-        'e56acd85f053dee29bb7af0d0338a243' => [
+        'submitOrder' => [
             'application/json',
         ],
-        'f649037b62fc19acd6bee704ff87a751' => [
+        'updateOrder' => [
             'application/json',
         ],
     ];
@@ -153,33 +153,37 @@ class OrdersApi
     }
 
     /**
-     * Operation a4dace2796ea4b9bbc26cf93c73ac5bf
+     * Operation createOrder
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'] to see the possible values for this operation
+     * Store new record
+     *
+     * @param  \kruegge82\cargoInternational\Model\CreateOrderRequest $create_order_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function a4dace2796ea4b9bbc26cf93c73ac5bf($id, string $contentType = self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'][0])
+    public function createOrder($create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
-        $this->a4dace2796ea4b9bbc26cf93c73ac5bfWithHttpInfo($id, $contentType);
+        $this->createOrderWithHttpInfo($create_order_request, $contentType);
     }
 
     /**
-     * Operation a4dace2796ea4b9bbc26cf93c73ac5bfWithHttpInfo
+     * Operation createOrderWithHttpInfo
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'] to see the possible values for this operation
+     * Store new record
+     *
+     * @param  \kruegge82\cargoInternational\Model\CreateOrderRequest $create_order_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function a4dace2796ea4b9bbc26cf93c73ac5bfWithHttpInfo($id, string $contentType = self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'][0])
+    public function createOrderWithHttpInfo($create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
-        $request = $this->a4dace2796ea4b9bbc26cf93c73ac5bfRequest($id, $contentType);
+        $request = $this->createOrderRequest($create_order_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -207,14 +211,6 @@ class OrdersApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -223,17 +219,19 @@ class OrdersApi
     }
 
     /**
-     * Operation a4dace2796ea4b9bbc26cf93c73ac5bfAsync
+     * Operation createOrderAsync
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'] to see the possible values for this operation
+     * Store new record
+     *
+     * @param  \kruegge82\cargoInternational\Model\CreateOrderRequest $create_order_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function a4dace2796ea4b9bbc26cf93c73ac5bfAsync($id, string $contentType = self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'][0])
+    public function createOrderAsync($create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
-        return $this->a4dace2796ea4b9bbc26cf93c73ac5bfAsyncWithHttpInfo($id, $contentType)
+        return $this->createOrderAsyncWithHttpInfo($create_order_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -242,18 +240,20 @@ class OrdersApi
     }
 
     /**
-     * Operation a4dace2796ea4b9bbc26cf93c73ac5bfAsyncWithHttpInfo
+     * Operation createOrderAsyncWithHttpInfo
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'] to see the possible values for this operation
+     * Store new record
+     *
+     * @param  \kruegge82\cargoInternational\Model\CreateOrderRequest $create_order_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function a4dace2796ea4b9bbc26cf93c73ac5bfAsyncWithHttpInfo($id, string $contentType = self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'][0])
+    public function createOrderAsyncWithHttpInfo($create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
         $returnType = '';
-        $request = $this->a4dace2796ea4b9bbc26cf93c73ac5bfRequest($id, $contentType);
+        $request = $this->createOrderRequest($create_order_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -279,26 +279,26 @@ class OrdersApi
     }
 
     /**
-     * Create request for operation 'a4dace2796ea4b9bbc26cf93c73ac5bf'
+     * Create request for operation 'createOrder'
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'] to see the possible values for this operation
+     * @param  \kruegge82\cargoInternational\Model\CreateOrderRequest $create_order_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function a4dace2796ea4b9bbc26cf93c73ac5bfRequest($id, string $contentType = self::contentTypes['a4dace2796ea4b9bbc26cf93c73ac5bf'][0])
+    public function createOrderRequest($create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
 
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        // verify the required parameter 'create_order_request' is set
+        if ($create_order_request === null || (is_array($create_order_request) && count($create_order_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling a4dace2796ea4b9bbc26cf93c73ac5bf'
+                'Missing the required parameter $create_order_request when calling createOrder'
             );
         }
 
 
-        $resourcePath = '/api/orders/submit/{id}';
+        $resourcePath = '/orders/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -307,24 +307,23 @@ class OrdersApi
 
 
 
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            [],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($create_order_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_order_request));
+            } else {
+                $httpBody = $create_order_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -376,273 +375,34 @@ class OrdersApi
     }
 
     /**
-     * Operation call0513395cd8422375c1a6e97d8f875e8e
-     *
-     * List orders with pagination, including deleted
-     *
-     * @param  int $per_page Number of records per page (required)
-     * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function call0513395cd8422375c1a6e97d8f875e8e($per_page, $offset = null, string $contentType = self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'][0])
-    {
-        $this->call0513395cd8422375c1a6e97d8f875e8eWithHttpInfo($per_page, $offset, $contentType);
-    }
-
-    /**
-     * Operation call0513395cd8422375c1a6e97d8f875e8eWithHttpInfo
-     *
-     * List orders with pagination, including deleted
-     *
-     * @param  int $per_page Number of records per page (required)
-     * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function call0513395cd8422375c1a6e97d8f875e8eWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'][0])
-    {
-        $request = $this->call0513395cd8422375c1a6e97d8f875e8eRequest($per_page, $offset, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation call0513395cd8422375c1a6e97d8f875e8eAsync
-     *
-     * List orders with pagination, including deleted
-     *
-     * @param  int $per_page Number of records per page (required)
-     * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call0513395cd8422375c1a6e97d8f875e8eAsync($per_page, $offset = null, string $contentType = self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'][0])
-    {
-        return $this->call0513395cd8422375c1a6e97d8f875e8eAsyncWithHttpInfo($per_page, $offset, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation call0513395cd8422375c1a6e97d8f875e8eAsyncWithHttpInfo
-     *
-     * List orders with pagination, including deleted
-     *
-     * @param  int $per_page Number of records per page (required)
-     * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call0513395cd8422375c1a6e97d8f875e8eAsyncWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'][0])
-    {
-        $returnType = '';
-        $request = $this->call0513395cd8422375c1a6e97d8f875e8eRequest($per_page, $offset, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'call0513395cd8422375c1a6e97d8f875e8e'
-     *
-     * @param  int $per_page Number of records per page (required)
-     * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function call0513395cd8422375c1a6e97d8f875e8eRequest($per_page, $offset = null, string $contentType = self::contentTypes['call0513395cd8422375c1a6e97d8f875e8e'][0])
-    {
-
-        // verify the required parameter 'per_page' is set
-        if ($per_page === null || (is_array($per_page) && count($per_page) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $per_page when calling call0513395cd8422375c1a6e97d8f875e8e'
-            );
-        }
-
-
-
-        $resourcePath = '/api/orders/trashed';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
-            'per_page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            true // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            [],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation call220692e5d32cd33591b288158ed08e81
+     * Operation deleteOrder
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call220692e5d32cd33591b288158ed08e81'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return object|object
      */
-    public function call220692e5d32cd33591b288158ed08e81($id, string $contentType = self::contentTypes['call220692e5d32cd33591b288158ed08e81'][0])
+    public function deleteOrder($id, string $contentType = self::contentTypes['deleteOrder'][0])
     {
-        list($response) = $this->call220692e5d32cd33591b288158ed08e81WithHttpInfo($id, $contentType);
+        list($response) = $this->deleteOrderWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation call220692e5d32cd33591b288158ed08e81WithHttpInfo
+     * Operation deleteOrderWithHttpInfo
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call220692e5d32cd33591b288158ed08e81'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function call220692e5d32cd33591b288158ed08e81WithHttpInfo($id, string $contentType = self::contentTypes['call220692e5d32cd33591b288158ed08e81'][0])
+    public function deleteOrderWithHttpInfo($id, string $contentType = self::contentTypes['deleteOrder'][0])
     {
-        $request = $this->call220692e5d32cd33591b288158ed08e81Request($id, $contentType);
+        $request = $this->deleteOrderRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -728,17 +488,17 @@ class OrdersApi
     }
 
     /**
-     * Operation call220692e5d32cd33591b288158ed08e81Async
+     * Operation deleteOrderAsync
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call220692e5d32cd33591b288158ed08e81'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call220692e5d32cd33591b288158ed08e81Async($id, string $contentType = self::contentTypes['call220692e5d32cd33591b288158ed08e81'][0])
+    public function deleteOrderAsync($id, string $contentType = self::contentTypes['deleteOrder'][0])
     {
-        return $this->call220692e5d32cd33591b288158ed08e81AsyncWithHttpInfo($id, $contentType)
+        return $this->deleteOrderAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -747,18 +507,18 @@ class OrdersApi
     }
 
     /**
-     * Operation call220692e5d32cd33591b288158ed08e81AsyncWithHttpInfo
+     * Operation deleteOrderAsyncWithHttpInfo
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call220692e5d32cd33591b288158ed08e81'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call220692e5d32cd33591b288158ed08e81AsyncWithHttpInfo($id, string $contentType = self::contentTypes['call220692e5d32cd33591b288158ed08e81'][0])
+    public function deleteOrderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteOrder'][0])
     {
         $returnType = 'object';
-        $request = $this->call220692e5d32cd33591b288158ed08e81Request($id, $contentType);
+        $request = $this->deleteOrderRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -797,21 +557,21 @@ class OrdersApi
     }
 
     /**
-     * Create request for operation 'call220692e5d32cd33591b288158ed08e81'
+     * Create request for operation 'deleteOrder'
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call220692e5d32cd33591b288158ed08e81'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function call220692e5d32cd33591b288158ed08e81Request($id, string $contentType = self::contentTypes['call220692e5d32cd33591b288158ed08e81'][0])
+    public function deleteOrderRequest($id, string $contentType = self::contentTypes['deleteOrder'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling call220692e5d32cd33591b288158ed08e81'
+                'Missing the required parameter $id when calling deleteOrder'
             );
         }
 
@@ -894,34 +654,34 @@ class OrdersApi
     }
 
     /**
-     * Operation call26cb12e838cf1a4cf4af65d0eaf4ceb0
+     * Operation destroyOrder
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return object|object
      */
-    public function call26cb12e838cf1a4cf4af65d0eaf4ceb0($id, string $contentType = self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'][0])
+    public function destroyOrder($id, string $contentType = self::contentTypes['destroyOrder'][0])
     {
-        list($response) = $this->call26cb12e838cf1a4cf4af65d0eaf4ceb0WithHttpInfo($id, $contentType);
+        list($response) = $this->destroyOrderWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation call26cb12e838cf1a4cf4af65d0eaf4ceb0WithHttpInfo
+     * Operation destroyOrderWithHttpInfo
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function call26cb12e838cf1a4cf4af65d0eaf4ceb0WithHttpInfo($id, string $contentType = self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'][0])
+    public function destroyOrderWithHttpInfo($id, string $contentType = self::contentTypes['destroyOrder'][0])
     {
-        $request = $this->call26cb12e838cf1a4cf4af65d0eaf4ceb0Request($id, $contentType);
+        $request = $this->destroyOrderRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1007,17 +767,17 @@ class OrdersApi
     }
 
     /**
-     * Operation call26cb12e838cf1a4cf4af65d0eaf4ceb0Async
+     * Operation destroyOrderAsync
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call26cb12e838cf1a4cf4af65d0eaf4ceb0Async($id, string $contentType = self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'][0])
+    public function destroyOrderAsync($id, string $contentType = self::contentTypes['destroyOrder'][0])
     {
-        return $this->call26cb12e838cf1a4cf4af65d0eaf4ceb0AsyncWithHttpInfo($id, $contentType)
+        return $this->destroyOrderAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1026,18 +786,18 @@ class OrdersApi
     }
 
     /**
-     * Operation call26cb12e838cf1a4cf4af65d0eaf4ceb0AsyncWithHttpInfo
+     * Operation destroyOrderAsyncWithHttpInfo
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call26cb12e838cf1a4cf4af65d0eaf4ceb0AsyncWithHttpInfo($id, string $contentType = self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'][0])
+    public function destroyOrderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['destroyOrder'][0])
     {
         $returnType = 'object';
-        $request = $this->call26cb12e838cf1a4cf4af65d0eaf4ceb0Request($id, $contentType);
+        $request = $this->destroyOrderRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1076,21 +836,21 @@ class OrdersApi
     }
 
     /**
-     * Create request for operation 'call26cb12e838cf1a4cf4af65d0eaf4ceb0'
+     * Create request for operation 'destroyOrder'
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function call26cb12e838cf1a4cf4af65d0eaf4ceb0Request($id, string $contentType = self::contentTypes['call26cb12e838cf1a4cf4af65d0eaf4ceb0'][0])
+    public function destroyOrderRequest($id, string $contentType = self::contentTypes['destroyOrder'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling call26cb12e838cf1a4cf4af65d0eaf4ceb0'
+                'Missing the required parameter $id when calling destroyOrder'
             );
         }
 
@@ -1173,33 +933,33 @@ class OrdersApi
     }
 
     /**
-     * Operation call29aaa3d442908d3a5a9a77902fa2285f
+     * Operation getOrder
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'] to see the possible values for this operation
+     * @param  int $id Display specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function call29aaa3d442908d3a5a9a77902fa2285f($id, string $contentType = self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'][0])
+    public function getOrder($id, string $contentType = self::contentTypes['getOrder'][0])
     {
-        $this->call29aaa3d442908d3a5a9a77902fa2285fWithHttpInfo($id, $contentType);
+        $this->getOrderWithHttpInfo($id, $contentType);
     }
 
     /**
-     * Operation call29aaa3d442908d3a5a9a77902fa2285fWithHttpInfo
+     * Operation getOrderWithHttpInfo
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'] to see the possible values for this operation
+     * @param  int $id Display specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function call29aaa3d442908d3a5a9a77902fa2285fWithHttpInfo($id, string $contentType = self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'][0])
+    public function getOrderWithHttpInfo($id, string $contentType = self::contentTypes['getOrder'][0])
     {
-        $request = $this->call29aaa3d442908d3a5a9a77902fa2285fRequest($id, $contentType);
+        $request = $this->getOrderRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1243,17 +1003,17 @@ class OrdersApi
     }
 
     /**
-     * Operation call29aaa3d442908d3a5a9a77902fa2285fAsync
+     * Operation getOrderAsync
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'] to see the possible values for this operation
+     * @param  int $id Display specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call29aaa3d442908d3a5a9a77902fa2285fAsync($id, string $contentType = self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'][0])
+    public function getOrderAsync($id, string $contentType = self::contentTypes['getOrder'][0])
     {
-        return $this->call29aaa3d442908d3a5a9a77902fa2285fAsyncWithHttpInfo($id, $contentType)
+        return $this->getOrderAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1262,18 +1022,18 @@ class OrdersApi
     }
 
     /**
-     * Operation call29aaa3d442908d3a5a9a77902fa2285fAsyncWithHttpInfo
+     * Operation getOrderAsyncWithHttpInfo
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'] to see the possible values for this operation
+     * @param  int $id Display specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call29aaa3d442908d3a5a9a77902fa2285fAsyncWithHttpInfo($id, string $contentType = self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'][0])
+    public function getOrderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getOrder'][0])
     {
         $returnType = '';
-        $request = $this->call29aaa3d442908d3a5a9a77902fa2285fRequest($id, $contentType);
+        $request = $this->getOrderRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1299,26 +1059,26 @@ class OrdersApi
     }
 
     /**
-     * Create request for operation 'call29aaa3d442908d3a5a9a77902fa2285f'
+     * Create request for operation 'getOrder'
      *
-     * @param  int $id Submit specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'] to see the possible values for this operation
+     * @param  int $id Display specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function call29aaa3d442908d3a5a9a77902fa2285fRequest($id, string $contentType = self::contentTypes['call29aaa3d442908d3a5a9a77902fa2285f'][0])
+    public function getOrderRequest($id, string $contentType = self::contentTypes['getOrder'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling call29aaa3d442908d3a5a9a77902fa2285f'
+                'Missing the required parameter $id when calling getOrder'
             );
         }
 
 
-        $resourcePath = '/api/orders/rate/{id}';
+        $resourcePath = '/api/orders/details/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1388,7 +1148,7 @@ class OrdersApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1396,337 +1156,39 @@ class OrdersApi
     }
 
     /**
-     * Operation call44093a5bd88f25dec2ab549f2efad341
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return object|object
-     */
-    public function call44093a5bd88f25dec2ab549f2efad341($id, $body, string $contentType = self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'][0])
-    {
-        list($response) = $this->call44093a5bd88f25dec2ab549f2efad341WithHttpInfo($id, $body, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation call44093a5bd88f25dec2ab549f2efad341WithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function call44093a5bd88f25dec2ab549f2efad341WithHttpInfo($id, $body, string $contentType = self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'][0])
-    {
-        $request = $this->call44093a5bd88f25dec2ab549f2efad341Request($id, $body, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation call44093a5bd88f25dec2ab549f2efad341Async
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call44093a5bd88f25dec2ab549f2efad341Async($id, $body, string $contentType = self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'][0])
-    {
-        return $this->call44093a5bd88f25dec2ab549f2efad341AsyncWithHttpInfo($id, $body, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation call44093a5bd88f25dec2ab549f2efad341AsyncWithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call44093a5bd88f25dec2ab549f2efad341AsyncWithHttpInfo($id, $body, string $contentType = self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'][0])
-    {
-        $returnType = 'object';
-        $request = $this->call44093a5bd88f25dec2ab549f2efad341Request($id, $body, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'call44093a5bd88f25dec2ab549f2efad341'
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function call44093a5bd88f25dec2ab549f2efad341Request($id, $body, string $contentType = self::contentTypes['call44093a5bd88f25dec2ab549f2efad341'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling call44093a5bd88f25dec2ab549f2efad341'
-            );
-        }
-
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling call44093a5bd88f25dec2ab549f2efad341'
-            );
-        }
-
-
-        $resourcePath = '/api/orders/update/{id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($body)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
-            } else {
-                $httpBody = $body;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PATCH',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation call46849ce10119b18c6bb6888307a7a59a
+     * Operation listOrders
      *
      * List orders with pagination
      *
      * @param  int $per_page Number of records per page (required)
      * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function call46849ce10119b18c6bb6888307a7a59a($per_page, $offset = null, string $contentType = self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'][0])
+    public function listOrders($per_page, $offset = null, string $contentType = self::contentTypes['listOrders'][0])
     {
-        $this->call46849ce10119b18c6bb6888307a7a59aWithHttpInfo($per_page, $offset, $contentType);
+        $this->listOrdersWithHttpInfo($per_page, $offset, $contentType);
     }
 
     /**
-     * Operation call46849ce10119b18c6bb6888307a7a59aWithHttpInfo
+     * Operation listOrdersWithHttpInfo
      *
      * List orders with pagination
      *
      * @param  int $per_page Number of records per page (required)
      * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function call46849ce10119b18c6bb6888307a7a59aWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'][0])
+    public function listOrdersWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['listOrders'][0])
     {
-        $request = $this->call46849ce10119b18c6bb6888307a7a59aRequest($per_page, $offset, $contentType);
+        $request = $this->listOrdersRequest($per_page, $offset, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1762,20 +1224,20 @@ class OrdersApi
     }
 
     /**
-     * Operation call46849ce10119b18c6bb6888307a7a59aAsync
+     * Operation listOrdersAsync
      *
      * List orders with pagination
      *
      * @param  int $per_page Number of records per page (required)
      * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call46849ce10119b18c6bb6888307a7a59aAsync($per_page, $offset = null, string $contentType = self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'][0])
+    public function listOrdersAsync($per_page, $offset = null, string $contentType = self::contentTypes['listOrders'][0])
     {
-        return $this->call46849ce10119b18c6bb6888307a7a59aAsyncWithHttpInfo($per_page, $offset, $contentType)
+        return $this->listOrdersAsyncWithHttpInfo($per_page, $offset, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1784,21 +1246,21 @@ class OrdersApi
     }
 
     /**
-     * Operation call46849ce10119b18c6bb6888307a7a59aAsyncWithHttpInfo
+     * Operation listOrdersAsyncWithHttpInfo
      *
      * List orders with pagination
      *
      * @param  int $per_page Number of records per page (required)
      * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call46849ce10119b18c6bb6888307a7a59aAsyncWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'][0])
+    public function listOrdersAsyncWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['listOrders'][0])
     {
         $returnType = '';
-        $request = $this->call46849ce10119b18c6bb6888307a7a59aRequest($per_page, $offset, $contentType);
+        $request = $this->listOrdersRequest($per_page, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1824,22 +1286,22 @@ class OrdersApi
     }
 
     /**
-     * Create request for operation 'call46849ce10119b18c6bb6888307a7a59a'
+     * Create request for operation 'listOrders'
      *
      * @param  int $per_page Number of records per page (required)
      * @param  int|null $offset The starting index for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function call46849ce10119b18c6bb6888307a7a59aRequest($per_page, $offset = null, string $contentType = self::contentTypes['call46849ce10119b18c6bb6888307a7a59a'][0])
+    public function listOrdersRequest($per_page, $offset = null, string $contentType = self::contentTypes['listOrders'][0])
     {
 
         // verify the required parameter 'per_page' is set
         if ($per_page === null || (is_array($per_page) && count($per_page) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $per_page when calling call46849ce10119b18c6bb6888307a7a59a'
+                'Missing the required parameter $per_page when calling listOrders'
             );
         }
 
@@ -1933,34 +1395,496 @@ class OrdersApi
     }
 
     /**
-     * Operation call5d9463644f222f80d3a4e3564dc25243
+     * Operation listTrashedOrders
+     *
+     * List orders with pagination, including deleted
+     *
+     * @param  int $per_page Number of records per page (required)
+     * @param  int|null $offset The starting index for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedOrders'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function listTrashedOrders($per_page, $offset = null, string $contentType = self::contentTypes['listTrashedOrders'][0])
+    {
+        $this->listTrashedOrdersWithHttpInfo($per_page, $offset, $contentType);
+    }
+
+    /**
+     * Operation listTrashedOrdersWithHttpInfo
+     *
+     * List orders with pagination, including deleted
+     *
+     * @param  int $per_page Number of records per page (required)
+     * @param  int|null $offset The starting index for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedOrders'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listTrashedOrdersWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['listTrashedOrders'][0])
+    {
+        $request = $this->listTrashedOrdersRequest($per_page, $offset, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listTrashedOrdersAsync
+     *
+     * List orders with pagination, including deleted
+     *
+     * @param  int $per_page Number of records per page (required)
+     * @param  int|null $offset The starting index for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedOrders'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listTrashedOrdersAsync($per_page, $offset = null, string $contentType = self::contentTypes['listTrashedOrders'][0])
+    {
+        return $this->listTrashedOrdersAsyncWithHttpInfo($per_page, $offset, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listTrashedOrdersAsyncWithHttpInfo
+     *
+     * List orders with pagination, including deleted
+     *
+     * @param  int $per_page Number of records per page (required)
+     * @param  int|null $offset The starting index for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedOrders'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listTrashedOrdersAsyncWithHttpInfo($per_page, $offset = null, string $contentType = self::contentTypes['listTrashedOrders'][0])
+    {
+        $returnType = '';
+        $request = $this->listTrashedOrdersRequest($per_page, $offset, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listTrashedOrders'
+     *
+     * @param  int $per_page Number of records per page (required)
+     * @param  int|null $offset The starting index for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedOrders'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listTrashedOrdersRequest($per_page, $offset = null, string $contentType = self::contentTypes['listTrashedOrders'][0])
+    {
+
+        // verify the required parameter 'per_page' is set
+        if ($per_page === null || (is_array($per_page) && count($per_page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $per_page when calling listTrashedOrders'
+            );
+        }
+
+
+
+        $resourcePath = '/api/orders/trashed';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $per_page,
+            'per_page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation rateOrder
+     *
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rateOrder'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function rateOrder($id, string $contentType = self::contentTypes['rateOrder'][0])
+    {
+        $this->rateOrderWithHttpInfo($id, $contentType);
+    }
+
+    /**
+     * Operation rateOrderWithHttpInfo
+     *
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rateOrder'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function rateOrderWithHttpInfo($id, string $contentType = self::contentTypes['rateOrder'][0])
+    {
+        $request = $this->rateOrderRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation rateOrderAsync
+     *
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rateOrder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function rateOrderAsync($id, string $contentType = self::contentTypes['rateOrder'][0])
+    {
+        return $this->rateOrderAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation rateOrderAsyncWithHttpInfo
+     *
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rateOrder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function rateOrderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['rateOrder'][0])
+    {
+        $returnType = '';
+        $request = $this->rateOrderRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'rateOrder'
+     *
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rateOrder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function rateOrderRequest($id, string $contentType = self::contentTypes['rateOrder'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling rateOrder'
+            );
+        }
+
+
+        $resourcePath = '/api/orders/rate/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation restoreOrder
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return object|object
      */
-    public function call5d9463644f222f80d3a4e3564dc25243($id, string $contentType = self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'][0])
+    public function restoreOrder($id, string $contentType = self::contentTypes['restoreOrder'][0])
     {
-        list($response) = $this->call5d9463644f222f80d3a4e3564dc25243WithHttpInfo($id, $contentType);
+        list($response) = $this->restoreOrderWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation call5d9463644f222f80d3a4e3564dc25243WithHttpInfo
+     * Operation restoreOrderWithHttpInfo
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function call5d9463644f222f80d3a4e3564dc25243WithHttpInfo($id, string $contentType = self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'][0])
+    public function restoreOrderWithHttpInfo($id, string $contentType = self::contentTypes['restoreOrder'][0])
     {
-        $request = $this->call5d9463644f222f80d3a4e3564dc25243Request($id, $contentType);
+        $request = $this->restoreOrderRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2046,17 +1970,17 @@ class OrdersApi
     }
 
     /**
-     * Operation call5d9463644f222f80d3a4e3564dc25243Async
+     * Operation restoreOrderAsync
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call5d9463644f222f80d3a4e3564dc25243Async($id, string $contentType = self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'][0])
+    public function restoreOrderAsync($id, string $contentType = self::contentTypes['restoreOrder'][0])
     {
-        return $this->call5d9463644f222f80d3a4e3564dc25243AsyncWithHttpInfo($id, $contentType)
+        return $this->restoreOrderAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2065,18 +1989,18 @@ class OrdersApi
     }
 
     /**
-     * Operation call5d9463644f222f80d3a4e3564dc25243AsyncWithHttpInfo
+     * Operation restoreOrderAsyncWithHttpInfo
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call5d9463644f222f80d3a4e3564dc25243AsyncWithHttpInfo($id, string $contentType = self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'][0])
+    public function restoreOrderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['restoreOrder'][0])
     {
         $returnType = 'object';
-        $request = $this->call5d9463644f222f80d3a4e3564dc25243Request($id, $contentType);
+        $request = $this->restoreOrderRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2115,21 +2039,21 @@ class OrdersApi
     }
 
     /**
-     * Create request for operation 'call5d9463644f222f80d3a4e3564dc25243'
+     * Create request for operation 'restoreOrder'
      *
      * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function call5d9463644f222f80d3a4e3564dc25243Request($id, string $contentType = self::contentTypes['call5d9463644f222f80d3a4e3564dc25243'][0])
+    public function restoreOrderRequest($id, string $contentType = self::contentTypes['restoreOrder'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling call5d9463644f222f80d3a4e3564dc25243'
+                'Missing the required parameter $id when calling restoreOrder'
             );
         }
 
@@ -2212,33 +2136,33 @@ class OrdersApi
     }
 
     /**
-     * Operation e56acd85f053dee29bb7af0d0338a243
+     * Operation submitOrder
      *
-     * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e56acd85f053dee29bb7af0d0338a243'] to see the possible values for this operation
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function e56acd85f053dee29bb7af0d0338a243($id, string $contentType = self::contentTypes['e56acd85f053dee29bb7af0d0338a243'][0])
+    public function submitOrder($id, string $contentType = self::contentTypes['submitOrder'][0])
     {
-        $this->e56acd85f053dee29bb7af0d0338a243WithHttpInfo($id, $contentType);
+        $this->submitOrderWithHttpInfo($id, $contentType);
     }
 
     /**
-     * Operation e56acd85f053dee29bb7af0d0338a243WithHttpInfo
+     * Operation submitOrderWithHttpInfo
      *
-     * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e56acd85f053dee29bb7af0d0338a243'] to see the possible values for this operation
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function e56acd85f053dee29bb7af0d0338a243WithHttpInfo($id, string $contentType = self::contentTypes['e56acd85f053dee29bb7af0d0338a243'][0])
+    public function submitOrderWithHttpInfo($id, string $contentType = self::contentTypes['submitOrder'][0])
     {
-        $request = $this->e56acd85f053dee29bb7af0d0338a243Request($id, $contentType);
+        $request = $this->submitOrderRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2282,17 +2206,17 @@ class OrdersApi
     }
 
     /**
-     * Operation e56acd85f053dee29bb7af0d0338a243Async
+     * Operation submitOrderAsync
      *
-     * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e56acd85f053dee29bb7af0d0338a243'] to see the possible values for this operation
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function e56acd85f053dee29bb7af0d0338a243Async($id, string $contentType = self::contentTypes['e56acd85f053dee29bb7af0d0338a243'][0])
+    public function submitOrderAsync($id, string $contentType = self::contentTypes['submitOrder'][0])
     {
-        return $this->e56acd85f053dee29bb7af0d0338a243AsyncWithHttpInfo($id, $contentType)
+        return $this->submitOrderAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2301,18 +2225,18 @@ class OrdersApi
     }
 
     /**
-     * Operation e56acd85f053dee29bb7af0d0338a243AsyncWithHttpInfo
+     * Operation submitOrderAsyncWithHttpInfo
      *
-     * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e56acd85f053dee29bb7af0d0338a243'] to see the possible values for this operation
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function e56acd85f053dee29bb7af0d0338a243AsyncWithHttpInfo($id, string $contentType = self::contentTypes['e56acd85f053dee29bb7af0d0338a243'][0])
+    public function submitOrderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['submitOrder'][0])
     {
         $returnType = '';
-        $request = $this->e56acd85f053dee29bb7af0d0338a243Request($id, $contentType);
+        $request = $this->submitOrderRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2338,26 +2262,26 @@ class OrdersApi
     }
 
     /**
-     * Create request for operation 'e56acd85f053dee29bb7af0d0338a243'
+     * Create request for operation 'submitOrder'
      *
-     * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['e56acd85f053dee29bb7af0d0338a243'] to see the possible values for this operation
+     * @param  int $id Submit specific record id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function e56acd85f053dee29bb7af0d0338a243Request($id, string $contentType = self::contentTypes['e56acd85f053dee29bb7af0d0338a243'][0])
+    public function submitOrderRequest($id, string $contentType = self::contentTypes['submitOrder'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling e56acd85f053dee29bb7af0d0338a243'
+                'Missing the required parameter $id when calling submitOrder'
             );
         }
 
 
-        $resourcePath = '/api/orders/details/{id}';
+        $resourcePath = '/api/orders/submit/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2427,7 +2351,7 @@ class OrdersApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'GET',
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -2435,37 +2359,36 @@ class OrdersApi
     }
 
     /**
-     * Operation f649037b62fc19acd6bee704ff87a751
+     * Operation updateOrder
      *
-     * Store new record
-     *
-     * @param  \kruegge82\cargoInternational\Model\F649037b62fc19acd6bee704ff87a751Request $f649037b62fc19acd6bee704ff87a751_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['f649037b62fc19acd6bee704ff87a751'] to see the possible values for this operation
+     * @param  int $id The ID of the record (required)
+     * @param  object $body Data to update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return object|object
      */
-    public function f649037b62fc19acd6bee704ff87a751($f649037b62fc19acd6bee704ff87a751_request, string $contentType = self::contentTypes['f649037b62fc19acd6bee704ff87a751'][0])
+    public function updateOrder($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
     {
-        $this->f649037b62fc19acd6bee704ff87a751WithHttpInfo($f649037b62fc19acd6bee704ff87a751_request, $contentType);
+        list($response) = $this->updateOrderWithHttpInfo($id, $body, $contentType);
+        return $response;
     }
 
     /**
-     * Operation f649037b62fc19acd6bee704ff87a751WithHttpInfo
+     * Operation updateOrderWithHttpInfo
      *
-     * Store new record
-     *
-     * @param  \kruegge82\cargoInternational\Model\F649037b62fc19acd6bee704ff87a751Request $f649037b62fc19acd6bee704ff87a751_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['f649037b62fc19acd6bee704ff87a751'] to see the possible values for this operation
+     * @param  int $id The ID of the record (required)
+     * @param  object $body Data to update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function f649037b62fc19acd6bee704ff87a751WithHttpInfo($f649037b62fc19acd6bee704ff87a751_request, string $contentType = self::contentTypes['f649037b62fc19acd6bee704ff87a751'][0])
+    public function updateOrderWithHttpInfo($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
     {
-        $request = $this->f649037b62fc19acd6bee704ff87a751Request($f649037b62fc19acd6bee704ff87a751_request, $contentType);
+        $request = $this->updateOrderRequest($id, $body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2490,9 +2413,59 @@ class OrdersApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -2501,19 +2474,18 @@ class OrdersApi
     }
 
     /**
-     * Operation f649037b62fc19acd6bee704ff87a751Async
+     * Operation updateOrderAsync
      *
-     * Store new record
-     *
-     * @param  \kruegge82\cargoInternational\Model\F649037b62fc19acd6bee704ff87a751Request $f649037b62fc19acd6bee704ff87a751_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['f649037b62fc19acd6bee704ff87a751'] to see the possible values for this operation
+     * @param  int $id The ID of the record (required)
+     * @param  object $body Data to update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function f649037b62fc19acd6bee704ff87a751Async($f649037b62fc19acd6bee704ff87a751_request, string $contentType = self::contentTypes['f649037b62fc19acd6bee704ff87a751'][0])
+    public function updateOrderAsync($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
     {
-        return $this->f649037b62fc19acd6bee704ff87a751AsyncWithHttpInfo($f649037b62fc19acd6bee704ff87a751_request, $contentType)
+        return $this->updateOrderAsyncWithHttpInfo($id, $body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2522,26 +2494,38 @@ class OrdersApi
     }
 
     /**
-     * Operation f649037b62fc19acd6bee704ff87a751AsyncWithHttpInfo
+     * Operation updateOrderAsyncWithHttpInfo
      *
-     * Store new record
-     *
-     * @param  \kruegge82\cargoInternational\Model\F649037b62fc19acd6bee704ff87a751Request $f649037b62fc19acd6bee704ff87a751_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['f649037b62fc19acd6bee704ff87a751'] to see the possible values for this operation
+     * @param  int $id The ID of the record (required)
+     * @param  object $body Data to update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function f649037b62fc19acd6bee704ff87a751AsyncWithHttpInfo($f649037b62fc19acd6bee704ff87a751_request, string $contentType = self::contentTypes['f649037b62fc19acd6bee704ff87a751'][0])
+    public function updateOrderAsyncWithHttpInfo($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
     {
-        $returnType = '';
-        $request = $this->f649037b62fc19acd6bee704ff87a751Request($f649037b62fc19acd6bee704ff87a751_request, $contentType);
+        $returnType = 'object';
+        $request = $this->updateOrderRequest($id, $body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2561,26 +2545,34 @@ class OrdersApi
     }
 
     /**
-     * Create request for operation 'f649037b62fc19acd6bee704ff87a751'
+     * Create request for operation 'updateOrder'
      *
-     * @param  \kruegge82\cargoInternational\Model\F649037b62fc19acd6bee704ff87a751Request $f649037b62fc19acd6bee704ff87a751_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['f649037b62fc19acd6bee704ff87a751'] to see the possible values for this operation
+     * @param  int $id The ID of the record (required)
+     * @param  object $body Data to update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function f649037b62fc19acd6bee704ff87a751Request($f649037b62fc19acd6bee704ff87a751_request, string $contentType = self::contentTypes['f649037b62fc19acd6bee704ff87a751'][0])
+    public function updateOrderRequest($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
     {
 
-        // verify the required parameter 'f649037b62fc19acd6bee704ff87a751_request' is set
-        if ($f649037b62fc19acd6bee704ff87a751_request === null || (is_array($f649037b62fc19acd6bee704ff87a751_request) && count($f649037b62fc19acd6bee704ff87a751_request) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $f649037b62fc19acd6bee704ff87a751_request when calling f649037b62fc19acd6bee704ff87a751'
+                'Missing the required parameter $id when calling updateOrder'
+            );
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling updateOrder'
             );
         }
 
 
-        $resourcePath = '/orders/create';
+        $resourcePath = '/api/orders/update/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2589,21 +2581,29 @@ class OrdersApi
 
 
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($f649037b62fc19acd6bee704ff87a751_request)) {
+        if (isset($body)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($f649037b62fc19acd6bee704ff87a751_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
-                $httpBody = $f649037b62fc19acd6bee704ff87a751_request;
+                $httpBody = $body;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2649,7 +2649,7 @@ class OrdersApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

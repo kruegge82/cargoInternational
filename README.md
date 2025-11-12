@@ -60,13 +60,21 @@ $apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
     new GuzzleHttp\Client(),
     $config
 );
-$per_page = 56; // int | Number of records per page
-$page = 56; // int | The starting page for pagination
+$firstname = 'firstname_example'; // string | The first name
+$lastname = 'lastname_example'; // string | The last name
+$street = 'street_example'; // string | Street & House number
+$zip = 'zip_example'; // string | Zipcode
+$city = 'city_example'; // string | City
+$country = 'country_example'; // string | The 2 letter country code
+$phone = 'phone_example'; // string | Phone number
+$email = 'email_example'; // string | E-Mail address
+$company = 'company_example'; // string | Company name
+$department = 'department_example'; // string | Department name
 
 try {
-    $apiInstance->c489ce3cefd3fd1fc942616eab9bb819($per_page, $page);
+    $apiInstance->createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department);
 } catch (Exception $e) {
-    echo 'Exception when calling AddressBookApi->c489ce3cefd3fd1fc942616eab9bb819: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AddressBookApi->createAddressbook: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -77,30 +85,30 @@ All URIs are relative to *https://app.spedition.de*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AddressBookApi* | [**c489ce3cefd3fd1fc942616eab9bb819**](docs/Api/AddressBookApi.md#c489ce3cefd3fd1fc942616eab9bb819) | **GET** /api/addressbook/trashed | List records with pagination
-*AddressBookApi* | [**call048b393249f9e4a7ba1074eb11be776b**](docs/Api/AddressBookApi.md#call048b393249f9e4a7ba1074eb11be776b) | **DELETE** /api/addressbook/delete/{id} | 
-*AddressBookApi* | [**call29e62d562eeb5644d97ca737c9558a68**](docs/Api/AddressBookApi.md#call29e62d562eeb5644d97ca737c9558a68) | **GET** /api/addressbook/index | List records with pagination
-*AddressBookApi* | [**call842e08c6da93ef68a4ec92a2de372624**](docs/Api/AddressBookApi.md#call842e08c6da93ef68a4ec92a2de372624) | **PATCH** /api/addressbook/update/{id} | 
-*AddressBookApi* | [**call8c231a8c867bb4e4c158dc745543f491**](docs/Api/AddressBookApi.md#call8c231a8c867bb4e4c158dc745543f491) | **DELETE** /api/addressbook/destroy/{id} | 
-*AddressBookApi* | [**d5e22cff88afd311443d76ca7e6b4d3a**](docs/Api/AddressBookApi.md#d5e22cff88afd311443d76ca7e6b4d3a) | **POST** /api/addressbook/restore/{id} | 
-*AddressBookApi* | [**db0828338113282bffb291676ce87860**](docs/Api/AddressBookApi.md#db0828338113282bffb291676ce87860) | **POST** /api/addressbook/create | Store new record
-*AddressBookApi* | [**fbf4e6189cd2bde77131813b38f16a20**](docs/Api/AddressBookApi.md#fbf4e6189cd2bde77131813b38f16a20) | **GET** /api/addressbook/details/{id} | 
-*CarrierTemplatesApi* | [**e7854f0669221b6f6a471112b9405f9a**](docs/Api/CarrierTemplatesApi.md#e7854f0669221b6f6a471112b9405f9a) | **GET** /api/templates/carrier/index | List records with pagination
-*OrdersApi* | [**a4dace2796ea4b9bbc26cf93c73ac5bf**](docs/Api/OrdersApi.md#a4dace2796ea4b9bbc26cf93c73ac5bf) | **POST** /api/orders/submit/{id} | 
-*OrdersApi* | [**call0513395cd8422375c1a6e97d8f875e8e**](docs/Api/OrdersApi.md#call0513395cd8422375c1a6e97d8f875e8e) | **GET** /api/orders/trashed | List orders with pagination, including deleted
-*OrdersApi* | [**call220692e5d32cd33591b288158ed08e81**](docs/Api/OrdersApi.md#call220692e5d32cd33591b288158ed08e81) | **DELETE** /api/orders/delete/{id} | 
-*OrdersApi* | [**call26cb12e838cf1a4cf4af65d0eaf4ceb0**](docs/Api/OrdersApi.md#call26cb12e838cf1a4cf4af65d0eaf4ceb0) | **DELETE** /api/orders/destroy/{id} | 
-*OrdersApi* | [**call29aaa3d442908d3a5a9a77902fa2285f**](docs/Api/OrdersApi.md#call29aaa3d442908d3a5a9a77902fa2285f) | **POST** /api/orders/rate/{id} | 
-*OrdersApi* | [**call44093a5bd88f25dec2ab549f2efad341**](docs/Api/OrdersApi.md#call44093a5bd88f25dec2ab549f2efad341) | **PATCH** /api/orders/update/{id} | 
-*OrdersApi* | [**call46849ce10119b18c6bb6888307a7a59a**](docs/Api/OrdersApi.md#call46849ce10119b18c6bb6888307a7a59a) | **GET** /api/orders/index | List orders with pagination
-*OrdersApi* | [**call5d9463644f222f80d3a4e3564dc25243**](docs/Api/OrdersApi.md#call5d9463644f222f80d3a4e3564dc25243) | **POST** /api/orders/restore/{id} | 
-*OrdersApi* | [**e56acd85f053dee29bb7af0d0338a243**](docs/Api/OrdersApi.md#e56acd85f053dee29bb7af0d0338a243) | **GET** /api/orders/details/{id} | 
-*OrdersApi* | [**f649037b62fc19acd6bee704ff87a751**](docs/Api/OrdersApi.md#f649037b62fc19acd6bee704ff87a751) | **POST** /orders/create | Store new record
+*AddressBookApi* | [**createAddressbook**](docs/Api/AddressBookApi.md#createaddressbook) | **POST** /api/addressbook/create | Store new record
+*AddressBookApi* | [**deleteAddressbook**](docs/Api/AddressBookApi.md#deleteaddressbook) | **DELETE** /api/addressbook/delete/{id} | 
+*AddressBookApi* | [**destroyAddressbook**](docs/Api/AddressBookApi.md#destroyaddressbook) | **DELETE** /api/addressbook/destroy/{id} | 
+*AddressBookApi* | [**getAddressbook**](docs/Api/AddressBookApi.md#getaddressbook) | **GET** /api/addressbook/details/{id} | 
+*AddressBookApi* | [**listAddressbook**](docs/Api/AddressBookApi.md#listaddressbook) | **GET** /api/addressbook/index | List records with pagination
+*AddressBookApi* | [**listTrashedAddressbook**](docs/Api/AddressBookApi.md#listtrashedaddressbook) | **GET** /api/addressbook/trashed | List records with pagination
+*AddressBookApi* | [**restoreAddressbook**](docs/Api/AddressBookApi.md#restoreaddressbook) | **POST** /api/addressbook/restore/{id} | 
+*AddressBookApi* | [**updateAddressbook**](docs/Api/AddressBookApi.md#updateaddressbook) | **PATCH** /api/addressbook/update/{id} | 
+*CarrierTemplatesApi* | [**listCarrierTemplates**](docs/Api/CarrierTemplatesApi.md#listcarriertemplates) | **GET** /api/templates/carrier/index | List records with pagination
+*OrdersApi* | [**createOrder**](docs/Api/OrdersApi.md#createorder) | **POST** /orders/create | Store new record
+*OrdersApi* | [**deleteOrder**](docs/Api/OrdersApi.md#deleteorder) | **DELETE** /api/orders/delete/{id} | 
+*OrdersApi* | [**destroyOrder**](docs/Api/OrdersApi.md#destroyorder) | **DELETE** /api/orders/destroy/{id} | 
+*OrdersApi* | [**getOrder**](docs/Api/OrdersApi.md#getorder) | **GET** /api/orders/details/{id} | 
+*OrdersApi* | [**listOrders**](docs/Api/OrdersApi.md#listorders) | **GET** /api/orders/index | List orders with pagination
+*OrdersApi* | [**listTrashedOrders**](docs/Api/OrdersApi.md#listtrashedorders) | **GET** /api/orders/trashed | List orders with pagination, including deleted
+*OrdersApi* | [**rateOrder**](docs/Api/OrdersApi.md#rateorder) | **POST** /api/orders/rate/{id} | 
+*OrdersApi* | [**restoreOrder**](docs/Api/OrdersApi.md#restoreorder) | **POST** /api/orders/restore/{id} | 
+*OrdersApi* | [**submitOrder**](docs/Api/OrdersApi.md#submitorder) | **POST** /api/orders/submit/{id} | 
+*OrdersApi* | [**updateOrder**](docs/Api/OrdersApi.md#updateorder) | **PATCH** /api/orders/update/{id} | 
 
 ## Models
 
-- [842e08c6da93ef68a4ec92a2de372624Request](docs/Model/842e08c6da93ef68a4ec92a2de372624Request.md)
-- [F649037b62fc19acd6bee704ff87a751Request](docs/Model/F649037b62fc19acd6bee704ff87a751Request.md)
+- [CreateOrderRequest](docs/Model/CreateOrderRequest.md)
+- [UpdateAddressbookRequest](docs/Model/UpdateAddressbookRequest.md)
 
 ## Authorization
 

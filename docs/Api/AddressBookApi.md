@@ -6,396 +6,20 @@ All URIs are relative to https://app.spedition.de, except if the operation defin
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**c489ce3cefd3fd1fc942616eab9bb819()**](AddressBookApi.md#c489ce3cefd3fd1fc942616eab9bb819) | **GET** /api/addressbook/trashed | List records with pagination |
-| [**call048b393249f9e4a7ba1074eb11be776b()**](AddressBookApi.md#call048b393249f9e4a7ba1074eb11be776b) | **DELETE** /api/addressbook/delete/{id} |  |
-| [**call29e62d562eeb5644d97ca737c9558a68()**](AddressBookApi.md#call29e62d562eeb5644d97ca737c9558a68) | **GET** /api/addressbook/index | List records with pagination |
-| [**call842e08c6da93ef68a4ec92a2de372624()**](AddressBookApi.md#call842e08c6da93ef68a4ec92a2de372624) | **PATCH** /api/addressbook/update/{id} |  |
-| [**call8c231a8c867bb4e4c158dc745543f491()**](AddressBookApi.md#call8c231a8c867bb4e4c158dc745543f491) | **DELETE** /api/addressbook/destroy/{id} |  |
-| [**d5e22cff88afd311443d76ca7e6b4d3a()**](AddressBookApi.md#d5e22cff88afd311443d76ca7e6b4d3a) | **POST** /api/addressbook/restore/{id} |  |
-| [**db0828338113282bffb291676ce87860()**](AddressBookApi.md#db0828338113282bffb291676ce87860) | **POST** /api/addressbook/create | Store new record |
-| [**fbf4e6189cd2bde77131813b38f16a20()**](AddressBookApi.md#fbf4e6189cd2bde77131813b38f16a20) | **GET** /api/addressbook/details/{id} |  |
+| [**createAddressbook()**](AddressBookApi.md#createAddressbook) | **POST** /api/addressbook/create | Store new record |
+| [**deleteAddressbook()**](AddressBookApi.md#deleteAddressbook) | **DELETE** /api/addressbook/delete/{id} |  |
+| [**destroyAddressbook()**](AddressBookApi.md#destroyAddressbook) | **DELETE** /api/addressbook/destroy/{id} |  |
+| [**getAddressbook()**](AddressBookApi.md#getAddressbook) | **GET** /api/addressbook/details/{id} |  |
+| [**listAddressbook()**](AddressBookApi.md#listAddressbook) | **GET** /api/addressbook/index | List records with pagination |
+| [**listTrashedAddressbook()**](AddressBookApi.md#listTrashedAddressbook) | **GET** /api/addressbook/trashed | List records with pagination |
+| [**restoreAddressbook()**](AddressBookApi.md#restoreAddressbook) | **POST** /api/addressbook/restore/{id} |  |
+| [**updateAddressbook()**](AddressBookApi.md#updateAddressbook) | **PATCH** /api/addressbook/update/{id} |  |
 
 
-## `c489ce3cefd3fd1fc942616eab9bb819()`
-
-```php
-c489ce3cefd3fd1fc942616eab9bb819($per_page, $page)
-```
-
-List records with pagination
-
-Returns a list of records that are trashed
-
-### Example
+## `createAddressbook()`
 
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: sanctum
-$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$per_page = 56; // int | Number of records per page
-$page = 56; // int | The starting page for pagination
-
-try {
-    $apiInstance->c489ce3cefd3fd1fc942616eab9bb819($per_page, $page);
-} catch (Exception $e) {
-    echo 'Exception when calling AddressBookApi->c489ce3cefd3fd1fc942616eab9bb819: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **per_page** | **int**| Number of records per page | [optional] |
-| **page** | **int**| The starting page for pagination | [optional] |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[sanctum](../../README.md#sanctum)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `call048b393249f9e4a7ba1074eb11be776b()`
-
-```php
-call048b393249f9e4a7ba1074eb11be776b($id): object
-```
-
-
-
-Delete single record
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: sanctum
-$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 56; // int | The ID of the record
-
-try {
-    $result = $apiInstance->call048b393249f9e4a7ba1074eb11be776b($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AddressBookApi->call048b393249f9e4a7ba1074eb11be776b: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| The ID of the record | |
-
-### Return type
-
-**object**
-
-### Authorization
-
-[sanctum](../../README.md#sanctum)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `call29e62d562eeb5644d97ca737c9558a68()`
-
-```php
-call29e62d562eeb5644d97ca737c9558a68($per_page, $page)
-```
-
-List records with pagination
-
-Returns a list of records
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: sanctum
-$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$per_page = 56; // int | Number of records per page
-$page = 56; // int | The starting page for pagination
-
-try {
-    $apiInstance->call29e62d562eeb5644d97ca737c9558a68($per_page, $page);
-} catch (Exception $e) {
-    echo 'Exception when calling AddressBookApi->call29e62d562eeb5644d97ca737c9558a68: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **per_page** | **int**| Number of records per page | [optional] |
-| **page** | **int**| The starting page for pagination | [optional] |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[sanctum](../../README.md#sanctum)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `call842e08c6da93ef68a4ec92a2de372624()`
-
-```php
-call842e08c6da93ef68a4ec92a2de372624($id, $_842e08c6da93ef68a4ec92a2de372624_request): object
-```
-
-
-
-Update a record
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: sanctum
-$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 56; // int | The ID of the record
-$_842e08c6da93ef68a4ec92a2de372624_request = new \kruegge82\cargoInternational\Model\842e08c6da93ef68a4ec92a2de372624Request(); // \kruegge82\cargoInternational\Model\842e08c6da93ef68a4ec92a2de372624Request | Data to store
-
-try {
-    $result = $apiInstance->call842e08c6da93ef68a4ec92a2de372624($id, $_842e08c6da93ef68a4ec92a2de372624_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AddressBookApi->call842e08c6da93ef68a4ec92a2de372624: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| The ID of the record | |
-| **_842e08c6da93ef68a4ec92a2de372624_request** | [**\kruegge82\cargoInternational\Model\842e08c6da93ef68a4ec92a2de372624Request**](../Model/842e08c6da93ef68a4ec92a2de372624Request.md)| Data to store | |
-
-### Return type
-
-**object**
-
-### Authorization
-
-[sanctum](../../README.md#sanctum)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `call8c231a8c867bb4e4c158dc745543f491()`
-
-```php
-call8c231a8c867bb4e4c158dc745543f491($id): object
-```
-
-
-
-Permanently delete a single record
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: sanctum
-$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 56; // int | The ID of the record
-
-try {
-    $result = $apiInstance->call8c231a8c867bb4e4c158dc745543f491($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AddressBookApi->call8c231a8c867bb4e4c158dc745543f491: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| The ID of the record | |
-
-### Return type
-
-**object**
-
-### Authorization
-
-[sanctum](../../README.md#sanctum)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `d5e22cff88afd311443d76ca7e6b4d3a()`
-
-```php
-d5e22cff88afd311443d76ca7e6b4d3a($id): object
-```
-
-
-
-Restore single record that has been trashed prior
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: sanctum
-$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 56; // int | The ID of the record
-
-try {
-    $result = $apiInstance->d5e22cff88afd311443d76ca7e6b4d3a($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AddressBookApi->d5e22cff88afd311443d76ca7e6b4d3a: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| The ID of the record | |
-
-### Return type
-
-**object**
-
-### Authorization
-
-[sanctum](../../README.md#sanctum)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `db0828338113282bffb291676ce87860()`
-
-```php
-db0828338113282bffb291676ce87860($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department)
+createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department)
 ```
 
 Store new record
@@ -433,9 +57,9 @@ $company = 'company_example'; // string | Company name
 $department = 'department_example'; // string | Department name
 
 try {
-    $apiInstance->db0828338113282bffb291676ce87860($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department);
+    $apiInstance->createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department);
 } catch (Exception $e) {
-    echo 'Exception when calling AddressBookApi->db0828338113282bffb291676ce87860: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AddressBookApi->createAddressbook: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -471,10 +95,134 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `fbf4e6189cd2bde77131813b38f16a20()`
+## `deleteAddressbook()`
 
 ```php
-fbf4e6189cd2bde77131813b38f16a20($id)
+deleteAddressbook($id): object
+```
+
+
+
+Delete single record
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: sanctum
+$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | The ID of the record
+
+try {
+    $result = $apiInstance->deleteAddressbook($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AddressBookApi->deleteAddressbook: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| The ID of the record | |
+
+### Return type
+
+**object**
+
+### Authorization
+
+[sanctum](../../README.md#sanctum)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `destroyAddressbook()`
+
+```php
+destroyAddressbook($id): object
+```
+
+
+
+Permanently delete a single record
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: sanctum
+$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | The ID of the record
+
+try {
+    $result = $apiInstance->destroyAddressbook($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AddressBookApi->destroyAddressbook: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| The ID of the record | |
+
+### Return type
+
+**object**
+
+### Authorization
+
+[sanctum](../../README.md#sanctum)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAddressbook()`
+
+```php
+getAddressbook($id)
 ```
 
 
@@ -503,9 +251,9 @@ $apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
 $id = 56; // int | Display specific record id
 
 try {
-    $apiInstance->fbf4e6189cd2bde77131813b38f16a20($id);
+    $apiInstance->getAddressbook($id);
 } catch (Exception $e) {
-    echo 'Exception when calling AddressBookApi->fbf4e6189cd2bde77131813b38f16a20: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AddressBookApi->getAddressbook: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -526,6 +274,258 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAddressbook()`
+
+```php
+listAddressbook($per_page, $page)
+```
+
+List records with pagination
+
+Returns a list of records
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: sanctum
+$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$per_page = 56; // int | Number of records per page
+$page = 56; // int | The starting page for pagination
+
+try {
+    $apiInstance->listAddressbook($per_page, $page);
+} catch (Exception $e) {
+    echo 'Exception when calling AddressBookApi->listAddressbook: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **per_page** | **int**| Number of records per page | [optional] |
+| **page** | **int**| The starting page for pagination | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[sanctum](../../README.md#sanctum)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listTrashedAddressbook()`
+
+```php
+listTrashedAddressbook($per_page, $page)
+```
+
+List records with pagination
+
+Returns a list of records that are trashed
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: sanctum
+$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$per_page = 56; // int | Number of records per page
+$page = 56; // int | The starting page for pagination
+
+try {
+    $apiInstance->listTrashedAddressbook($per_page, $page);
+} catch (Exception $e) {
+    echo 'Exception when calling AddressBookApi->listTrashedAddressbook: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **per_page** | **int**| Number of records per page | [optional] |
+| **page** | **int**| The starting page for pagination | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[sanctum](../../README.md#sanctum)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `restoreAddressbook()`
+
+```php
+restoreAddressbook($id): object
+```
+
+
+
+Restore single record that has been trashed prior
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: sanctum
+$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | The ID of the record
+
+try {
+    $result = $apiInstance->restoreAddressbook($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AddressBookApi->restoreAddressbook: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| The ID of the record | |
+
+### Return type
+
+**object**
+
+### Authorization
+
+[sanctum](../../README.md#sanctum)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAddressbook()`
+
+```php
+updateAddressbook($id, $update_addressbook_request): object
+```
+
+
+
+Update a record
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: sanctum
+$config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = kruegge82\cargoInternational\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new kruegge82\cargoInternational\Api\AddressBookApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | The ID of the record
+$update_addressbook_request = new \kruegge82\cargoInternational\Model\UpdateAddressbookRequest(); // \kruegge82\cargoInternational\Model\UpdateAddressbookRequest | Data to store
+
+try {
+    $result = $apiInstance->updateAddressbook($id, $update_addressbook_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AddressBookApi->updateAddressbook: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| The ID of the record | |
+| **update_addressbook_request** | [**\kruegge82\cargoInternational\Model\UpdateAddressbookRequest**](../Model/UpdateAddressbookRequest.md)| Data to store | |
+
+### Return type
+
+**object**
+
+### Authorization
+
+[sanctum](../../README.md#sanctum)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

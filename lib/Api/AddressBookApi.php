@@ -74,28 +74,28 @@ class AddressBookApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'c489ce3cefd3fd1fc942616eab9bb819' => [
-            'application/json',
-        ],
-        'call048b393249f9e4a7ba1074eb11be776b' => [
-            'application/json',
-        ],
-        'call29e62d562eeb5644d97ca737c9558a68' => [
-            'application/json',
-        ],
-        'call842e08c6da93ef68a4ec92a2de372624' => [
-            'application/json',
-        ],
-        'call8c231a8c867bb4e4c158dc745543f491' => [
-            'application/json',
-        ],
-        'd5e22cff88afd311443d76ca7e6b4d3a' => [
-            'application/json',
-        ],
-        'db0828338113282bffb291676ce87860' => [
+        'createAddressbook' => [
             'application/x-www-form-urlencoded',
         ],
-        'fbf4e6189cd2bde77131813b38f16a20' => [
+        'deleteAddressbook' => [
+            'application/json',
+        ],
+        'destroyAddressbook' => [
+            'application/json',
+        ],
+        'getAddressbook' => [
+            'application/json',
+        ],
+        'listAddressbook' => [
+            'application/json',
+        ],
+        'listTrashedAddressbook' => [
+            'application/json',
+        ],
+        'restoreAddressbook' => [
+            'application/json',
+        ],
+        'updateAddressbook' => [
             'application/json',
         ],
     ];
@@ -147,39 +147,55 @@ class AddressBookApi
     }
 
     /**
-     * Operation c489ce3cefd3fd1fc942616eab9bb819
+     * Operation createAddressbook
      *
-     * List records with pagination
+     * Store new record
      *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'] to see the possible values for this operation
+     * @param  string $firstname The first name (required)
+     * @param  string $lastname The last name (required)
+     * @param  string $street Street &amp; House number (required)
+     * @param  string $zip Zipcode (required)
+     * @param  string $city City (required)
+     * @param  string $country The 2 letter country code (required)
+     * @param  string $phone Phone number (required)
+     * @param  string $email E-Mail address (required)
+     * @param  string|null $company Company name (optional)
+     * @param  string|null $department Department name (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAddressbook'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function c489ce3cefd3fd1fc942616eab9bb819($per_page = null, $page = null, string $contentType = self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'][0])
+    public function createAddressbook($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['createAddressbook'][0])
     {
-        $this->c489ce3cefd3fd1fc942616eab9bb819WithHttpInfo($per_page, $page, $contentType);
+        $this->createAddressbookWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType);
     }
 
     /**
-     * Operation c489ce3cefd3fd1fc942616eab9bb819WithHttpInfo
+     * Operation createAddressbookWithHttpInfo
      *
-     * List records with pagination
+     * Store new record
      *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'] to see the possible values for this operation
+     * @param  string $firstname The first name (required)
+     * @param  string $lastname The last name (required)
+     * @param  string $street Street &amp; House number (required)
+     * @param  string $zip Zipcode (required)
+     * @param  string $city City (required)
+     * @param  string $country The 2 letter country code (required)
+     * @param  string $phone Phone number (required)
+     * @param  string $email E-Mail address (required)
+     * @param  string|null $company Company name (optional)
+     * @param  string|null $department Department name (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAddressbook'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function c489ce3cefd3fd1fc942616eab9bb819WithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'][0])
+    public function createAddressbookWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['createAddressbook'][0])
     {
-        $request = $this->c489ce3cefd3fd1fc942616eab9bb819Request($per_page, $page, $contentType);
+        $request = $this->createAddressbookRequest($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -215,20 +231,28 @@ class AddressBookApi
     }
 
     /**
-     * Operation c489ce3cefd3fd1fc942616eab9bb819Async
+     * Operation createAddressbookAsync
      *
-     * List records with pagination
+     * Store new record
      *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'] to see the possible values for this operation
+     * @param  string $firstname The first name (required)
+     * @param  string $lastname The last name (required)
+     * @param  string $street Street &amp; House number (required)
+     * @param  string $zip Zipcode (required)
+     * @param  string $city City (required)
+     * @param  string $country The 2 letter country code (required)
+     * @param  string $phone Phone number (required)
+     * @param  string $email E-Mail address (required)
+     * @param  string|null $company Company name (optional)
+     * @param  string|null $department Department name (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAddressbook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function c489ce3cefd3fd1fc942616eab9bb819Async($per_page = null, $page = null, string $contentType = self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'][0])
+    public function createAddressbookAsync($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['createAddressbook'][0])
     {
-        return $this->c489ce3cefd3fd1fc942616eab9bb819AsyncWithHttpInfo($per_page, $page, $contentType)
+        return $this->createAddressbookAsyncWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -237,21 +261,29 @@ class AddressBookApi
     }
 
     /**
-     * Operation c489ce3cefd3fd1fc942616eab9bb819AsyncWithHttpInfo
+     * Operation createAddressbookAsyncWithHttpInfo
      *
-     * List records with pagination
+     * Store new record
      *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'] to see the possible values for this operation
+     * @param  string $firstname The first name (required)
+     * @param  string $lastname The last name (required)
+     * @param  string $street Street &amp; House number (required)
+     * @param  string $zip Zipcode (required)
+     * @param  string $city City (required)
+     * @param  string $country The 2 letter country code (required)
+     * @param  string $phone Phone number (required)
+     * @param  string $email E-Mail address (required)
+     * @param  string|null $company Company name (optional)
+     * @param  string|null $department Department name (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAddressbook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function c489ce3cefd3fd1fc942616eab9bb819AsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'][0])
+    public function createAddressbookAsyncWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['createAddressbook'][0])
     {
         $returnType = '';
-        $request = $this->c489ce3cefd3fd1fc942616eab9bb819Request($per_page, $page, $contentType);
+        $request = $this->createAddressbookRequest($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -277,1480 +309,7 @@ class AddressBookApi
     }
 
     /**
-     * Create request for operation 'c489ce3cefd3fd1fc942616eab9bb819'
-     *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function c489ce3cefd3fd1fc942616eab9bb819Request($per_page = null, $page = null, string $contentType = self::contentTypes['c489ce3cefd3fd1fc942616eab9bb819'][0])
-    {
-
-
-
-
-        $resourcePath = '/api/addressbook/trashed';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
-            'per_page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            [],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation call048b393249f9e4a7ba1074eb11be776b
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return object|object
-     */
-    public function call048b393249f9e4a7ba1074eb11be776b($id, string $contentType = self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'][0])
-    {
-        list($response) = $this->call048b393249f9e4a7ba1074eb11be776bWithHttpInfo($id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation call048b393249f9e4a7ba1074eb11be776bWithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function call048b393249f9e4a7ba1074eb11be776bWithHttpInfo($id, string $contentType = self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'][0])
-    {
-        $request = $this->call048b393249f9e4a7ba1074eb11be776bRequest($id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation call048b393249f9e4a7ba1074eb11be776bAsync
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call048b393249f9e4a7ba1074eb11be776bAsync($id, string $contentType = self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'][0])
-    {
-        return $this->call048b393249f9e4a7ba1074eb11be776bAsyncWithHttpInfo($id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation call048b393249f9e4a7ba1074eb11be776bAsyncWithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call048b393249f9e4a7ba1074eb11be776bAsyncWithHttpInfo($id, string $contentType = self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'][0])
-    {
-        $returnType = 'object';
-        $request = $this->call048b393249f9e4a7ba1074eb11be776bRequest($id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'call048b393249f9e4a7ba1074eb11be776b'
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function call048b393249f9e4a7ba1074eb11be776bRequest($id, string $contentType = self::contentTypes['call048b393249f9e4a7ba1074eb11be776b'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling call048b393249f9e4a7ba1074eb11be776b'
-            );
-        }
-
-
-        $resourcePath = '/api/addressbook/delete/{id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation call29e62d562eeb5644d97ca737c9558a68
-     *
-     * List records with pagination
-     *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function call29e62d562eeb5644d97ca737c9558a68($per_page = null, $page = null, string $contentType = self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'][0])
-    {
-        $this->call29e62d562eeb5644d97ca737c9558a68WithHttpInfo($per_page, $page, $contentType);
-    }
-
-    /**
-     * Operation call29e62d562eeb5644d97ca737c9558a68WithHttpInfo
-     *
-     * List records with pagination
-     *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function call29e62d562eeb5644d97ca737c9558a68WithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'][0])
-    {
-        $request = $this->call29e62d562eeb5644d97ca737c9558a68Request($per_page, $page, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation call29e62d562eeb5644d97ca737c9558a68Async
-     *
-     * List records with pagination
-     *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call29e62d562eeb5644d97ca737c9558a68Async($per_page = null, $page = null, string $contentType = self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'][0])
-    {
-        return $this->call29e62d562eeb5644d97ca737c9558a68AsyncWithHttpInfo($per_page, $page, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation call29e62d562eeb5644d97ca737c9558a68AsyncWithHttpInfo
-     *
-     * List records with pagination
-     *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call29e62d562eeb5644d97ca737c9558a68AsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'][0])
-    {
-        $returnType = '';
-        $request = $this->call29e62d562eeb5644d97ca737c9558a68Request($per_page, $page, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'call29e62d562eeb5644d97ca737c9558a68'
-     *
-     * @param  int|null $per_page Number of records per page (optional)
-     * @param  int|null $page The starting page for pagination (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function call29e62d562eeb5644d97ca737c9558a68Request($per_page = null, $page = null, string $contentType = self::contentTypes['call29e62d562eeb5644d97ca737c9558a68'][0])
-    {
-
-
-
-
-        $resourcePath = '/api/addressbook/index';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
-            'per_page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            [],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation call842e08c6da93ef68a4ec92a2de372624
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  \kruegge82\cargoInternational\Model\842e08c6da93ef68a4ec92a2de372624Request $_842e08c6da93ef68a4ec92a2de372624_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return object|object
-     */
-    public function call842e08c6da93ef68a4ec92a2de372624($id, $_842e08c6da93ef68a4ec92a2de372624_request, string $contentType = self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'][0])
-    {
-        list($response) = $this->call842e08c6da93ef68a4ec92a2de372624WithHttpInfo($id, $_842e08c6da93ef68a4ec92a2de372624_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation call842e08c6da93ef68a4ec92a2de372624WithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  \kruegge82\cargoInternational\Model\842e08c6da93ef68a4ec92a2de372624Request $_842e08c6da93ef68a4ec92a2de372624_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function call842e08c6da93ef68a4ec92a2de372624WithHttpInfo($id, $_842e08c6da93ef68a4ec92a2de372624_request, string $contentType = self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'][0])
-    {
-        $request = $this->call842e08c6da93ef68a4ec92a2de372624Request($id, $_842e08c6da93ef68a4ec92a2de372624_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation call842e08c6da93ef68a4ec92a2de372624Async
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  \kruegge82\cargoInternational\Model\842e08c6da93ef68a4ec92a2de372624Request $_842e08c6da93ef68a4ec92a2de372624_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call842e08c6da93ef68a4ec92a2de372624Async($id, $_842e08c6da93ef68a4ec92a2de372624_request, string $contentType = self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'][0])
-    {
-        return $this->call842e08c6da93ef68a4ec92a2de372624AsyncWithHttpInfo($id, $_842e08c6da93ef68a4ec92a2de372624_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation call842e08c6da93ef68a4ec92a2de372624AsyncWithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  \kruegge82\cargoInternational\Model\842e08c6da93ef68a4ec92a2de372624Request $_842e08c6da93ef68a4ec92a2de372624_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call842e08c6da93ef68a4ec92a2de372624AsyncWithHttpInfo($id, $_842e08c6da93ef68a4ec92a2de372624_request, string $contentType = self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'][0])
-    {
-        $returnType = 'object';
-        $request = $this->call842e08c6da93ef68a4ec92a2de372624Request($id, $_842e08c6da93ef68a4ec92a2de372624_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'call842e08c6da93ef68a4ec92a2de372624'
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  \kruegge82\cargoInternational\Model\842e08c6da93ef68a4ec92a2de372624Request $_842e08c6da93ef68a4ec92a2de372624_request Data to store (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function call842e08c6da93ef68a4ec92a2de372624Request($id, $_842e08c6da93ef68a4ec92a2de372624_request, string $contentType = self::contentTypes['call842e08c6da93ef68a4ec92a2de372624'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling call842e08c6da93ef68a4ec92a2de372624'
-            );
-        }
-
-        // verify the required parameter '_842e08c6da93ef68a4ec92a2de372624_request' is set
-        if ($_842e08c6da93ef68a4ec92a2de372624_request === null || (is_array($_842e08c6da93ef68a4ec92a2de372624_request) && count($_842e08c6da93ef68a4ec92a2de372624_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $_842e08c6da93ef68a4ec92a2de372624_request when calling call842e08c6da93ef68a4ec92a2de372624'
-            );
-        }
-
-
-        $resourcePath = '/api/addressbook/update/{id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($_842e08c6da93ef68a4ec92a2de372624_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_842e08c6da93ef68a4ec92a2de372624_request));
-            } else {
-                $httpBody = $_842e08c6da93ef68a4ec92a2de372624_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PATCH',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation call8c231a8c867bb4e4c158dc745543f491
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return object|object
-     */
-    public function call8c231a8c867bb4e4c158dc745543f491($id, string $contentType = self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'][0])
-    {
-        list($response) = $this->call8c231a8c867bb4e4c158dc745543f491WithHttpInfo($id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation call8c231a8c867bb4e4c158dc745543f491WithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function call8c231a8c867bb4e4c158dc745543f491WithHttpInfo($id, string $contentType = self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'][0])
-    {
-        $request = $this->call8c231a8c867bb4e4c158dc745543f491Request($id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation call8c231a8c867bb4e4c158dc745543f491Async
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call8c231a8c867bb4e4c158dc745543f491Async($id, string $contentType = self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'][0])
-    {
-        return $this->call8c231a8c867bb4e4c158dc745543f491AsyncWithHttpInfo($id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation call8c231a8c867bb4e4c158dc745543f491AsyncWithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function call8c231a8c867bb4e4c158dc745543f491AsyncWithHttpInfo($id, string $contentType = self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'][0])
-    {
-        $returnType = 'object';
-        $request = $this->call8c231a8c867bb4e4c158dc745543f491Request($id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'call8c231a8c867bb4e4c158dc745543f491'
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function call8c231a8c867bb4e4c158dc745543f491Request($id, string $contentType = self::contentTypes['call8c231a8c867bb4e4c158dc745543f491'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling call8c231a8c867bb4e4c158dc745543f491'
-            );
-        }
-
-
-        $resourcePath = '/api/addressbook/destroy/{id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation d5e22cff88afd311443d76ca7e6b4d3a
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return object|object
-     */
-    public function d5e22cff88afd311443d76ca7e6b4d3a($id, string $contentType = self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'][0])
-    {
-        list($response) = $this->d5e22cff88afd311443d76ca7e6b4d3aWithHttpInfo($id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation d5e22cff88afd311443d76ca7e6b4d3aWithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function d5e22cff88afd311443d76ca7e6b4d3aWithHttpInfo($id, string $contentType = self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'][0])
-    {
-        $request = $this->d5e22cff88afd311443d76ca7e6b4d3aRequest($id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation d5e22cff88afd311443d76ca7e6b4d3aAsync
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function d5e22cff88afd311443d76ca7e6b4d3aAsync($id, string $contentType = self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'][0])
-    {
-        return $this->d5e22cff88afd311443d76ca7e6b4d3aAsyncWithHttpInfo($id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation d5e22cff88afd311443d76ca7e6b4d3aAsyncWithHttpInfo
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function d5e22cff88afd311443d76ca7e6b4d3aAsyncWithHttpInfo($id, string $contentType = self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'][0])
-    {
-        $returnType = 'object';
-        $request = $this->d5e22cff88afd311443d76ca7e6b4d3aRequest($id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'd5e22cff88afd311443d76ca7e6b4d3a'
-     *
-     * @param  int $id The ID of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function d5e22cff88afd311443d76ca7e6b4d3aRequest($id, string $contentType = self::contentTypes['d5e22cff88afd311443d76ca7e6b4d3a'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling d5e22cff88afd311443d76ca7e6b4d3a'
-            );
-        }
-
-
-        $resourcePath = '/api/addressbook/restore/{id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation db0828338113282bffb291676ce87860
-     *
-     * Store new record
+     * Create request for operation 'createAddressbook'
      *
      * @param  string $firstname The first name (required)
      * @param  string $lastname The last name (required)
@@ -1762,230 +321,70 @@ class AddressBookApi
      * @param  string $email E-Mail address (required)
      * @param  string|null $company Company name (optional)
      * @param  string|null $department Department name (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['db0828338113282bffb291676ce87860'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function db0828338113282bffb291676ce87860($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['db0828338113282bffb291676ce87860'][0])
-    {
-        $this->db0828338113282bffb291676ce87860WithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType);
-    }
-
-    /**
-     * Operation db0828338113282bffb291676ce87860WithHttpInfo
-     *
-     * Store new record
-     *
-     * @param  string $firstname The first name (required)
-     * @param  string $lastname The last name (required)
-     * @param  string $street Street &amp; House number (required)
-     * @param  string $zip Zipcode (required)
-     * @param  string $city City (required)
-     * @param  string $country The 2 letter country code (required)
-     * @param  string $phone Phone number (required)
-     * @param  string $email E-Mail address (required)
-     * @param  string|null $company Company name (optional)
-     * @param  string|null $department Department name (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['db0828338113282bffb291676ce87860'] to see the possible values for this operation
-     *
-     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function db0828338113282bffb291676ce87860WithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['db0828338113282bffb291676ce87860'][0])
-    {
-        $request = $this->db0828338113282bffb291676ce87860Request($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation db0828338113282bffb291676ce87860Async
-     *
-     * Store new record
-     *
-     * @param  string $firstname The first name (required)
-     * @param  string $lastname The last name (required)
-     * @param  string $street Street &amp; House number (required)
-     * @param  string $zip Zipcode (required)
-     * @param  string $city City (required)
-     * @param  string $country The 2 letter country code (required)
-     * @param  string $phone Phone number (required)
-     * @param  string $email E-Mail address (required)
-     * @param  string|null $company Company name (optional)
-     * @param  string|null $department Department name (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['db0828338113282bffb291676ce87860'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function db0828338113282bffb291676ce87860Async($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['db0828338113282bffb291676ce87860'][0])
-    {
-        return $this->db0828338113282bffb291676ce87860AsyncWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation db0828338113282bffb291676ce87860AsyncWithHttpInfo
-     *
-     * Store new record
-     *
-     * @param  string $firstname The first name (required)
-     * @param  string $lastname The last name (required)
-     * @param  string $street Street &amp; House number (required)
-     * @param  string $zip Zipcode (required)
-     * @param  string $city City (required)
-     * @param  string $country The 2 letter country code (required)
-     * @param  string $phone Phone number (required)
-     * @param  string $email E-Mail address (required)
-     * @param  string|null $company Company name (optional)
-     * @param  string|null $department Department name (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['db0828338113282bffb291676ce87860'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function db0828338113282bffb291676ce87860AsyncWithHttpInfo($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['db0828338113282bffb291676ce87860'][0])
-    {
-        $returnType = '';
-        $request = $this->db0828338113282bffb291676ce87860Request($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company, $department, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'db0828338113282bffb291676ce87860'
-     *
-     * @param  string $firstname The first name (required)
-     * @param  string $lastname The last name (required)
-     * @param  string $street Street &amp; House number (required)
-     * @param  string $zip Zipcode (required)
-     * @param  string $city City (required)
-     * @param  string $country The 2 letter country code (required)
-     * @param  string $phone Phone number (required)
-     * @param  string $email E-Mail address (required)
-     * @param  string|null $company Company name (optional)
-     * @param  string|null $department Department name (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['db0828338113282bffb291676ce87860'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAddressbook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function db0828338113282bffb291676ce87860Request($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['db0828338113282bffb291676ce87860'][0])
+    public function createAddressbookRequest($firstname, $lastname, $street, $zip, $city, $country, $phone, $email, $company = null, $department = null, string $contentType = self::contentTypes['createAddressbook'][0])
     {
 
         // verify the required parameter 'firstname' is set
         if ($firstname === null || (is_array($firstname) && count($firstname) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $firstname when calling db0828338113282bffb291676ce87860'
+                'Missing the required parameter $firstname when calling createAddressbook'
             );
         }
         if (strlen($firstname) > 2) {
-            throw new \InvalidArgumentException('invalid length for "$firstname" when calling AddressBookApi.db0828338113282bffb291676ce87860, must be smaller than or equal to 2.');
+            throw new \InvalidArgumentException('invalid length for "$firstname" when calling AddressBookApi.createAddressbook, must be smaller than or equal to 2.');
         }
         
         // verify the required parameter 'lastname' is set
         if ($lastname === null || (is_array($lastname) && count($lastname) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $lastname when calling db0828338113282bffb291676ce87860'
+                'Missing the required parameter $lastname when calling createAddressbook'
             );
         }
 
         // verify the required parameter 'street' is set
         if ($street === null || (is_array($street) && count($street) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $street when calling db0828338113282bffb291676ce87860'
+                'Missing the required parameter $street when calling createAddressbook'
             );
         }
 
         // verify the required parameter 'zip' is set
         if ($zip === null || (is_array($zip) && count($zip) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $zip when calling db0828338113282bffb291676ce87860'
+                'Missing the required parameter $zip when calling createAddressbook'
             );
         }
 
         // verify the required parameter 'city' is set
         if ($city === null || (is_array($city) && count($city) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $city when calling db0828338113282bffb291676ce87860'
+                'Missing the required parameter $city when calling createAddressbook'
             );
         }
 
         // verify the required parameter 'country' is set
         if ($country === null || (is_array($country) && count($country) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $country when calling db0828338113282bffb291676ce87860'
+                'Missing the required parameter $country when calling createAddressbook'
             );
         }
 
         // verify the required parameter 'phone' is set
         if ($phone === null || (is_array($phone) && count($phone) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $phone when calling db0828338113282bffb291676ce87860'
+                'Missing the required parameter $phone when calling createAddressbook'
             );
         }
 
         // verify the required parameter 'email' is set
         if ($email === null || (is_array($email) && count($email) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $email when calling db0828338113282bffb291676ce87860'
+                'Missing the required parameter $email when calling createAddressbook'
             );
         }
 
@@ -2080,33 +479,591 @@ class AddressBookApi
     }
 
     /**
-     * Operation fbf4e6189cd2bde77131813b38f16a20
+     * Operation deleteAddressbook
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return object|object
+     */
+    public function deleteAddressbook($id, string $contentType = self::contentTypes['deleteAddressbook'][0])
+    {
+        list($response) = $this->deleteAddressbookWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteAddressbookWithHttpInfo
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteAddressbookWithHttpInfo($id, string $contentType = self::contentTypes['deleteAddressbook'][0])
+    {
+        $request = $this->deleteAddressbookRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteAddressbookAsync
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAddressbookAsync($id, string $contentType = self::contentTypes['deleteAddressbook'][0])
+    {
+        return $this->deleteAddressbookAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteAddressbookAsyncWithHttpInfo
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAddressbookAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteAddressbook'][0])
+    {
+        $returnType = 'object';
+        $request = $this->deleteAddressbookRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteAddressbook'
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteAddressbookRequest($id, string $contentType = self::contentTypes['deleteAddressbook'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling deleteAddressbook'
+            );
+        }
+
+
+        $resourcePath = '/api/addressbook/delete/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation destroyAddressbook
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return object|object
+     */
+    public function destroyAddressbook($id, string $contentType = self::contentTypes['destroyAddressbook'][0])
+    {
+        list($response) = $this->destroyAddressbookWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation destroyAddressbookWithHttpInfo
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function destroyAddressbookWithHttpInfo($id, string $contentType = self::contentTypes['destroyAddressbook'][0])
+    {
+        $request = $this->destroyAddressbookRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation destroyAddressbookAsync
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function destroyAddressbookAsync($id, string $contentType = self::contentTypes['destroyAddressbook'][0])
+    {
+        return $this->destroyAddressbookAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation destroyAddressbookAsyncWithHttpInfo
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function destroyAddressbookAsyncWithHttpInfo($id, string $contentType = self::contentTypes['destroyAddressbook'][0])
+    {
+        $returnType = 'object';
+        $request = $this->destroyAddressbookRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'destroyAddressbook'
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['destroyAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function destroyAddressbookRequest($id, string $contentType = self::contentTypes['destroyAddressbook'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling destroyAddressbook'
+            );
+        }
+
+
+        $resourcePath = '/api/addressbook/destroy/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAddressbook
      *
      * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAddressbook'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function fbf4e6189cd2bde77131813b38f16a20($id, string $contentType = self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'][0])
+    public function getAddressbook($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
-        $this->fbf4e6189cd2bde77131813b38f16a20WithHttpInfo($id, $contentType);
+        $this->getAddressbookWithHttpInfo($id, $contentType);
     }
 
     /**
-     * Operation fbf4e6189cd2bde77131813b38f16a20WithHttpInfo
+     * Operation getAddressbookWithHttpInfo
      *
      * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAddressbook'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function fbf4e6189cd2bde77131813b38f16a20WithHttpInfo($id, string $contentType = self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'][0])
+    public function getAddressbookWithHttpInfo($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
-        $request = $this->fbf4e6189cd2bde77131813b38f16a20Request($id, $contentType);
+        $request = $this->getAddressbookRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2150,17 +1107,17 @@ class AddressBookApi
     }
 
     /**
-     * Operation fbf4e6189cd2bde77131813b38f16a20Async
+     * Operation getAddressbookAsync
      *
      * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAddressbook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function fbf4e6189cd2bde77131813b38f16a20Async($id, string $contentType = self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'][0])
+    public function getAddressbookAsync($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
-        return $this->fbf4e6189cd2bde77131813b38f16a20AsyncWithHttpInfo($id, $contentType)
+        return $this->getAddressbookAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2169,18 +1126,18 @@ class AddressBookApi
     }
 
     /**
-     * Operation fbf4e6189cd2bde77131813b38f16a20AsyncWithHttpInfo
+     * Operation getAddressbookAsyncWithHttpInfo
      *
      * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAddressbook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function fbf4e6189cd2bde77131813b38f16a20AsyncWithHttpInfo($id, string $contentType = self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'][0])
+    public function getAddressbookAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
         $returnType = '';
-        $request = $this->fbf4e6189cd2bde77131813b38f16a20Request($id, $contentType);
+        $request = $this->getAddressbookRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2206,21 +1163,21 @@ class AddressBookApi
     }
 
     /**
-     * Create request for operation 'fbf4e6189cd2bde77131813b38f16a20'
+     * Create request for operation 'getAddressbook'
      *
      * @param  int $id Display specific record id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAddressbook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function fbf4e6189cd2bde77131813b38f16a20Request($id, string $contentType = self::contentTypes['fbf4e6189cd2bde77131813b38f16a20'][0])
+    public function getAddressbookRequest($id, string $contentType = self::contentTypes['getAddressbook'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling fbf4e6189cd2bde77131813b38f16a20'
+                'Missing the required parameter $id when calling getAddressbook'
             );
         }
 
@@ -2296,6 +1253,1049 @@ class AddressBookApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAddressbook
+     *
+     * List records with pagination
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function listAddressbook($per_page = null, $page = null, string $contentType = self::contentTypes['listAddressbook'][0])
+    {
+        $this->listAddressbookWithHttpInfo($per_page, $page, $contentType);
+    }
+
+    /**
+     * Operation listAddressbookWithHttpInfo
+     *
+     * List records with pagination
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAddressbookWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listAddressbook'][0])
+    {
+        $request = $this->listAddressbookRequest($per_page, $page, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAddressbookAsync
+     *
+     * List records with pagination
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAddressbookAsync($per_page = null, $page = null, string $contentType = self::contentTypes['listAddressbook'][0])
+    {
+        return $this->listAddressbookAsyncWithHttpInfo($per_page, $page, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAddressbookAsyncWithHttpInfo
+     *
+     * List records with pagination
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAddressbookAsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listAddressbook'][0])
+    {
+        $returnType = '';
+        $request = $this->listAddressbookRequest($per_page, $page, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAddressbook'
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAddressbookRequest($per_page = null, $page = null, string $contentType = self::contentTypes['listAddressbook'][0])
+    {
+
+
+
+
+        $resourcePath = '/api/addressbook/index';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $per_page,
+            'per_page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listTrashedAddressbook
+     *
+     * List records with pagination
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function listTrashedAddressbook($per_page = null, $page = null, string $contentType = self::contentTypes['listTrashedAddressbook'][0])
+    {
+        $this->listTrashedAddressbookWithHttpInfo($per_page, $page, $contentType);
+    }
+
+    /**
+     * Operation listTrashedAddressbookWithHttpInfo
+     *
+     * List records with pagination
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listTrashedAddressbookWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listTrashedAddressbook'][0])
+    {
+        $request = $this->listTrashedAddressbookRequest($per_page, $page, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listTrashedAddressbookAsync
+     *
+     * List records with pagination
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listTrashedAddressbookAsync($per_page = null, $page = null, string $contentType = self::contentTypes['listTrashedAddressbook'][0])
+    {
+        return $this->listTrashedAddressbookAsyncWithHttpInfo($per_page, $page, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listTrashedAddressbookAsyncWithHttpInfo
+     *
+     * List records with pagination
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listTrashedAddressbookAsyncWithHttpInfo($per_page = null, $page = null, string $contentType = self::contentTypes['listTrashedAddressbook'][0])
+    {
+        $returnType = '';
+        $request = $this->listTrashedAddressbookRequest($per_page, $page, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listTrashedAddressbook'
+     *
+     * @param  int|null $per_page Number of records per page (optional)
+     * @param  int|null $page The starting page for pagination (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrashedAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listTrashedAddressbookRequest($per_page = null, $page = null, string $contentType = self::contentTypes['listTrashedAddressbook'][0])
+    {
+
+
+
+
+        $resourcePath = '/api/addressbook/trashed';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $per_page,
+            'per_page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation restoreAddressbook
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return object|object
+     */
+    public function restoreAddressbook($id, string $contentType = self::contentTypes['restoreAddressbook'][0])
+    {
+        list($response) = $this->restoreAddressbookWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation restoreAddressbookWithHttpInfo
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function restoreAddressbookWithHttpInfo($id, string $contentType = self::contentTypes['restoreAddressbook'][0])
+    {
+        $request = $this->restoreAddressbookRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation restoreAddressbookAsync
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function restoreAddressbookAsync($id, string $contentType = self::contentTypes['restoreAddressbook'][0])
+    {
+        return $this->restoreAddressbookAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation restoreAddressbookAsyncWithHttpInfo
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function restoreAddressbookAsyncWithHttpInfo($id, string $contentType = self::contentTypes['restoreAddressbook'][0])
+    {
+        $returnType = 'object';
+        $request = $this->restoreAddressbookRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'restoreAddressbook'
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function restoreAddressbookRequest($id, string $contentType = self::contentTypes['restoreAddressbook'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling restoreAddressbook'
+            );
+        }
+
+
+        $resourcePath = '/api/addressbook/restore/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAddressbook
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateAddressbookRequest $update_addressbook_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return object|object
+     */
+    public function updateAddressbook($id, $update_addressbook_request, string $contentType = self::contentTypes['updateAddressbook'][0])
+    {
+        list($response) = $this->updateAddressbookWithHttpInfo($id, $update_addressbook_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAddressbookWithHttpInfo
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateAddressbookRequest $update_addressbook_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAddressbook'] to see the possible values for this operation
+     *
+     * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAddressbookWithHttpInfo($id, $update_addressbook_request, string $contentType = self::contentTypes['updateAddressbook'][0])
+    {
+        $request = $this->updateAddressbookRequest($id, $update_addressbook_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAddressbookAsync
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateAddressbookRequest $update_addressbook_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAddressbookAsync($id, $update_addressbook_request, string $contentType = self::contentTypes['updateAddressbook'][0])
+    {
+        return $this->updateAddressbookAsyncWithHttpInfo($id, $update_addressbook_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAddressbookAsyncWithHttpInfo
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateAddressbookRequest $update_addressbook_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAddressbookAsyncWithHttpInfo($id, $update_addressbook_request, string $contentType = self::contentTypes['updateAddressbook'][0])
+    {
+        $returnType = 'object';
+        $request = $this->updateAddressbookRequest($id, $update_addressbook_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAddressbook'
+     *
+     * @param  int $id The ID of the record (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateAddressbookRequest $update_addressbook_request Data to store (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAddressbook'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAddressbookRequest($id, $update_addressbook_request, string $contentType = self::contentTypes['updateAddressbook'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling updateAddressbook'
+            );
+        }
+
+        // verify the required parameter 'update_addressbook_request' is set
+        if ($update_addressbook_request === null || (is_array($update_addressbook_request) && count($update_addressbook_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_addressbook_request when calling updateAddressbook'
+            );
+        }
+
+
+        $resourcePath = '/api/addressbook/update/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_addressbook_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_addressbook_request));
+            } else {
+                $httpBody = $update_addressbook_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

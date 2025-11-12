@@ -6,13 +6,13 @@ All URIs are relative to https://app.spedition.de, except if the operation defin
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**e7854f0669221b6f6a471112b9405f9a()**](CarrierTemplatesApi.md#e7854f0669221b6f6a471112b9405f9a) | **GET** /api/templates/carrier/index | List records with pagination |
+| [**listCarrierTemplates()**](CarrierTemplatesApi.md#listCarrierTemplates) | **GET** /api/templates/carrier/index | List records with pagination |
 
 
-## `e7854f0669221b6f6a471112b9405f9a()`
+## `listCarrierTemplates()`
 
 ```php
-e7854f0669221b6f6a471112b9405f9a($per_page, $page)
+listCarrierTemplates($per_page, $page)
 ```
 
 List records with pagination
@@ -42,9 +42,9 @@ $per_page = 56; // int | Number of records per page
 $page = 56; // int | The starting page for pagination
 
 try {
-    $apiInstance->e7854f0669221b6f6a471112b9405f9a($per_page, $page);
+    $apiInstance->listCarrierTemplates($per_page, $page);
 } catch (Exception $e) {
-    echo 'Exception when calling CarrierTemplatesApi->e7854f0669221b6f6a471112b9405f9a: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CarrierTemplatesApi->listCarrierTemplates: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
