@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **delivery_phone** | **string** | Recipient Phonenumber | [optional]
 **delivery_email** | **string** | Recipient E-Mail | [optional]
 **template_id** | **string** | Template ID für die Versandart | [optional]
-**booking_time** | **string** | Bestellzeitpunkt | [optional]
+**order_time** | **string** | Bestellzeitpunkt | [optional]
 **pickup_date** | **string** | Abholdatum | [optional]
 **packages** | [**\kruegge82\cargoInternational\Model\Package[]**](Package.md) | List of packages or pallets included in the shipment | [optional]
 
