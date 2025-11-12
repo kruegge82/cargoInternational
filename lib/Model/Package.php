@@ -60,11 +60,15 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'colli' => 'int',
         'contents' => 'string',
+        'weight' => 'float',
+        'length' => 'float',
+        'width' => 'float',
+        'height' => 'float',
+        'package' => 'string',
         'weight_kg' => 'float',
         'length_cm' => 'float',
         'width_cm' => 'float',
-        'height_cm' => 'float',
-        'package' => 'string'
+        'height_cm' => 'float'
     ];
 
     /**
@@ -77,11 +81,15 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'colli' => 'int32',
         'contents' => null,
+        'weight' => 'float',
+        'length' => 'float',
+        'width' => 'float',
+        'height' => 'float',
+        'package' => null,
         'weight_kg' => 'float',
         'length_cm' => 'float',
         'width_cm' => 'float',
-        'height_cm' => 'float',
-        'package' => null
+        'height_cm' => 'float'
     ];
 
     /**
@@ -92,11 +100,15 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'colli' => false,
         'contents' => false,
+        'weight' => false,
+        'length' => false,
+        'width' => false,
+        'height' => false,
+        'package' => false,
         'weight_kg' => false,
         'length_cm' => false,
         'width_cm' => false,
-        'height_cm' => false,
-        'package' => false
+        'height_cm' => false
     ];
 
     /**
@@ -187,11 +199,15 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'colli' => 'colli',
         'contents' => 'contents',
+        'weight' => 'weight',
+        'length' => 'length',
+        'width' => 'width',
+        'height' => 'height',
+        'package' => 'package',
         'weight_kg' => 'weight_kg',
         'length_cm' => 'length_cm',
         'width_cm' => 'width_cm',
-        'height_cm' => 'height_cm',
-        'package' => 'package'
+        'height_cm' => 'height_cm'
     ];
 
     /**
@@ -202,11 +218,15 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'colli' => 'setColli',
         'contents' => 'setContents',
+        'weight' => 'setWeight',
+        'length' => 'setLength',
+        'width' => 'setWidth',
+        'height' => 'setHeight',
+        'package' => 'setPackage',
         'weight_kg' => 'setWeightKg',
         'length_cm' => 'setLengthCm',
         'width_cm' => 'setWidthCm',
-        'height_cm' => 'setHeightCm',
-        'package' => 'setPackage'
+        'height_cm' => 'setHeightCm'
     ];
 
     /**
@@ -217,11 +237,15 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'colli' => 'getColli',
         'contents' => 'getContents',
+        'weight' => 'getWeight',
+        'length' => 'getLength',
+        'width' => 'getWidth',
+        'height' => 'getHeight',
+        'package' => 'getPackage',
         'weight_kg' => 'getWeightKg',
         'length_cm' => 'getLengthCm',
         'width_cm' => 'getWidthCm',
-        'height_cm' => 'getHeightCm',
-        'package' => 'getPackage'
+        'height_cm' => 'getHeightCm'
     ];
 
     /**
@@ -306,11 +330,15 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('colli', $data ?? [], 1);
         $this->setIfExists('contents', $data ?? [], null);
+        $this->setIfExists('weight', $data ?? [], null);
+        $this->setIfExists('length', $data ?? [], null);
+        $this->setIfExists('width', $data ?? [], null);
+        $this->setIfExists('height', $data ?? [], null);
+        $this->setIfExists('package', $data ?? [], null);
         $this->setIfExists('weight_kg', $data ?? [], null);
         $this->setIfExists('length_cm', $data ?? [], null);
         $this->setIfExists('width_cm', $data ?? [], null);
         $this->setIfExists('height_cm', $data ?? [], null);
-        $this->setIfExists('package', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['kind'] = static::$openAPIModelName;
@@ -353,6 +381,34 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['contents'] === null) {
             $invalidProperties[] = "'contents' can't be null";
         }
+        if (!is_null($this->container['weight']) && ($this->container['weight'] < 0.0)) {
+            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 0.0.";
+        }
+
+        if (!is_null($this->container['length']) && ($this->container['length'] < 0.0)) {
+            $invalidProperties[] = "invalid value for 'length', must be bigger than or equal to 0.0.";
+        }
+
+        if (!is_null($this->container['width']) && ($this->container['width'] < 0.0)) {
+            $invalidProperties[] = "invalid value for 'width', must be bigger than or equal to 0.0.";
+        }
+
+        if (!is_null($this->container['height']) && ($this->container['height'] < 0.0)) {
+            $invalidProperties[] = "invalid value for 'height', must be bigger than or equal to 0.0.";
+        }
+
+        if ($this->container['package'] === null) {
+            $invalidProperties[] = "'package' can't be null";
+        }
+        $allowedValues = $this->getPackageAllowableValues();
+        if (!is_null($this->container['package']) && !in_array($this->container['package'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'package', must be one of '%s'",
+                $this->container['package'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['weight_kg'] === null) {
             $invalidProperties[] = "'weight_kg' can't be null";
         }
@@ -379,18 +435,6 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if (($this->container['height_cm'] < 0.0)) {
             $invalidProperties[] = "invalid value for 'height_cm', must be bigger than or equal to 0.0.";
-        }
-
-        if ($this->container['package'] === null) {
-            $invalidProperties[] = "'package' can't be null";
-        }
-        $allowedValues = $this->getPackageAllowableValues();
-        if (!is_null($this->container['package']) && !in_array($this->container['package'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'package', must be one of '%s'",
-                $this->container['package'],
-                implode("', '", $allowedValues)
-            );
         }
 
         return $invalidProperties;
@@ -463,6 +507,171 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable contents cannot be null');
         }
         $this->container['contents'] = $contents;
+
+        return $this;
+    }
+
+    /**
+     * Gets weight
+     *
+     * @return float|null
+     */
+    public function getWeight()
+    {
+        return $this->container['weight'];
+    }
+
+    /**
+     * Sets weight
+     *
+     * @param float|null $weight Weight per pallet in kilograms
+     *
+     * @return self
+     */
+    public function setWeight($weight)
+    {
+        if (is_null($weight)) {
+            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+        }
+
+        if (($weight < 0.0)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling Package., must be bigger than or equal to 0.0.');
+        }
+
+        $this->container['weight'] = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Gets length
+     *
+     * @return float|null
+     */
+    public function getLength()
+    {
+        return $this->container['length'];
+    }
+
+    /**
+     * Sets length
+     *
+     * @param float|null $length Length in cm
+     *
+     * @return self
+     */
+    public function setLength($length)
+    {
+        if (is_null($length)) {
+            throw new \InvalidArgumentException('non-nullable length cannot be null');
+        }
+
+        if (($length < 0.0)) {
+            throw new \InvalidArgumentException('invalid value for $length when calling Package., must be bigger than or equal to 0.0.');
+        }
+
+        $this->container['length'] = $length;
+
+        return $this;
+    }
+
+    /**
+     * Gets width
+     *
+     * @return float|null
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     *
+     * @param float|null $width Width in cm
+     *
+     * @return self
+     */
+    public function setWidth($width)
+    {
+        if (is_null($width)) {
+            throw new \InvalidArgumentException('non-nullable width cannot be null');
+        }
+
+        if (($width < 0.0)) {
+            throw new \InvalidArgumentException('invalid value for $width when calling Package., must be bigger than or equal to 0.0.');
+        }
+
+        $this->container['width'] = $width;
+
+        return $this;
+    }
+
+    /**
+     * Gets height
+     *
+     * @return float|null
+     */
+    public function getHeight()
+    {
+        return $this->container['height'];
+    }
+
+    /**
+     * Sets height
+     *
+     * @param float|null $height Height in cm
+     *
+     * @return self
+     */
+    public function setHeight($height)
+    {
+        if (is_null($height)) {
+            throw new \InvalidArgumentException('non-nullable height cannot be null');
+        }
+
+        if (($height < 0.0)) {
+            throw new \InvalidArgumentException('invalid value for $height when calling Package., must be bigger than or equal to 0.0.');
+        }
+
+        $this->container['height'] = $height;
+
+        return $this;
+    }
+
+    /**
+     * Gets package
+     *
+     * @return string
+     */
+    public function getPackage()
+    {
+        return $this->container['package'];
+    }
+
+    /**
+     * Sets package
+     *
+     * @param string $package Type of pallet
+     *
+     * @return self
+     */
+    public function setPackage($package)
+    {
+        if (is_null($package)) {
+            throw new \InvalidArgumentException('non-nullable package cannot be null');
+        }
+        $allowedValues = $this->getPackageAllowableValues();
+        if (!in_array($package, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'package', must be one of '%s'",
+                    $package,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['package'] = $package;
 
         return $this;
     }
@@ -591,43 +800,6 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['height_cm'] = $height_cm;
-
-        return $this;
-    }
-
-    /**
-     * Gets package
-     *
-     * @return string
-     */
-    public function getPackage()
-    {
-        return $this->container['package'];
-    }
-
-    /**
-     * Sets package
-     *
-     * @param string $package Type of pallet
-     *
-     * @return self
-     */
-    public function setPackage($package)
-    {
-        if (is_null($package)) {
-            throw new \InvalidArgumentException('non-nullable package cannot be null');
-        }
-        $allowedValues = $this->getPackageAllowableValues();
-        if (!in_array($package, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'package', must be one of '%s'",
-                    $package,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['package'] = $package;
 
         return $this;
     }
