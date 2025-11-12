@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **order_number** | **string** | Your order reference | [optional]
+**carrier_reference** | **string** | Your order reference for the carrier | [optional]
 **pickup_company** | **string** | Consignee Company Name | [optional]
 **pickup_firstname** | **string** | Consignee First Name | [optional]
 **pickup_lastname** | **string** | Consignee Last Name | [optional]

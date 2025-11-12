@@ -58,6 +58,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'order_number' => 'string',
+        'carrier_reference' => 'string',
         'pickup_company' => 'string',
         'pickup_firstname' => 'string',
         'pickup_lastname' => 'string',
@@ -92,6 +93,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'order_number' => null,
+        'carrier_reference' => null,
         'pickup_company' => null,
         'pickup_firstname' => null,
         'pickup_lastname' => null,
@@ -124,6 +126,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'order_number' => false,
+        'carrier_reference' => false,
         'pickup_company' => false,
         'pickup_firstname' => false,
         'pickup_lastname' => false,
@@ -236,6 +239,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'order_number' => 'order_number',
+        'carrier_reference' => 'carrier_reference',
         'pickup_company' => 'pickup_company',
         'pickup_firstname' => 'pickup_firstname',
         'pickup_lastname' => 'pickup_lastname',
@@ -268,6 +272,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'order_number' => 'setOrderNumber',
+        'carrier_reference' => 'setCarrierReference',
         'pickup_company' => 'setPickupCompany',
         'pickup_firstname' => 'setPickupFirstname',
         'pickup_lastname' => 'setPickupLastname',
@@ -300,6 +305,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'order_number' => 'getOrderNumber',
+        'carrier_reference' => 'getCarrierReference',
         'pickup_company' => 'getPickupCompany',
         'pickup_firstname' => 'getPickupFirstname',
         'pickup_lastname' => 'getPickupLastname',
@@ -383,6 +389,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(?array $data = null)
     {
         $this->setIfExists('order_number', $data ?? [], null);
+        $this->setIfExists('carrier_reference', $data ?? [], null);
         $this->setIfExists('pickup_company', $data ?? [], null);
         $this->setIfExists('pickup_firstname', $data ?? [], null);
         $this->setIfExists('pickup_lastname', $data ?? [], null);
@@ -477,6 +484,33 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable order_number cannot be null');
         }
         $this->container['order_number'] = $order_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets carrier_reference
+     *
+     * @return string|null
+     */
+    public function getCarrierReference()
+    {
+        return $this->container['carrier_reference'];
+    }
+
+    /**
+     * Sets carrier_reference
+     *
+     * @param string|null $carrier_reference Your order reference for the carrier
+     *
+     * @return self
+     */
+    public function setCarrierReference($carrier_reference)
+    {
+        if (is_null($carrier_reference)) {
+            throw new \InvalidArgumentException('non-nullable carrier_reference cannot be null');
+        }
+        $this->container['carrier_reference'] = $carrier_reference;
 
         return $this;
     }
