@@ -78,6 +78,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_email' => 'string',
         'template_id' => 'string',
         'order_time' => 'string',
+        'pickup_date' => 'string',
         'packages' => '\kruegge82\cargoInternational\Model\Package[]'
     ];
 
@@ -110,6 +111,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_email' => null,
         'template_id' => null,
         'order_time' => null,
+        'pickup_date' => null,
         'packages' => null
     ];
 
@@ -140,6 +142,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_email' => false,
         'template_id' => false,
         'order_time' => false,
+        'pickup_date' => false,
         'packages' => false
     ];
 
@@ -250,6 +253,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_email' => 'delivery_email',
         'template_id' => 'template_id',
         'order_time' => 'order_time',
+        'pickup_date' => 'pickup_date',
         'packages' => 'packages'
     ];
 
@@ -280,6 +284,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_email' => 'setDeliveryEmail',
         'template_id' => 'setTemplateId',
         'order_time' => 'setOrderTime',
+        'pickup_date' => 'setPickupDate',
         'packages' => 'setPackages'
     ];
 
@@ -310,6 +315,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_email' => 'getDeliveryEmail',
         'template_id' => 'getTemplateId',
         'order_time' => 'getOrderTime',
+        'pickup_date' => 'getPickupDate',
         'packages' => 'getPackages'
     ];
 
@@ -391,6 +397,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('delivery_email', $data ?? [], null);
         $this->setIfExists('template_id', $data ?? [], null);
         $this->setIfExists('order_time', $data ?? [], null);
+        $this->setIfExists('pickup_date', $data ?? [], null);
         $this->setIfExists('packages', $data ?? [], null);
     }
 
@@ -1012,6 +1019,33 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         }
 
         $this->container['order_time'] = $order_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_date
+     *
+     * @return string|null
+     */
+    public function getPickupDate()
+    {
+        return $this->container['pickup_date'];
+    }
+
+    /**
+     * Sets pickup_date
+     *
+     * @param string|null $pickup_date Abholdatum
+     *
+     * @return self
+     */
+    public function setPickupDate($pickup_date)
+    {
+        if (is_null($pickup_date)) {
+            throw new \InvalidArgumentException('non-nullable pickup_date cannot be null');
+        }
+        $this->container['pickup_date'] = $pickup_date;
 
         return $this;
     }
