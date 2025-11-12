@@ -308,10 +308,12 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     public const KIND_PALLET = 'pallet';
-    public const PALLET_TYPE_EUROPALLET = 'europallet';
-    public const PALLET_TYPE_INDUSTRIAL = 'industrial';
-    public const PALLET_TYPE_ONE_WAY = 'one_way';
-    public const PALLET_TYPE_OTHER = 'other';
+    public const PALLET_TYPE_PAKET = 'Paket';
+    public const PALLET_TYPE_EUROPALETTE = 'Europalette';
+    public const PALLET_TYPE_EINWEGPALETTE = 'Einwegpalette';
+    public const PALLET_TYPE_HALBPALETTE = 'Halbpalette';
+    public const PALLET_TYPE_SPERRGUTPAKET = 'Sperrgutpaket';
+    public const PALLET_TYPE_GITTERBOX = 'Gitterbox';
 
     /**
      * Gets allowable values of the enum
@@ -333,10 +335,12 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getPalletTypeAllowableValues()
     {
         return [
-            self::PALLET_TYPE_EUROPALLET,
-            self::PALLET_TYPE_INDUSTRIAL,
-            self::PALLET_TYPE_ONE_WAY,
-            self::PALLET_TYPE_OTHER,
+            self::PALLET_TYPE_PAKET,
+            self::PALLET_TYPE_EUROPALETTE,
+            self::PALLET_TYPE_EINWEGPALETTE,
+            self::PALLET_TYPE_HALBPALETTE,
+            self::PALLET_TYPE_SPERRGUTPAKET,
+            self::PALLET_TYPE_GITTERBOX,
         ];
     }
 
