@@ -75,7 +75,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_zip' => 'string',
         'delivery_city' => 'string',
         'delivery_phone' => 'string',
-        'delivery_email' => 'string'
+        'delivery_email' => 'string',
+        'packages' => '\kruegge82\cargoInternational\Model\Package[]'
     ];
 
     /**
@@ -104,7 +105,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_zip' => null,
         'delivery_city' => null,
         'delivery_phone' => null,
-        'delivery_email' => null
+        'delivery_email' => null,
+        'packages' => null
     ];
 
     /**
@@ -131,7 +133,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_zip' => false,
         'delivery_city' => false,
         'delivery_phone' => false,
-        'delivery_email' => false
+        'delivery_email' => false,
+        'packages' => false
     ];
 
     /**
@@ -238,7 +241,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_zip' => 'delivery_zip',
         'delivery_city' => 'delivery_city',
         'delivery_phone' => 'delivery_phone',
-        'delivery_email' => 'delivery_email'
+        'delivery_email' => 'delivery_email',
+        'packages' => 'packages'
     ];
 
     /**
@@ -265,7 +269,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_zip' => 'setDeliveryZip',
         'delivery_city' => 'setDeliveryCity',
         'delivery_phone' => 'setDeliveryPhone',
-        'delivery_email' => 'setDeliveryEmail'
+        'delivery_email' => 'setDeliveryEmail',
+        'packages' => 'setPackages'
     ];
 
     /**
@@ -292,7 +297,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'delivery_zip' => 'getDeliveryZip',
         'delivery_city' => 'getDeliveryCity',
         'delivery_phone' => 'getDeliveryPhone',
-        'delivery_email' => 'getDeliveryEmail'
+        'delivery_email' => 'getDeliveryEmail',
+        'packages' => 'getPackages'
     ];
 
     /**
@@ -371,6 +377,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('delivery_city', $data ?? [], null);
         $this->setIfExists('delivery_phone', $data ?? [], null);
         $this->setIfExists('delivery_email', $data ?? [], null);
+        $this->setIfExists('packages', $data ?? [], null);
     }
 
     /**
@@ -399,6 +406,10 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['packages']) && (count($this->container['packages']) < 1)) {
+            $invalidProperties[] = "invalid value for 'packages', number of items must be greater than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -924,6 +935,38 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable delivery_email cannot be null');
         }
         $this->container['delivery_email'] = $delivery_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets packages
+     *
+     * @return \kruegge82\cargoInternational\Model\Package[]|null
+     */
+    public function getPackages()
+    {
+        return $this->container['packages'];
+    }
+
+    /**
+     * Sets packages
+     *
+     * @param \kruegge82\cargoInternational\Model\Package[]|null $packages List of packages or pallets included in the shipment
+     *
+     * @return self
+     */
+    public function setPackages($packages)
+    {
+        if (is_null($packages)) {
+            throw new \InvalidArgumentException('non-nullable packages cannot be null');
+        }
+
+
+        if ((count($packages) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $packages when calling CreateOrderRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['packages'] = $packages;
 
         return $this;
     }

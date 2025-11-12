@@ -577,7 +577,7 @@ void (empty response body)
 ## `updateOrder()`
 
 ```php
-updateOrder($id, $body): object
+updateOrder($id, $update_order_request): object
 ```
 
 
@@ -604,10 +604,10 @@ $apiInstance = new kruegge82\cargoInternational\Api\OrdersApi(
     $config
 );
 $id = 56; // int | The ID of the record
-$body = array('key' => new \stdClass); // object | Data to update
+$update_order_request = new \kruegge82\cargoInternational\Model\UpdateOrderRequest(); // \kruegge82\cargoInternational\Model\UpdateOrderRequest | Data to update
 
 try {
-    $result = $apiInstance->updateOrder($id, $body);
+    $result = $apiInstance->updateOrder($id, $update_order_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->updateOrder: ', $e->getMessage(), PHP_EOL;
@@ -619,7 +619,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **int**| The ID of the record | |
-| **body** | **object**| Data to update | |
+| **update_order_request** | [**\kruegge82\cargoInternational\Model\UpdateOrderRequest**](../Model/UpdateOrderRequest.md)| Data to update | |
 
 ### Return type
 

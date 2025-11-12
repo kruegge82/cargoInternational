@@ -108,7 +108,11 @@ Class | Method | HTTP request | Description
 ## Models
 
 - [CreateOrderRequest](docs/Model/CreateOrderRequest.md)
+- [Package](docs/Model/Package.md)
+- [Pallet](docs/Model/Pallet.md)
+- [Parcel](docs/Model/Parcel.md)
 - [UpdateAddressbookRequest](docs/Model/UpdateAddressbookRequest.md)
+- [UpdateOrderRequest](docs/Model/UpdateOrderRequest.md)
 
 ## Authorization
 

@@ -2362,16 +2362,16 @@ class OrdersApi
      * Operation updateOrder
      *
      * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateOrderRequest $update_order_request Data to update (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return object|object
      */
-    public function updateOrder($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrder($id, $update_order_request, string $contentType = self::contentTypes['updateOrder'][0])
     {
-        list($response) = $this->updateOrderWithHttpInfo($id, $body, $contentType);
+        list($response) = $this->updateOrderWithHttpInfo($id, $update_order_request, $contentType);
         return $response;
     }
 
@@ -2379,16 +2379,16 @@ class OrdersApi
      * Operation updateOrderWithHttpInfo
      *
      * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateOrderRequest $update_order_request Data to update (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \kruegge82\cargoInternational\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateOrderWithHttpInfo($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrderWithHttpInfo($id, $update_order_request, string $contentType = self::contentTypes['updateOrder'][0])
     {
-        $request = $this->updateOrderRequest($id, $body, $contentType);
+        $request = $this->updateOrderRequest($id, $update_order_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2477,15 +2477,15 @@ class OrdersApi
      * Operation updateOrderAsync
      *
      * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateOrderRequest $update_order_request Data to update (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateOrderAsync($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrderAsync($id, $update_order_request, string $contentType = self::contentTypes['updateOrder'][0])
     {
-        return $this->updateOrderAsyncWithHttpInfo($id, $body, $contentType)
+        return $this->updateOrderAsyncWithHttpInfo($id, $update_order_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2497,16 +2497,16 @@ class OrdersApi
      * Operation updateOrderAsyncWithHttpInfo
      *
      * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateOrderRequest $update_order_request Data to update (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateOrderAsyncWithHttpInfo($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrderAsyncWithHttpInfo($id, $update_order_request, string $contentType = self::contentTypes['updateOrder'][0])
     {
         $returnType = 'object';
-        $request = $this->updateOrderRequest($id, $body, $contentType);
+        $request = $this->updateOrderRequest($id, $update_order_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2548,13 +2548,13 @@ class OrdersApi
      * Create request for operation 'updateOrder'
      *
      * @param  int $id The ID of the record (required)
-     * @param  object $body Data to update (required)
+     * @param  \kruegge82\cargoInternational\Model\UpdateOrderRequest $update_order_request Data to update (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateOrderRequest($id, $body, string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrderRequest($id, $update_order_request, string $contentType = self::contentTypes['updateOrder'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -2564,10 +2564,10 @@ class OrdersApi
             );
         }
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'update_order_request' is set
+        if ($update_order_request === null || (is_array($update_order_request) && count($update_order_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling updateOrder'
+                'Missing the required parameter $update_order_request when calling updateOrder'
             );
         }
 
@@ -2598,12 +2598,12 @@ class OrdersApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($update_order_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_order_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $update_order_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
