@@ -57,6 +57,29 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
+        'order_number' => 'string',
+        'pickup_company' => 'string',
+        'pickup_firstname' => 'string',
+        'pickup_lastname' => 'string',
+        'pickup_department' => 'string',
+        'pickup_street' => 'string',
+        'pickup_country' => 'string',
+        'pickup_zip' => 'string',
+        'pickup_city' => 'string',
+        'pickup_phone' => 'string',
+        'pickup_email' => 'string',
+        'delivery_company' => 'string',
+        'delivery_firstname' => 'string',
+        'delivery_lastname' => 'string',
+        'delivery_department' => 'string',
+        'delivery_street' => 'string',
+        'delivery_country' => 'string',
+        'delivery_zip' => 'string',
+        'delivery_city' => 'string',
+        'delivery_phone' => 'string',
+        'delivery_email' => 'string',
+        'template_id' => 'string',
+        'pickup_date' => 'string',
         'packages' => '\kruegge82\cargoInternational\Model\Package[]'
     ];
 
@@ -68,6 +91,29 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'order_number' => null,
+        'pickup_company' => null,
+        'pickup_firstname' => null,
+        'pickup_lastname' => null,
+        'pickup_department' => null,
+        'pickup_street' => null,
+        'pickup_country' => null,
+        'pickup_zip' => null,
+        'pickup_city' => null,
+        'pickup_phone' => null,
+        'pickup_email' => null,
+        'delivery_company' => null,
+        'delivery_firstname' => null,
+        'delivery_lastname' => null,
+        'delivery_department' => null,
+        'delivery_street' => null,
+        'delivery_country' => null,
+        'delivery_zip' => null,
+        'delivery_city' => null,
+        'delivery_phone' => null,
+        'delivery_email' => null,
+        'template_id' => null,
+        'pickup_date' => null,
         'packages' => null
     ];
 
@@ -77,6 +123,29 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'order_number' => false,
+        'pickup_company' => false,
+        'pickup_firstname' => false,
+        'pickup_lastname' => false,
+        'pickup_department' => false,
+        'pickup_street' => false,
+        'pickup_country' => false,
+        'pickup_zip' => false,
+        'pickup_city' => false,
+        'pickup_phone' => false,
+        'pickup_email' => false,
+        'delivery_company' => false,
+        'delivery_firstname' => false,
+        'delivery_lastname' => false,
+        'delivery_department' => false,
+        'delivery_street' => false,
+        'delivery_country' => false,
+        'delivery_zip' => false,
+        'delivery_city' => false,
+        'delivery_phone' => false,
+        'delivery_email' => false,
+        'template_id' => false,
+        'pickup_date' => false,
         'packages' => false
     ];
 
@@ -166,6 +235,29 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
+        'order_number' => 'order_number',
+        'pickup_company' => 'pickup_company',
+        'pickup_firstname' => 'pickup_firstname',
+        'pickup_lastname' => 'pickup_lastname',
+        'pickup_department' => 'pickup_department',
+        'pickup_street' => 'pickup_street',
+        'pickup_country' => 'pickup_country',
+        'pickup_zip' => 'pickup_zip',
+        'pickup_city' => 'pickup_city',
+        'pickup_phone' => 'pickup_phone',
+        'pickup_email' => 'pickup_email',
+        'delivery_company' => 'delivery_company',
+        'delivery_firstname' => 'delivery_firstname',
+        'delivery_lastname' => 'delivery_lastname',
+        'delivery_department' => 'delivery_department',
+        'delivery_street' => 'delivery_street',
+        'delivery_country' => 'delivery_country',
+        'delivery_zip' => 'delivery_zip',
+        'delivery_city' => 'delivery_city',
+        'delivery_phone' => 'delivery_phone',
+        'delivery_email' => 'delivery_email',
+        'template_id' => 'template_id',
+        'pickup_date' => 'pickup_date',
         'packages' => 'packages'
     ];
 
@@ -175,6 +267,29 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
+        'order_number' => 'setOrderNumber',
+        'pickup_company' => 'setPickupCompany',
+        'pickup_firstname' => 'setPickupFirstname',
+        'pickup_lastname' => 'setPickupLastname',
+        'pickup_department' => 'setPickupDepartment',
+        'pickup_street' => 'setPickupStreet',
+        'pickup_country' => 'setPickupCountry',
+        'pickup_zip' => 'setPickupZip',
+        'pickup_city' => 'setPickupCity',
+        'pickup_phone' => 'setPickupPhone',
+        'pickup_email' => 'setPickupEmail',
+        'delivery_company' => 'setDeliveryCompany',
+        'delivery_firstname' => 'setDeliveryFirstname',
+        'delivery_lastname' => 'setDeliveryLastname',
+        'delivery_department' => 'setDeliveryDepartment',
+        'delivery_street' => 'setDeliveryStreet',
+        'delivery_country' => 'setDeliveryCountry',
+        'delivery_zip' => 'setDeliveryZip',
+        'delivery_city' => 'setDeliveryCity',
+        'delivery_phone' => 'setDeliveryPhone',
+        'delivery_email' => 'setDeliveryEmail',
+        'template_id' => 'setTemplateId',
+        'pickup_date' => 'setPickupDate',
         'packages' => 'setPackages'
     ];
 
@@ -184,6 +299,29 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
+        'order_number' => 'getOrderNumber',
+        'pickup_company' => 'getPickupCompany',
+        'pickup_firstname' => 'getPickupFirstname',
+        'pickup_lastname' => 'getPickupLastname',
+        'pickup_department' => 'getPickupDepartment',
+        'pickup_street' => 'getPickupStreet',
+        'pickup_country' => 'getPickupCountry',
+        'pickup_zip' => 'getPickupZip',
+        'pickup_city' => 'getPickupCity',
+        'pickup_phone' => 'getPickupPhone',
+        'pickup_email' => 'getPickupEmail',
+        'delivery_company' => 'getDeliveryCompany',
+        'delivery_firstname' => 'getDeliveryFirstname',
+        'delivery_lastname' => 'getDeliveryLastname',
+        'delivery_department' => 'getDeliveryDepartment',
+        'delivery_street' => 'getDeliveryStreet',
+        'delivery_country' => 'getDeliveryCountry',
+        'delivery_zip' => 'getDeliveryZip',
+        'delivery_city' => 'getDeliveryCity',
+        'delivery_phone' => 'getDeliveryPhone',
+        'delivery_email' => 'getDeliveryEmail',
+        'template_id' => 'getTemplateId',
+        'pickup_date' => 'getPickupDate',
         'packages' => 'getPackages'
     ];
 
@@ -244,6 +382,29 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('order_number', $data ?? [], null);
+        $this->setIfExists('pickup_company', $data ?? [], null);
+        $this->setIfExists('pickup_firstname', $data ?? [], null);
+        $this->setIfExists('pickup_lastname', $data ?? [], null);
+        $this->setIfExists('pickup_department', $data ?? [], null);
+        $this->setIfExists('pickup_street', $data ?? [], null);
+        $this->setIfExists('pickup_country', $data ?? [], null);
+        $this->setIfExists('pickup_zip', $data ?? [], null);
+        $this->setIfExists('pickup_city', $data ?? [], null);
+        $this->setIfExists('pickup_phone', $data ?? [], null);
+        $this->setIfExists('pickup_email', $data ?? [], null);
+        $this->setIfExists('delivery_company', $data ?? [], null);
+        $this->setIfExists('delivery_firstname', $data ?? [], null);
+        $this->setIfExists('delivery_lastname', $data ?? [], null);
+        $this->setIfExists('delivery_department', $data ?? [], null);
+        $this->setIfExists('delivery_street', $data ?? [], null);
+        $this->setIfExists('delivery_country', $data ?? [], null);
+        $this->setIfExists('delivery_zip', $data ?? [], null);
+        $this->setIfExists('delivery_city', $data ?? [], null);
+        $this->setIfExists('delivery_phone', $data ?? [], null);
+        $this->setIfExists('delivery_email', $data ?? [], null);
+        $this->setIfExists('template_id', $data ?? [], null);
+        $this->setIfExists('pickup_date', $data ?? [], null);
         $this->setIfExists('packages', $data ?? [], null);
     }
 
@@ -288,6 +449,627 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets order_number
+     *
+     * @return string|null
+     */
+    public function getOrderNumber()
+    {
+        return $this->container['order_number'];
+    }
+
+    /**
+     * Sets order_number
+     *
+     * @param string|null $order_number Your order reference
+     *
+     * @return self
+     */
+    public function setOrderNumber($order_number)
+    {
+        if (is_null($order_number)) {
+            throw new \InvalidArgumentException('non-nullable order_number cannot be null');
+        }
+        $this->container['order_number'] = $order_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_company
+     *
+     * @return string|null
+     */
+    public function getPickupCompany()
+    {
+        return $this->container['pickup_company'];
+    }
+
+    /**
+     * Sets pickup_company
+     *
+     * @param string|null $pickup_company Consignee Company Name
+     *
+     * @return self
+     */
+    public function setPickupCompany($pickup_company)
+    {
+        if (is_null($pickup_company)) {
+            throw new \InvalidArgumentException('non-nullable pickup_company cannot be null');
+        }
+        $this->container['pickup_company'] = $pickup_company;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_firstname
+     *
+     * @return string|null
+     */
+    public function getPickupFirstname()
+    {
+        return $this->container['pickup_firstname'];
+    }
+
+    /**
+     * Sets pickup_firstname
+     *
+     * @param string|null $pickup_firstname Consignee First Name
+     *
+     * @return self
+     */
+    public function setPickupFirstname($pickup_firstname)
+    {
+        if (is_null($pickup_firstname)) {
+            throw new \InvalidArgumentException('non-nullable pickup_firstname cannot be null');
+        }
+        $this->container['pickup_firstname'] = $pickup_firstname;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_lastname
+     *
+     * @return string|null
+     */
+    public function getPickupLastname()
+    {
+        return $this->container['pickup_lastname'];
+    }
+
+    /**
+     * Sets pickup_lastname
+     *
+     * @param string|null $pickup_lastname Consignee Last Name
+     *
+     * @return self
+     */
+    public function setPickupLastname($pickup_lastname)
+    {
+        if (is_null($pickup_lastname)) {
+            throw new \InvalidArgumentException('non-nullable pickup_lastname cannot be null');
+        }
+        $this->container['pickup_lastname'] = $pickup_lastname;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_department
+     *
+     * @return string|null
+     */
+    public function getPickupDepartment()
+    {
+        return $this->container['pickup_department'];
+    }
+
+    /**
+     * Sets pickup_department
+     *
+     * @param string|null $pickup_department Consignee Department
+     *
+     * @return self
+     */
+    public function setPickupDepartment($pickup_department)
+    {
+        if (is_null($pickup_department)) {
+            throw new \InvalidArgumentException('non-nullable pickup_department cannot be null');
+        }
+        $this->container['pickup_department'] = $pickup_department;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_street
+     *
+     * @return string|null
+     */
+    public function getPickupStreet()
+    {
+        return $this->container['pickup_street'];
+    }
+
+    /**
+     * Sets pickup_street
+     *
+     * @param string|null $pickup_street Consignee Street
+     *
+     * @return self
+     */
+    public function setPickupStreet($pickup_street)
+    {
+        if (is_null($pickup_street)) {
+            throw new \InvalidArgumentException('non-nullable pickup_street cannot be null');
+        }
+        $this->container['pickup_street'] = $pickup_street;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_country
+     *
+     * @return string|null
+     */
+    public function getPickupCountry()
+    {
+        return $this->container['pickup_country'];
+    }
+
+    /**
+     * Sets pickup_country
+     *
+     * @param string|null $pickup_country Consignee Country
+     *
+     * @return self
+     */
+    public function setPickupCountry($pickup_country)
+    {
+        if (is_null($pickup_country)) {
+            throw new \InvalidArgumentException('non-nullable pickup_country cannot be null');
+        }
+        $this->container['pickup_country'] = $pickup_country;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_zip
+     *
+     * @return string|null
+     */
+    public function getPickupZip()
+    {
+        return $this->container['pickup_zip'];
+    }
+
+    /**
+     * Sets pickup_zip
+     *
+     * @param string|null $pickup_zip Consignee Zipcode
+     *
+     * @return self
+     */
+    public function setPickupZip($pickup_zip)
+    {
+        if (is_null($pickup_zip)) {
+            throw new \InvalidArgumentException('non-nullable pickup_zip cannot be null');
+        }
+        $this->container['pickup_zip'] = $pickup_zip;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_city
+     *
+     * @return string|null
+     */
+    public function getPickupCity()
+    {
+        return $this->container['pickup_city'];
+    }
+
+    /**
+     * Sets pickup_city
+     *
+     * @param string|null $pickup_city Consignee City
+     *
+     * @return self
+     */
+    public function setPickupCity($pickup_city)
+    {
+        if (is_null($pickup_city)) {
+            throw new \InvalidArgumentException('non-nullable pickup_city cannot be null');
+        }
+        $this->container['pickup_city'] = $pickup_city;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_phone
+     *
+     * @return string|null
+     */
+    public function getPickupPhone()
+    {
+        return $this->container['pickup_phone'];
+    }
+
+    /**
+     * Sets pickup_phone
+     *
+     * @param string|null $pickup_phone Consignee Phonenumber
+     *
+     * @return self
+     */
+    public function setPickupPhone($pickup_phone)
+    {
+        if (is_null($pickup_phone)) {
+            throw new \InvalidArgumentException('non-nullable pickup_phone cannot be null');
+        }
+        $this->container['pickup_phone'] = $pickup_phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_email
+     *
+     * @return string|null
+     */
+    public function getPickupEmail()
+    {
+        return $this->container['pickup_email'];
+    }
+
+    /**
+     * Sets pickup_email
+     *
+     * @param string|null $pickup_email Consignee E-Mail
+     *
+     * @return self
+     */
+    public function setPickupEmail($pickup_email)
+    {
+        if (is_null($pickup_email)) {
+            throw new \InvalidArgumentException('non-nullable pickup_email cannot be null');
+        }
+        $this->container['pickup_email'] = $pickup_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_company
+     *
+     * @return string|null
+     */
+    public function getDeliveryCompany()
+    {
+        return $this->container['delivery_company'];
+    }
+
+    /**
+     * Sets delivery_company
+     *
+     * @param string|null $delivery_company Recipient Company Name
+     *
+     * @return self
+     */
+    public function setDeliveryCompany($delivery_company)
+    {
+        if (is_null($delivery_company)) {
+            throw new \InvalidArgumentException('non-nullable delivery_company cannot be null');
+        }
+        $this->container['delivery_company'] = $delivery_company;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_firstname
+     *
+     * @return string|null
+     */
+    public function getDeliveryFirstname()
+    {
+        return $this->container['delivery_firstname'];
+    }
+
+    /**
+     * Sets delivery_firstname
+     *
+     * @param string|null $delivery_firstname Recipient First Name
+     *
+     * @return self
+     */
+    public function setDeliveryFirstname($delivery_firstname)
+    {
+        if (is_null($delivery_firstname)) {
+            throw new \InvalidArgumentException('non-nullable delivery_firstname cannot be null');
+        }
+        $this->container['delivery_firstname'] = $delivery_firstname;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_lastname
+     *
+     * @return string|null
+     */
+    public function getDeliveryLastname()
+    {
+        return $this->container['delivery_lastname'];
+    }
+
+    /**
+     * Sets delivery_lastname
+     *
+     * @param string|null $delivery_lastname Recipient Last Name
+     *
+     * @return self
+     */
+    public function setDeliveryLastname($delivery_lastname)
+    {
+        if (is_null($delivery_lastname)) {
+            throw new \InvalidArgumentException('non-nullable delivery_lastname cannot be null');
+        }
+        $this->container['delivery_lastname'] = $delivery_lastname;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_department
+     *
+     * @return string|null
+     */
+    public function getDeliveryDepartment()
+    {
+        return $this->container['delivery_department'];
+    }
+
+    /**
+     * Sets delivery_department
+     *
+     * @param string|null $delivery_department Recipient Department
+     *
+     * @return self
+     */
+    public function setDeliveryDepartment($delivery_department)
+    {
+        if (is_null($delivery_department)) {
+            throw new \InvalidArgumentException('non-nullable delivery_department cannot be null');
+        }
+        $this->container['delivery_department'] = $delivery_department;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_street
+     *
+     * @return string|null
+     */
+    public function getDeliveryStreet()
+    {
+        return $this->container['delivery_street'];
+    }
+
+    /**
+     * Sets delivery_street
+     *
+     * @param string|null $delivery_street Recipient Street
+     *
+     * @return self
+     */
+    public function setDeliveryStreet($delivery_street)
+    {
+        if (is_null($delivery_street)) {
+            throw new \InvalidArgumentException('non-nullable delivery_street cannot be null');
+        }
+        $this->container['delivery_street'] = $delivery_street;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_country
+     *
+     * @return string|null
+     */
+    public function getDeliveryCountry()
+    {
+        return $this->container['delivery_country'];
+    }
+
+    /**
+     * Sets delivery_country
+     *
+     * @param string|null $delivery_country Recipient Country
+     *
+     * @return self
+     */
+    public function setDeliveryCountry($delivery_country)
+    {
+        if (is_null($delivery_country)) {
+            throw new \InvalidArgumentException('non-nullable delivery_country cannot be null');
+        }
+        $this->container['delivery_country'] = $delivery_country;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_zip
+     *
+     * @return string|null
+     */
+    public function getDeliveryZip()
+    {
+        return $this->container['delivery_zip'];
+    }
+
+    /**
+     * Sets delivery_zip
+     *
+     * @param string|null $delivery_zip Recipient Zipcode
+     *
+     * @return self
+     */
+    public function setDeliveryZip($delivery_zip)
+    {
+        if (is_null($delivery_zip)) {
+            throw new \InvalidArgumentException('non-nullable delivery_zip cannot be null');
+        }
+        $this->container['delivery_zip'] = $delivery_zip;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_city
+     *
+     * @return string|null
+     */
+    public function getDeliveryCity()
+    {
+        return $this->container['delivery_city'];
+    }
+
+    /**
+     * Sets delivery_city
+     *
+     * @param string|null $delivery_city Recipient City
+     *
+     * @return self
+     */
+    public function setDeliveryCity($delivery_city)
+    {
+        if (is_null($delivery_city)) {
+            throw new \InvalidArgumentException('non-nullable delivery_city cannot be null');
+        }
+        $this->container['delivery_city'] = $delivery_city;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_phone
+     *
+     * @return string|null
+     */
+    public function getDeliveryPhone()
+    {
+        return $this->container['delivery_phone'];
+    }
+
+    /**
+     * Sets delivery_phone
+     *
+     * @param string|null $delivery_phone Recipient Phonenumber
+     *
+     * @return self
+     */
+    public function setDeliveryPhone($delivery_phone)
+    {
+        if (is_null($delivery_phone)) {
+            throw new \InvalidArgumentException('non-nullable delivery_phone cannot be null');
+        }
+        $this->container['delivery_phone'] = $delivery_phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_email
+     *
+     * @return string|null
+     */
+    public function getDeliveryEmail()
+    {
+        return $this->container['delivery_email'];
+    }
+
+    /**
+     * Sets delivery_email
+     *
+     * @param string|null $delivery_email Recipient E-Mail
+     *
+     * @return self
+     */
+    public function setDeliveryEmail($delivery_email)
+    {
+        if (is_null($delivery_email)) {
+            throw new \InvalidArgumentException('non-nullable delivery_email cannot be null');
+        }
+        $this->container['delivery_email'] = $delivery_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_id
+     *
+     * @return string|null
+     */
+    public function getTemplateId()
+    {
+        return $this->container['template_id'];
+    }
+
+    /**
+     * Sets template_id
+     *
+     * @param string|null $template_id Template ID für die Versandart
+     *
+     * @return self
+     */
+    public function setTemplateId($template_id)
+    {
+        if (is_null($template_id)) {
+            throw new \InvalidArgumentException('non-nullable template_id cannot be null');
+        }
+        $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_date
+     *
+     * @return string|null
+     */
+    public function getPickupDate()
+    {
+        return $this->container['pickup_date'];
+    }
+
+    /**
+     * Sets pickup_date
+     *
+     * @param string|null $pickup_date Abholdatum
+     *
+     * @return self
+     */
+    public function setPickupDate($pickup_date)
+    {
+        if (is_null($pickup_date)) {
+            throw new \InvalidArgumentException('non-nullable pickup_date cannot be null');
+        }
+        $this->container['pickup_date'] = $pickup_date;
+
+        return $this;
+    }
 
     /**
      * Gets packages
